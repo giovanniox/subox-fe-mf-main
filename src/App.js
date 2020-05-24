@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState,Fragment} from 'react'
+import Navbar from "./components/header/nav-bar/nav-bar/nav-bar";
+import GlobalStyle from './styles/GlobalStyles';
+import LoginZone from './components/login/login-zone';
+import DarkZone from './components/shared/dark-zone'
+const App = () => {
+  
+  const [actions,updateAction] = useState({
+    navbarOpen: false,
+    zoneLoginOpen: false,
+  })
 
-function App() {
+  const handleLogin = (toggle) => {
+    updateAction({...actions,  zoneLoginOpen: toggle})
+  }
+
+  
+  const {navbarOpen,zoneLoginOpen} = actions
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Fragment>
+      <Navbar 
+        navbarState={navbarOpen} 
+        loginState={zoneLoginOpen}
+        handleNavbar={() => updateAction({...actions, navbarOpen: !navbarOpen })}
+        handleLogin={handleLogin}
+      />
+      <LoginZone loginState={zoneLoginOpen} handleLogin={handleLogin}/>
+      <DarkZone  loginState={zoneLoginOpen} handleLogin={handleLogin}/>
+      <GlobalStyle />
+     
+    </Fragment>
+  )
 }
-
-export default App;
+ 
+export default App
