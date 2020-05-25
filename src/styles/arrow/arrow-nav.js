@@ -27,7 +27,7 @@ const Container = styled.div`
     background: #fff;
     display: block;
     position: relative;
-    width: 13px;
+    width: 14px;
     height: 2px;
     border-radius: 15px;
     margin-bottom: .7rem;
