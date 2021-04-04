@@ -1,0 +1,19 @@
+{
+  "productos": [
+    {
+      "nombre": "Jugo de Limón",
+      "precio": 100,
+      "id": 9
+    },
+    {
+      "nombre": "1000",
+      "precio": "222",
+      "id": 10
+    },
+    {
+      "nombre": "wladi come pene",
+      "precio": 123123,
+      "id": 11
+    }
+  ]
+}
