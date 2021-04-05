@@ -27,14 +27,6 @@ export function signInAction(credentials) {
 export function signUpAction(credentials) {
     return async (dispatch) => {
         await firebaseInstance.signUp(credentials)
-            .then(result => {
-                console.log(result);
-                dispatch(signUpSuccess("bien"))
-            })
-            .catch(error => {
-                console.log(error);
-                dispatch(signUpError("SignUp error"))
-            });
 
     }
 }

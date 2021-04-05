@@ -1,21 +1,11 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { auth } from "../components/Firebase";
+import FirebaseInstance, { FirebaseContext } from './config/firebase/Firebase'
 
 export const AuthContext = createContext(null);
 
 export const AuthProvider = (props) => {
     const [userState, setUserState] = useState(null);
     const [authPending, setAuthPending] = useState(true);
-
-    const signIn = (username, password) => {
-        return auth.signInWithEmailAndPassword(username, password);
-    }
-
-    const signUp = (username, password) => {
-        return auth.createUserWithEmailAndPassword(username, password);
-    }
-
-    const signOut = () => auth.signOut();
 
     useEffect(() => {
         return auth.onAuthStateChanged((userAuth) => {

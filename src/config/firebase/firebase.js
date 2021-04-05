@@ -30,7 +30,14 @@ class Firebase {
      signUp = async (values) => {
         const { email, password, userName } = values
         const newUser = await this.auth().createUserWithEmailAndPassword(email, password)
-        
+        return newUser.user.updateProfile({
+            displayName: "Jane Q. User",
+            photoURL: "https://example.com/jane-q-user/profile.jpg"
+          }).then(function() {
+            // Update successful.
+          }).catch(function(error) {
+            // An error happened.
+          });
 
     }
 
