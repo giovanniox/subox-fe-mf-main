@@ -15,12 +15,15 @@ export const Formulario = styled.form`
 
 export const Campo = styled.div`
     margin-bottom: 2rem;
-    display: flex;
+    display: grid;
     align-items: center;
 
     label {
         flex: 0 0 150px;
         font-size: 1.8rem;
+        margin-bottom: -1px;
+        margin-top: -12px;
+
     }
 
     input, 
@@ -51,13 +54,14 @@ export const InputSubmit = styled.input`
 `;
 
 export const Error = styled.p`
-    background-color: red;
-    padding: 1rem;
-    font-family: 'PT Sans', sans-serif;
-    font-weight: 700;
-    font-size: 1.4rem;
-    color: #FFF;
-    text-align: center;
-    text-transform: uppercase;
-    margin: 2rem 0;
+font-family: 'PT Sans',sans-serif;
+font-weight: 700;
+font-size: 1.2rem;
+color: #FFF;
+text-transform: uppercase;
+color: #f55555;
+position: relative;
+bottom: 15px;
+left: 5px;
+margin-bottom: 0;
 `;
