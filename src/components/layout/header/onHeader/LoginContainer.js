@@ -4,7 +4,7 @@ import Boton from '../../../ui/Boton';
 import { useDispatch, useSelector } from 'react-redux';
 import { hideHeaderAction } from '../../../../redux/actions/showHeaderActions/showHeaderActions';
 import { signOutAction } from '../../../../redux/actions/authActions/AuthActions'
-
+import { FormattedMessage } from 'react-intl';
 const LoginContainer = () => {
 
     const dispatch = useDispatch();
@@ -28,7 +28,9 @@ const LoginContainer = () => {
                     <Link to="/sign-in">
                         <Boton bgColor="true"
                             onClick={() => dispatch(hideHeaderAction())}
-                        >Login</Boton>
+                        >
+                                 <FormattedMessage id="app.header.sign-in"/>
+                        </Boton>
                     </Link>
                     <Link to="/sign-up">
                         <Boton

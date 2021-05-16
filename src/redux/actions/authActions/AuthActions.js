@@ -7,7 +7,7 @@ import {
     AUTH_SIGN_UP_ERROR,
 } from '../../types';
 import firebaseInstance from '../../../config/firebase/Firebase'
-
+import clienteAxios from '../../../config/axios';
 
 export function signInAction(credentials) {
     return async (dispatch) => {
@@ -26,8 +26,13 @@ export function signInAction(credentials) {
 
 export function signUpAction(credentials) {
     return async (dispatch) => {
-        await firebaseInstance.signUp(credentials)
-
+        try {
+            await clienteAxios.post('/users', credentials);
+            dispatch(signUpSuccess(credentials));
+        } catch (error) {
+            console.log(error);
+            dispatch(signUpError(error));
+        }
     }
 }
 
@@ -35,7 +40,7 @@ export function signOutAction(history) {
     return async (dispatch) => {
         console.log("signOut")
         await firebaseInstance.signOut()
-            .then(() => {             
+            .then(() => {
                 dispatch(signOutSuccess(null))
                 history.push("/")
             })

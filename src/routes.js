@@ -7,16 +7,19 @@ import EditarProducto from './components/EditarProducto';
 import SignIn from './components/login/SignIn';
 import SignUp from './components/login/SingUp';
 import { hideHeaderAction, showHeaderAction } from "./redux/actions/showHeaderActions/showHeaderActions";
-
-import './static/style/login.css'
+import ValidateEmail from './components/login/ValidateEmail';
+import styled from 'styled-components'
 import Header from './components/layout/header/Header';
+import { useIntl } from 'react-intl';
 
 function Routes() {
     const location = useLocation()
     const dispatch = useDispatch();
+    const intl = useIntl();
     const isShowHeader = useSelector(state => state.showHeader.headerIsShow)
+
     useEffect(() => {
-        if (location.pathname === '/sign-in' || location.pathname === '/sign-up') {
+        if (location.pathname === '/sign-in' || location.pathname === '/sign-up' || location.pathname === '/validate-email') {
             if (isShowHeader) {
                 dispatch(hideHeaderAction());
             }
@@ -30,21 +33,21 @@ function Routes() {
 
 
 
-
-
+    intl.formatMessage({ id: "app.header.nav.products" }).replace(/ /g, "").toLowerCase();
     return (
         <>
             <Header />
 
-            <div className="container mt-5">
+            <Main>
                 <Switch>
-                    <Route exact path="/" component={Productos} />
-                    <Route exact path="/productos/nuevo" component={NuevoProducto} />
+                    <Route exact path="/" component={SignIn} />
+                    <Route exact path={`/${intl.formatMessage({ id: "app.header.nav.products" }).replace(/ /g, "").toLowerCase()}`} component={Productos} />
                     <Route exact path="/productos/editar/:id" component={EditarProducto} />
                     <Route exact path='/sign-up' component={SignUp} />
                     <Route exact path='/sign-in' component={SignIn} />
+                    <Route exact path='/validate-email' component={ValidateEmail} />
                 </Switch>
-            </div>
+            </Main>
 
         </>
 
@@ -52,3 +55,7 @@ function Routes() {
 }
 
 export default Routes
+
+const Main = styled.main`
+    height: 85vh;
+`;
