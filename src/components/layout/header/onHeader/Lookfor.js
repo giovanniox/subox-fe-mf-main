@@ -12,7 +12,7 @@ const Lookfor = () => {
             <form
                 onSubmit={onSubmitHandler}
             >
-                <input className='input-look-for'
+                <input 
                     type="text"
                     placeholder="Buscar Productos"
                 />

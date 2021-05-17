@@ -11,6 +11,7 @@ import {
 const initialState = {
     userState: null,
     authError: null,
+    user: null,
     validatedEmail: false,
 }
 
@@ -20,23 +21,25 @@ export default function fn(state = initialState, action) {
         case AUTH_SING_UP_SUCCESS:
             return {
                 ...state,
-                userState: action.payload,
+                userState: true,
+                user: action.payload,
                 authError: null,
-         
             }
         case AUTH_SIGN_IN_ERROR:
         case AUTH_SIGN_UP_ERROR:
             return {
                 ...state,
-                authError: action.payload,
                 userState: null,
+                user: null,
+                authError: action.payload,
             }
         case AUTH_SING_OUT_SUCCESS:
         case AUTH_SIGN_OUT_ERROR:
             return {
                 ...state,
                 authError: action.payload,
-                userState: action.payload,
+                userState: null,
+                user: null,
             }
         default:
             return state;

@@ -21,5 +21,20 @@ export default function validateSignUp(values) {
         erros.password = 'El password debe ser de al menos 6 caracteres'
     }
 
+    if(!values.rePassword) {
+        if(values.password && values.password.length >= 6 ) {
+            erros.rePassword = "La validaciond de contraseña es obligatoria";
+        }
+    }else{
+        if(values.password && values.password.length >= 6 ) {
+            if(values.password != values.rePassword) {
+                erros.rePassword = "Las contraseñas no coinciden";
+            }
+        }        
+    }
+
+
+   
+
     return erros;
 }
