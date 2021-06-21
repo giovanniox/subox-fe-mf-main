@@ -6,21 +6,26 @@ import {
     AUTH_SING_UP_SUCCESS,
     AUTH_SIGN_UP_ERROR,
 } from '../../types';
-import firebaseInstance from '../../../config/firebase/Firebase'
-import clienteAxios from '../../../config/axios';
+import jwt_decode from "jwt-decode";
+import clienteAxios, { data, USER_ID_APP, PASSWORD_APP } from '../../../config/axios';
 
-export function signInAction(credentials) {
+export function signInAction(credentials, history) {
     return async (dispatch) => {
-        await firebaseInstance.signIn(credentials)
-            .then(result => {
-                console.log(result);
-                dispatch(signInSuccess(null))
+        try {
+            await clienteAxios.post('/api/security/oauth/token', data(credentials), {
+                auth: {
+                    username: USER_ID_APP,
+                    password: PASSWORD_APP
+                },
+            }).then(function (res) {
+                console.log(res)
+                
             })
-            .catch(error => {
-                console.log(error);
-                dispatch(signInError("SignIn error"))
-            });
-
+        } catch (error) {
+            console.warn("error trying to login, invalid credentials")
+            console.error(error);
+            dispatch(signUpError("error trying to login, invalid credentials"));
+        }
     }
 }
 
@@ -39,15 +44,6 @@ export function signUpAction(credentials) {
 export function signOutAction(history) {
     return async (dispatch) => {
         console.log("signOut")
-        await firebaseInstance.signOut()
-            .then(() => {
-                dispatch(signOutSuccess(null))
-                history.push("/")
-            })
-            .catch(error => {
-                console.log(error);
-                dispatch(signOutError("SignUp error"))
-            });
     }
 }
 
