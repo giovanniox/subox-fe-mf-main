@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 
@@ -54,6 +54,12 @@ const Product = () => {
 
     ]
 
+
+    const handleClickAddCard = (product) =>{
+        console.log(product)
+
+    }
+
     return (
         <ContainerProduct>
             {
@@ -73,7 +79,7 @@ const Product = () => {
                                                 <Price>{product.price}</Price>
                                                 <p>{product.description}</p>
                                                 <p>
-                                                    <AddCart>Añadir a carrito</AddCart>
+                                                    <AddCart onClick={() => {handleClickAddCard(product)}}>Añadir a carrito</AddCart>
                                                 </p>
                                             </Card>
                                         )

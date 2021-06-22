@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import Logo from './Logo';
 import Navegacion from './Navegacion';
-
+import Cart from './Cart';
 
 import LoginContainer from './LoginContainer';
 
@@ -21,8 +21,11 @@ const Header = () => {
                 <>
                     <ContainerHeader>
                         <Logo />
-
-                        <LoginContainer />
+                        <ContainerCartLogin>
+                            <Cart />
+                            <LoginContainer />
+                        </ContainerCartLogin>
+                
                     </ContainerHeader>
                     <Navegacion />
                 </>
@@ -62,13 +65,20 @@ const Container = styled.header`
 `;
 
 const ContainerHeader = styled.div`
-    display: flex;
     width: 100%;
     background-color: #fff1cc;
     align-items: center;
     padding: 0 7%;
     height: 60%;
-    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 `;
-
+const ContainerCartLogin = styled.div`
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+`
 

@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker';
 
 
 import './static/style/index.css'
-import './static/style/header.css'
+
 import './static/style/login.css'
 
 ReactDOM.render(<App/>, document.getElementById('root'));

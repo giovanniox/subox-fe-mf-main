@@ -51,17 +51,14 @@ const ShippingType = () => {
                         </Select>
                         <Select name="city" id="cars">
                             <option default value="default">Selecciona ciudad</option>
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
+                            <option value="volvo">Santiago</option>
                         </Select>
                         <Select name="comunne" id="cars">
                             <option default value="default">Selecciona comuna</option>
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
+                            <option value="volvo">Cerrillos</option>
+                            <option value="saab">Maipu</option>
+                            <option value="opel">Pudahuel</option>
+                            <option value="audi">Estacion Central</option>
                         </Select>
 
                         <input
