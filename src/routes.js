@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { useIntl } from 'react-intl';
 
 
-import { hideHeaderAction, showHeaderAction } from "./redux/actions/showHeaderActions/showHeaderActions";
+import { hideFooterAction, hideHeaderAction, showHeaderAction, showFooterAction } from "./redux/actions/showHeaderActions/showHeaderActions";
 
 
 //components
@@ -15,18 +15,31 @@ import SignUp from './components/login/SingUp';
 import ValidateEmail from './components/login/ValidateEmail';
 import SectionMain from './components/layout/main/SectionMain';
 import Product from './components/product/Product'
-
+import Configuration from './components/configuration/configuration'
 function Routes() {
     const location = useLocation()
     const dispatch = useDispatch();
     const intl = useIntl();
     const isShowHeader = useSelector(state => state.showHeader.headerIsShow)
+    const isShowFooter = useSelector(state => state.showHeader.footerIsShow)
 
     useEffect(() => {
+        if (location.pathname === '/Configuración') {
+            if (isShowFooter) {
+                dispatch(hideFooterAction());
+            }
+        } else {
+            if (!isShowFooter) {
+                dispatch(showFooterAction());
+            }
+        }
+
+
         if (location.pathname === '/sign-in' || location.pathname === '/sign-up' || location.pathname === '/validate-email') {
             if (isShowHeader) {
                 dispatch(hideHeaderAction());
             }
+            dispatch(hideFooterAction());
         } else {
             if (!isShowHeader) {
                 dispatch(showHeaderAction());
@@ -49,8 +62,11 @@ function Routes() {
                     <Route exact path='/sign-in' component={SignIn} />
                     <Route exact path='/validate-email' component={ValidateEmail} />
                     <Route exact path='/Productos' component={Product} />
+                    <Route exact path='/Configuración' component={Configuration} />
+
                 </Switch>
-                <Footer />
+                {isShowFooter ? <Footer /> : null}
+
             </Main>
 
         </>
@@ -63,7 +79,7 @@ export default Routes
 const Footer = styled.div`
     width: 100%;
     height: 250px;
-    background-color: #333232;
+    background-color: #633232;
 `
 const Main = styled.main`
     height: 85vh;

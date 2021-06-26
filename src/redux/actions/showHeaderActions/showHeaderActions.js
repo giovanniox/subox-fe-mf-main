@@ -1,9 +1,11 @@
 import {
     SHOW_HEADER,
-    HIDE_HEADER
+    HIDE_HEADER,
+    HIDE_FOOTER,
+    SHOW_FOOTER
 } from '../../types';
 
-// Muestra alerta
+
 export function showHeaderAction() {
     return (dispatch) => {
         dispatch(showHeader(true))
@@ -26,3 +28,24 @@ const hideHeader = status => ({
     payload: status
 })
 
+export function showFooterAction() {
+    return (dispatch) => {
+        dispatch(showFooter(true))
+    }
+}
+
+export function hideFooterAction() {
+    return (dispatch) => {
+        dispatch(hideFooter(false))
+    }
+}
+
+const showFooter = status => ({
+    type: SHOW_FOOTER,
+    payload: status
+})
+
+const hideFooter = status => ({
+    type: HIDE_FOOTER,
+    payload: status
+})
