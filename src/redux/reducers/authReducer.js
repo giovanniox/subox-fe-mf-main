@@ -2,7 +2,6 @@ import {
     AUTH_SING_IN_SUCCESS,
     AUTH_SIGN_IN_ERROR,
     AUTH_SING_OUT_SUCCESS,
-    AUTH_SIGN_OUT_ERROR,
     AUTH_SING_UP_SUCCESS,
     AUTH_SIGN_UP_ERROR,
 } from '../types';
@@ -11,8 +10,10 @@ import {
 const initialState = {
     userState: null,
     authError: null,
+    errorType: null,
     user: null,
-    validatedEmail: false,
+    validatedEmail: null,
+    typeUser: null,
 }
 
 export default function fn(state = initialState, action) {
@@ -21,25 +22,31 @@ export default function fn(state = initialState, action) {
         case AUTH_SING_UP_SUCCESS:
             return {
                 ...state,
-                userState: true,
-                user: action.payload,
-                authError: null,
+                userState: action.payload.userState,
+                authError: action.payload.authError,
+                errorType: null,
+                user: action.payload.user,
+                validatedEmail: action.payload.validatedEmail,
+                typeUser: action.payload.typeUser,
             }
         case AUTH_SIGN_IN_ERROR:
         case AUTH_SIGN_UP_ERROR:
             return {
                 ...state,
                 userState: null,
-                user: null,
                 authError: action.payload,
+                user: null,
+                validatedEmail: null,
+                typeUser: null,
             }
         case AUTH_SING_OUT_SUCCESS:
-        case AUTH_SIGN_OUT_ERROR:
             return {
                 ...state,
-                authError: action.payload,
                 userState: null,
+                authError: action.payload,
                 user: null,
+                validatedEmail: null,
+                typeUser: null,
             }
         default:
             return state;

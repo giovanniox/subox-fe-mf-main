@@ -10,19 +10,17 @@ import styled from 'styled-components'
 const LoginContainer = () => {
 
     const dispatch = useDispatch();
-    const userState = useSelector(state => state.authReducer.userState)
+    const authReducer = useSelector(state => state.authReducer)
     const history = useHistory()
-    const login = userState ? true : false
 
-
-
+    const {userState, user} = authReducer
 
 
     return (
         <LoginContainerButtons >
-            {login ? (
+            {userState ? (
                 <Fragment>
-                    <p>Hola: giovanni </p>
+                    <p>Hola: {user.userName} </p>
                     <Boton bgColor="true" onClick={() => { dispatch(signOutAction(history)) }}>Cerrar Sesión</Boton>
                 </Fragment>
             ) : (

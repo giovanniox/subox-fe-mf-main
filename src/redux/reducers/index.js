@@ -5,6 +5,7 @@ import showHeader from './showHeaderReducer'
 import authReducer from './authReducer'
 import shippingTypeReducer from './shippingTypeReducer'
 import cartShopReducer from './cartShopReducer'
+import configurationPanelReducer from './configurationPanelReducer'
 
 export default combineReducers({
     productos: productosReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
     showHeader:showHeader,
     authReducer:authReducer,
     shippingType:shippingTypeReducer,
-    cartShop:cartShopReducer
+    cartShop:cartShopReducer,
+    panelStatus:configurationPanelReducer
 });

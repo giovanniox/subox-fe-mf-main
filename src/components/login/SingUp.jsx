@@ -35,7 +35,7 @@ const SignUp = () => {
             >
 
                 <Campo>
-                    <label htmlFor='userName'>Nombre</label>
+                    <label htmlFor='userName'>Nombre de usuario</label>
                     <input id='userName' onChange={handleChange} name='userName' value={values.userName} type='text' />
                 </Campo>
                 {error.userName ? <Error>{error.userName}</Error> : null}

@@ -1,18 +1,46 @@
 import React from 'react';
 import styled from 'styled-components'
-const Configuration = () => {
-    return ( 
-        <MainContainer>
-            <PanelContainer>
+import Panel from './panel/panel'
+import { useDispatch, useSelector } from 'react-redux';
 
-            </PanelContainer>
+import Perfil from './itemsConfiguration/perfil';
+import ManageBranch from './itemsConfiguration/manageBranch';
+import ManagerProduct from './itemsConfiguration/manageProduct'
+import StatusProduct from './itemsConfiguration/statusProduct';
+import ManageManager from './itemsConfiguration/manageManager'
+const Configuration = () => {
+
+    const statusPanel = useSelector(state => state.panelStatus.status)
+    const items = useSelector(state => state.panelStatus.buttons)
+    
+    const panelSection = () => {
+        switch (statusPanel) {
+            case items[0].name:
+                return <Perfil/>;
+            case items[1].name:
+                return <StatusProduct/>;
+            case items[2].name:
+                return <ManagerProduct/>;
+            case items[3].name:
+                return <ManageBranch/>;
+            case items[4].name:
+                return <ManageManager/>;
+            default:
+                break;
+        }
+    }
+
+
+    return (
+        <MainContainer>
+            <Panel />
             <ContentContainer>
-                
+                {panelSection()}
             </ContentContainer>
         </MainContainer>
     );
 }
- 
+
 export default Configuration;
 
 const MainContainer = styled.div`
@@ -21,12 +49,6 @@ const MainContainer = styled.div`
     display: flex;
     background-color: #7b7b7b;
 }
-`
-const PanelContainer = styled.div`
-    width: 15vw;
-    min-width: 200px;
-    height: 100%;
-    background-color: #dadada;
 `
 const ContentContainer = styled.div`
     width: 100%;
