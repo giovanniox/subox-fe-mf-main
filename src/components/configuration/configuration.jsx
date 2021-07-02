@@ -48,10 +48,11 @@ const MainContainer = styled.div`
     width: 100%;
     display: flex;
     background-color: #7b7b7b;
-}
 `
+
+
 const ContentContainer = styled.div`
     width: 100%;
     height: 100%;
-    background-color: #9e9e9e;
+    background-color: #ffffff;
 `
