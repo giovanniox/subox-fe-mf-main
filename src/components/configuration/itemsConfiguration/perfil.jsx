@@ -1,8 +1,34 @@
 import React from 'react';
 import styled from 'styled-components'
 import arrow from './../../../static/img/flecha.png';
+import { Link, useHistory } from 'react-router-dom';
+
+
+import { useSelector, useDispatch } from 'react-redux'
+
 
 const Perfil = () => {
+
+    const dispatch = useDispatch()
+    const history = useHistory()
+
+    const user = useSelector(state => state.authReducer.user)
+
+    if (user === null) {
+        history.push('/sign-in')
+        return null
+    }
+
+    const { userName, contact, person } = user;
+    const { email, number, prefixNumber } = contact;
+    const { dateBirth, name, lastName, rut, address, sex } = person;
+
+
+    const datePaser = (dateMiliSeconds) => {
+        return new Date(dateMiliSeconds).toLocaleDateString()
+    }
+
+
     return (
         <ProfileContainer>
             <ContainerSection>
@@ -19,7 +45,7 @@ const Perfil = () => {
                                 <span>Usuario</span>
                             </div>
                             <div>
-                                <span>GIOVANNIOX</span>
+                                <span>{userName ? userName : ""}</span>
                             </div>
                             <div>
                                 <ArrowImg src={arrow} alt="arrow" />
@@ -30,10 +56,10 @@ const Perfil = () => {
                                 <span>E-mail</span>
                             </div>
                             <div>
-                                <span>giovannipoblete55@gmail.com</span>
+                                <span>{email ? email : ""}</span>
                             </div>
                             <div>
-                                 <ArrowImg src={arrow} alt="arrow" />
+                                <ArrowImg src={arrow} alt="arrow" />
                             </div>
                         </Buttons>
                     </ContainerButton>
@@ -41,7 +67,7 @@ const Perfil = () => {
 
 
                 <SubTitle>
-                   Datos Personales
+                    Datos Personales
                 </SubTitle>
                 <ContainerButtons>
                     <ContainerButton>
@@ -50,7 +76,7 @@ const Perfil = () => {
                                 <span>Nombre</span>
                             </div>
                             <div>
-                                <span>Giovanni Poblete</span>
+                                <span>{name ? name : ""} {lastName ? lastName : ""}</span>
                             </div>
                             <div>
                                 <ArrowImg src={arrow} alt="arrow" />
@@ -61,10 +87,10 @@ const Perfil = () => {
                                 <span>Documento</span>
                             </div>
                             <div>
-                                <span>RUT 194190956</span>
+                                <span>{rut ? "RUT " + rut : ""}</span>
                             </div>
                             <div>
-                                 <ArrowImg src={arrow} alt="arrow" />
+                                <ArrowImg src={arrow} alt="arrow" />
                             </div>
                         </Buttons>
                         <Buttons role="button">
@@ -72,10 +98,10 @@ const Perfil = () => {
                                 <span>Numero</span>
                             </div>
                             <div>
-                                <span>+569 41651682</span>
+                                <span>{prefixNumber ? prefixNumber : ""} {number ? number : ""}</span>
                             </div>
                             <div>
-                                 <ArrowImg src={arrow} alt="arrow" />
+                                <ArrowImg src={arrow} alt="arrow" />
                             </div>
                         </Buttons>
                         <Buttons role="button">
@@ -83,10 +109,10 @@ const Perfil = () => {
                                 <span>Fecha Nacimiento</span>
                             </div>
                             <div>
-                                <span>24/02/1997</span>
+                                <span>{dateBirth ? datePaser(dateBirth) : ""}</span>
                             </div>
                             <div>
-                                 <ArrowImg src={arrow} alt="arrow" />
+                                <ArrowImg src={arrow} alt="arrow" />
                             </div>
                         </Buttons>
 
@@ -95,17 +121,67 @@ const Perfil = () => {
                                 <span>Genero</span>
                             </div>
                             <div>
-                                <span>Masculino</span>
+                                <span>{sex ? "MASCULINO" : "FEMENINO"}</span>
                             </div>
                             <div>
-                                 <ArrowImg src={arrow} alt="arrow" />
+                                <ArrowImg src={arrow} alt="arrow" />
                             </div>
                         </Buttons>
 
                     </ContainerButton>
                 </ContainerButtons>
 
-                
+                <SubTitle>
+                    Domicilios
+                </SubTitle>
+                <ContainerButtons>
+                    <ContainerButton>
+                        {
+                            address.length > 0 ?
+                                address.map((address, index) => {
+                                    let { streetName,
+                                        streetNumber,
+                                        depto,
+                                        description,
+                                        office } = address
+
+
+                                    return (
+                                        <Buttons role="button">
+                                            <div>
+                                                <div>
+                                                    <h4>#{index + 1} Domicilio</h4>
+                                                </div>
+                                                <div>
+                                                    <span><b>Direccion: </b>{streetName} #{streetNumber} {depto ? ", Departamento " + depto : null} {office ? ", Oficina " + office + ", " : null}
+                                                        Cerrillos, Santiago, Region metropolitana</span>
+                                                </div>
+                                                <div>
+                                                    <span><b>Descripcion:</b> {description}</span>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <ArrowImg src={arrow} alt="arrow" />
+                                            </div>
+                                        </Buttons>
+                                    )
+                                })
+                                :
+                                <div>
+                                    <h3 ><span >No cuentas con domicilios registrados</span></h3>
+                                </div>
+                        }
+
+
+                        <div role="button">
+                            <div>
+                                <AddressAdd ><span role="button">Añadir nuevo domicilio</span></AddressAdd>
+                            </div>
+                        </div>
+                    </ContainerButton>
+                </ContainerButtons>
+
+
 
 
             </ContainerSection>
@@ -118,6 +194,12 @@ export default Perfil
 const ArrowImg = styled.img`
     width:10px;
     height:10px;
+`
+const AddressAdd = styled.h3`
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    color: #6464ff;
 `
 
 const ContainerButton = styled.div`
