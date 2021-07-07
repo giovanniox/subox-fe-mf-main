@@ -6,7 +6,6 @@ import {
     AUTH_SIGN_UP_ERROR,
 } from '../../types';
 import clienteAxios, { data, USER_ID_APP, PASSWORD_APP } from '../../../config/axios';
-//import bcrypt from 'bcrypt'
 
 
 export function signInAction(credentials, history) {

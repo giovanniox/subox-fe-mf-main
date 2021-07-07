@@ -6,7 +6,7 @@ import { useIntl } from 'react-intl';
 
 const Navegacion = () => {
 
-    const typeUser = "ROLE_ADMIN"
+    const typeUser = "ROLE_USER"
     const intl = useIntl();
 
     return (

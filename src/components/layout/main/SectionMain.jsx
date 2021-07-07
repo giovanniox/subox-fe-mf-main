@@ -29,7 +29,7 @@ export default SectionMain;
 const Section = styled.div`
     background-image: url(${img});
     width: 100%;
-    height: 469px;
+    height: 715px;
 `;
 
 const SubSection = styled.div`
