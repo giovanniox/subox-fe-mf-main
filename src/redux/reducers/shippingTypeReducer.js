@@ -15,6 +15,10 @@ import {
     SAVE_ADDRESS,
     COMPLETE_DEPTO,
     COMPLETE_OFFICE,
+    ADD_NEW_ADDRESS,
+    FIND_COMMUNE_BY_ID,
+    SELECT_BRANCH_OFFICE,
+    FULL_ADDRES_FOR_SELL
 } from '../types';
 
 const initialState = {
@@ -34,16 +38,38 @@ const initialState = {
     communeSelect: null,
     saveAddress: false,
     completeOffice: false,
-    completeDepto: false
+    completeDepto: false,
+    newAddress: false,
+    traceCommune: "",
+    fullAddresForSell: "",
 }
 
 export default function fn(state = initialState, action) {
     switch (action.type) {
+        case FULL_ADDRES_FOR_SELL:
+            return {
+                ...state,
+                loadError: false,
+                fullAddresForSell: action.payload
+            }
+
+        case FIND_COMMUNE_BY_ID:
+            return {
+                ...state,
+                loadError: false,
+                traceCommune: action.payload
+            }
         case COMPLETE_OFFICE:
             return {
                 ...state,
                 loadError: false,
                 completeOffice: action.payload
+            }
+        case ADD_NEW_ADDRESS:
+            return {
+                ...state,
+                loadError: false,
+                newAddress: action.payload
             }
         case COMPLETE_DEPTO:
             return {
@@ -87,7 +113,7 @@ export default function fn(state = initialState, action) {
                 loadError: false,
                 commune: action.payload
             }
-        case FETCH_BRANCH:
+        case SELECT_BRANCH_OFFICE:
             return {
                 ...state,
                 loadError: false,

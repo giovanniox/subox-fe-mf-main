@@ -6,7 +6,6 @@ import { Link, useHistory } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux'
 
-
 const Perfil = () => {
 
     const dispatch = useDispatch()
@@ -180,10 +179,6 @@ const Perfil = () => {
                         </div>
                     </ContainerButton>
                 </ContainerButtons>
-
-
-
-
             </ContainerSection>
         </ProfileContainer>
 
@@ -231,13 +226,13 @@ const Title = styled.div`
     display: flex;
     width: 100%;
     justify-content: flex-start;
-}
+
 `
 const SubTitle = styled.div`
     display: flex;
     width: 100%;
     justify-content: flex-start;
-}
+
 `
 const ProfileContainer = styled.div`
     background-color: #ffffff;

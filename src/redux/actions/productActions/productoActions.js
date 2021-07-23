@@ -1,172 +1,280 @@
 import {
-    AGREGAR_PRODUCTO,
-    AGREGAR_PRODUCTO_EXITO,
-    AGREGAR_PRODUCTO_ERROR,
-    COMENZAR_DESCARGA_PRODUCTOS,
-    DESCARGA_PRODUCTOS_EXITO,
-    DESCARGA_PRODUCTOS_ERROR, 
-    OBTENER_PRODUCTO_ELIMINAR,
-    PRODUCTO_ELIMINADO_EXITO,
-    PRODUCTO_ELIMINADO_ERROR,
-    OBTENER_PRODUCTO_EDITAR,
-    COMENZAR_EDICION_PRODUCTO,
-    PRODUCTO_EDITADO_EXITO,
-    PRODUCTO_EDITADO_ERROR
+    FETCH_PRODUCT,
+    CREATE_NEW_PRODUCT,
+    ERROR_PRODUCT,
+    ERROR_CATEGORY,
+    FETCH_CATEGORY,
+    DISABLE_PRODUCT,
+    ENABLE_PRODUCT,
+    DELETE_PRODUCT,
+    PRODUCT_TO_DELETE,
+    PRODUCT_TO_EDIT,
+    EDIT_PRODUCT,
+    CANCEL_EDIT,
+    SHOW_MODAL_CATEGORY,
+    SHOW_MODAL_ADD_NEW_PRODUCT,
+    PRODUCT_TO_CREATE
 } from '../../types';
 import clienteAxios from '../../../config/axios';
 import Swal from 'sweetalert2';
 
-// Crear nuevos productos
-export function crearNuevoProductoAction(producto) {
+export function saveProductAction(product, history) {
     return async (dispatch) => {
-        dispatch( agregarProducto() );
-
         try {
-            // insertar en la API
-            await clienteAxios.post('/productos', producto);
-
-            // Si todo sale bien, actualizar el state
-           dispatch( agregarProductoExito(producto) );
-
-            // Alerta
+            let body = {
+                "name": product.name,
+                "price": product.price,
+                "description": product.description,
+                "enable": true,
+                "imgUrl": product.imgUrl,
+                "category": product.category,
+                "branchOffice": []
+            }
+            console.log(body)
+            await clienteAxios.post(`/api/user/product`, body).then(res => {
+                console.log(res)
+                dispatch(saveProduct(res.data))
+            });
             Swal.fire(
-                'Correcto', 
+                'Correcto',
                 'El producto se agregó correctamente',
                 'success'
-            );
+            ).then((result) => {
+                if (result.isConfirmed) {
+                    history.push("/Productos")
+                }
+            });
 
         } catch (error) {
             console.log(error);
-            // si hay un error cambiar el state
-            dispatch( agregarProductoError(true) );
-
-            // alerta de error
+            dispatch(errorProduct());
             Swal.fire({
                 icon: 'error',
                 title: 'Hubo un error',
-                text: 'Hubo un error, intenta de nuevo'
+                text: 'Error al intentar agregar producto'
+            })
+        }
+    }
+}
+export function getAllProductAction() {
+    return async (dispatch) => {
+        try {
+            await clienteAxios.get(`/api/user/product`).then(res => {
+                console.log(res)
+                dispatch(getAllProduct(res.data))
+            });
+        } catch (error) {
+            console.log(error);
+            dispatch(errorProduct())
+            Swal.fire({
+                icon: 'error',
+                title: 'Hubo un error',
+                text: 'Error al obtener productos, intenta mas tarde :('
             })
         }
     }
 }
 
-const agregarProducto = () => ({
-    type: AGREGAR_PRODUCTO,
-    payload: true
-});
-
-// si el producto se guarda en la base de datos
-const agregarProductoExito = producto => ({
-    type: AGREGAR_PRODUCTO_EXITO,
-    payload: producto
-})
-
-// si hubo un error
-const agregarProductoError = estado => ({
-    type: AGREGAR_PRODUCTO_ERROR,
-    payload: estado
-});
-
-
-// Función que descarga los productos de la base de datos
-export function obtenerProductosAction() {
+export function getAllCategoryAction() {
     return async (dispatch) => {
-        dispatch( descargarProductos() );
-
         try {
-            const respuesta = await clienteAxios.get('/productos');
-            dispatch( descargaProductosExitosa(respuesta.data) )
+            await clienteAxios.get(`/api/user/category`).then(res => {
+                dispatch(getAllCategory(res.data))
+            });
         } catch (error) {
             console.log(error);
-            dispatch( descargaProductosError() )
+            dispatch(errorCategory())
+            Swal.fire({
+                icon: 'error',
+                title: 'Hubo un error',
+                text: 'Error al obtener categorias, intenta mas tarde :('
+            })
         }
     }
 }
 
-const descargarProductos = () => ({
-    type: COMENZAR_DESCARGA_PRODUCTOS,
-    payload: true
-});
+export function enableProductAction(id) {
 
-const descargaProductosExitosa = productos => ({
-    type: DESCARGA_PRODUCTOS_EXITO,
-    payload: productos
-})
-const descargaProductosError = () => ({
-    type: DESCARGA_PRODUCTOS_ERROR, 
-    payload: true
-});
-
-// Selecciona y elimina el producto
-export function borrarProductoAction(id) {
     return async (dispatch) => {
-        dispatch(obtenerProductoEliminar(id) );
-
         try {
-            await clienteAxios.delete(`/productos/${id}`);
-            dispatch( eliminarProductoExito() );
-
-            // Si se elimina, mostrar alerta
-            Swal.fire(
-                'Eliminado',
-                'El producto se eliminó correctamente',
-                'success'
-            )
+            await clienteAxios.put(`/api/user/product/enable/${id}`).then(res => {
+                console.log(res);
+                dispatch(enableProduct(res.data))
+            });
         } catch (error) {
             console.log(error);
-            dispatch( eliminarProductoError() );
+            dispatch(errorCategory())
+            Swal.fire({
+                icon: 'error',
+                title: 'Hubo un error',
+                text: 'Error al intentar hablitar productos, intenta mas tarde :('
+            })
+        }
+    }
+}
+export function disableProductAction(id) {
+    return async (dispatch) => {
+        try {
+            await clienteAxios.put(`/api/user/product/disable/${id}`).then(res => {
+                console.log(res);
+                dispatch(disbleProduct(res.data))
+            });
+        } catch (error) {
+            console.log(error);
+            dispatch(errorCategory())
+            Swal.fire({
+                icon: 'error',
+                title: 'Hubo un error',
+                text: 'Error al intentar desablitar productos, intenta mas tarde :('
+            })
+        }
+    }
+}
+export function productToDeleteAction(product) {
+    return async (dispatch) => {
+        dispatch(produtToDelete(product))
+    }
+}
+
+export function editProductAction(product) {
+
+    return async (dispatch) => {
+        try {
+            await clienteAxios.put(`/api/user/product`, product).then(res => {
+                console.log(res);
+                dispatch(editProduct(res.data))
+            });
+        } catch (error) {
+            console.log(error);
+            dispatch(errorProduct())
+            Swal.fire({
+                icon: 'error',
+                title: 'Hubo un error',
+                text: `Error al intentar Actualizar Producto ${product.name}, intenta mas tarde :(`
+            })
+        }
+    }
+}
+export function productToEditAction(product) {
+    return async (dispatch) => {
+        dispatch(productToEdit(product))
+    }
+}
+export function productToCreateAction(product) {
+    return async (dispatch) => {
+        dispatch(productToCreate(product))
+    }
+}
+
+const productToCreate = (state) => ({
+    type: PRODUCT_TO_CREATE,
+    payload: state
+})
+
+
+const productToEdit = (state) => ({
+    type: PRODUCT_TO_EDIT,
+    payload: state
+})
+
+const editProduct = (state) => ({
+    type: EDIT_PRODUCT,
+    payload: state
+})
+
+export function deleteProductAction(id) {
+    return async (dispatch) => {
+        try {
+            await clienteAxios.delete(`/api/user/product/${id}`).then((res) => {
+                console.log(res)
+                dispatch(delteProduct())
+            });
+        } catch (error) {
+            console.log(error);
+            dispatch(errorProduct())
+            Swal.fire({
+                icon: 'error',
+                title: 'Hubo un error',
+                text: 'Error al intentar Eliminar producto, intenta mas tarde :('
+            })
         }
     }
 }
 
-const obtenerProductoEliminar = id => ({
-    type: OBTENER_PRODUCTO_ELIMINAR,
-    payload: id
-});
-const eliminarProductoExito = () => ({
-    type: PRODUCTO_ELIMINADO_EXITO
-})
-const eliminarProductoError = () => ({
-    type: PRODUCTO_ELIMINADO_ERROR,
-    payload: true
-});
-
-// Colocar producto en edición
-export function obtenerProductoEditar(producto) {
-    return (dispatch) => {
-        dispatch( obtenerProductoEditarAction(producto) )
-    }
-}
-
-const obtenerProductoEditarAction = producto => ({
-    type: OBTENER_PRODUCTO_EDITAR,
-    payload: producto
-})
-
-// Edita un registro en la api y state
-export function editarProductoAction(producto) {
+export function cancelEditAction() {
     return async (dispatch) => {
-        dispatch( editarProducto() );
-
-        try {
-            await clienteAxios.put(`/productos/${producto.id}`, producto);    
-            dispatch( editarProductoExito(producto) );
-        } catch (error) {
-            console.log(error);
-            dispatch( editarProductoError() );
-        }
+        dispatch(cancelEdit())
     }
 }
-const editarProducto = () => ({
-    type: COMENZAR_EDICION_PRODUCTO
+
+export function showMadalNewProductAction(status) {
+    return async (dispatch) => {
+        dispatch(showMadalNewProduct(status))
+    }
+}
+
+export function showModalCategoryAction(status) {
+    return async (dispatch) => {
+        dispatch(showModalCategory(status))
+    }
+}
+
+
+const showMadalNewProduct = (state) => ({
+    type: SHOW_MODAL_ADD_NEW_PRODUCT,
+    payload: state
+})
+const showModalCategory = (state) => ({
+    type: SHOW_MODAL_CATEGORY,
+    payload: state
+})
+
+const cancelEdit = () => ({
+    type: CANCEL_EDIT,
+    payload: null
+})
+const produtToDelete = (state) => ({
+    type: PRODUCT_TO_DELETE,
+    payload: state
+})
+
+const delteProduct = () => ({
+    type: DELETE_PRODUCT,
+    payload: null
+})
+
+const enableProduct = (state) => ({
+    type: ENABLE_PRODUCT,
+    payload: state
+})
+
+const disbleProduct = (state) => ({
+    type: DISABLE_PRODUCT,
+    payload: state
+})
+
+
+const getAllProduct = (state) => ({
+    type: FETCH_PRODUCT,
+    payload: state
+})
+
+const getAllCategory = (state) => ({
+    type: FETCH_CATEGORY,
+    payload: state
+})
+
+const saveProduct = (state) => ({
+    type: CREATE_NEW_PRODUCT,
+    payload: state
 });
 
-const editarProductoExito = producto => ({
-    type: PRODUCTO_EDITADO_EXITO,
-    payload: producto
-});
+const errorProduct = () => ({
+    type: ERROR_PRODUCT,
+    payload: true
+})
 
-const editarProductoError = () => ({
-    type: PRODUCTO_EDITADO_ERROR,
+const errorCategory = () => ({
+    type: ERROR_CATEGORY,
     payload: true
 })

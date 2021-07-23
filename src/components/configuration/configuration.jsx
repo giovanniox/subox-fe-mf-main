@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import Panel from './panel/panel'
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Perfil from './itemsConfiguration/perfil';
 import ManageBranch from './itemsConfiguration/manageBranch';
@@ -12,19 +12,19 @@ const Configuration = () => {
 
     const statusPanel = useSelector(state => state.panelStatus.status)
     const items = useSelector(state => state.panelStatus.buttons)
-    
+    console.log(items)
     const panelSection = () => {
         switch (statusPanel) {
             case items[0].name:
-                return <Perfil/>;
+                return <Perfil />;
             case items[1].name:
-                return <StatusProduct/>;
+                return <StatusProduct />;
             case items[2].name:
-                return <ManagerProduct/>;
+                return <ManagerProduct />;
             case items[3].name:
-                return <ManageBranch/>;
+                return <ManageBranch />;
             case items[4].name:
-                return <ManageManager/>;
+                return <ManageManager />;
             default:
                 break;
         }

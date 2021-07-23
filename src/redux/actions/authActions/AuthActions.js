@@ -6,7 +6,7 @@ import {
     AUTH_SIGN_UP_ERROR,
 } from '../../types';
 import clienteAxios, { data, USER_ID_APP, PASSWORD_APP } from '../../../config/axios';
-
+import Swal from 'sweetalert2';
 
 export function signInAction(credentials, history) {
     let initialState = {
@@ -44,12 +44,22 @@ export function signInAction(credentials, history) {
                     }
                 } else {
                     dispatch(signInError("Fallo al intenter iniciar sesion"));
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Hubo un error',
+                        text: 'Verifica tus credenciales :('
+                    })
                 }
             })
         } catch (error) {
             console.warn("error trying to login, invalid credentials")
             console.error(error);
             dispatch(signInError("error trying to login, invalid credentials"));
+            Swal.fire({
+                icon: 'error',
+                title: 'Hubo un error',
+                text: 'Verifica tus credenciales :('
+            })
         }
     }
 }
@@ -123,7 +133,11 @@ export function signUpAction(credentials, history) {
             initialState.authError = true
             initialState.errorType = 500
             dispatch(signUpError(initialState));
-            
+            Swal.fire({
+                icon: 'error',
+                title: 'Hubo un error',
+                text: 'Intenta mas tarde :('
+            })
         }
     }
 }

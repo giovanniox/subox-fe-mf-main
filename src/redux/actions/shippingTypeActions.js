@@ -6,6 +6,7 @@ import {
     FETCH_COMMUNE,
     FETCH_BRANCH,
     FETCH_ADDRESS_ERROR,
+    ADD_NEW_ADDRESS,
     GET_ORDER_SET_ADDRESS,
     CLEAR_CITY,
     REGION_SELECT,
@@ -15,6 +16,9 @@ import {
     SAVE_ADDRESS,
     COMPLETE_DEPTO,
     COMPLETE_OFFICE,
+    FIND_COMMUNE_BY_ID,
+    SELECT_BRANCH_OFFICE,
+    FULL_ADDRES_FOR_SELL
 } from '../types';
 import clienteAxios from '../../config/axios';
 
@@ -69,8 +73,20 @@ export const citySelectAction = (id) => {
     }
 }
 export const communeSelectAction = (id) => {
+    let traceCommuneString =""
     return async (dispatch) => {
         dispatch(dispatchCommuneSelect(id))
+        try {
+            await clienteAxios.get(`/api/user/commune/${id}`).then(res => {
+                console.log(res.data)
+                traceCommuneString = `${res.data.name}, ${res.data.city.name}, ${res.data.city.region.name}`
+
+                dispatch(traceCommune(traceCommuneString))
+            });
+        } catch (error) {
+            dispatch(traceCommune(""))
+            console.log(error);
+        }
     }
 }
 
@@ -85,7 +101,6 @@ export const getCommuneAction = (idCity) => {
     return async (dispatch) => {
         try {
             await clienteAxios.get(`/api/user/commune/city/${idCity}`).then(res => {
-                console.log(res)
                 dispatch(dispatchCommuneFetch(res.data))
             });
         } catch (error) {
@@ -98,7 +113,6 @@ export const getRegionAction = () => {
     return async (dispatch) => {
         try {
             await clienteAxios.get('/api/user/region').then(res => {
-                console.log(res)
                 dispatch(dispatchRegionFetch(res.data))
             });
         } catch (error) {
@@ -111,7 +125,6 @@ export const getCityAction = (idRegion) => {
     return async (dispatch) => {
         try {
             await clienteAxios.get(`/api/user/city/region/${idRegion}`).then(res => {
-                console.log(res)
                 dispatch(dispatchCityFetch(res.data))
             });
         } catch (error) {
@@ -135,7 +148,7 @@ export const clearCity = () => {
 }
 
 
-export const getOrderSetAddressAction = (state) => {
+export const getOrderSetAddressAction = (state)  => {
     let stateInit = {
         streetNumber: state.streetNumber,
         streetName: state.streetName,
@@ -161,6 +174,49 @@ const dispatchCitySelect = status => ({
     payload: status
 })
 
+export const fullAddresForSellAction = (state) => {
+    return async (dispatch) => {
+        dispatch(fullAddresForSell(state))
+    }
+
+}
+
+const fullAddresForSell = status => ({
+    type: FULL_ADDRES_FOR_SELL,
+    payload: status
+})
+
+
+export const newAddressAction = (state) => {
+    return async (dispatch) => {
+        dispatch(newAddress(state))
+    }
+
+}
+
+
+const newAddress = status => ({
+    type: ADD_NEW_ADDRESS,
+    payload: status
+})
+
+
+const traceCommune = status => ({
+    type: FIND_COMMUNE_BY_ID,
+    payload: status
+})
+
+
+export const selectBranchAction = (branch) => {
+    return async (dispatch) => {
+        dispatch(selectBranch(branch))
+    }
+}
+
+const selectBranch = status => ({
+    type: SELECT_BRANCH_OFFICE,
+    payload: status
+})
 const dispatchCommuneSelect = status => ({
     type: COMMUNE_SELECT,
     payload: status

@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
-import productosReducer from './productosReducer';
-import alertaReducer from './alertaReducer';
+import productReducer from './productReducer';
 import showHeader from './showHeaderReducer'
 import authReducer from './authReducer'
 import shippingTypeReducer from './shippingTypeReducer'
@@ -8,8 +7,7 @@ import cartShopReducer from './cartShopReducer'
 import configurationPanelReducer from './configurationPanelReducer'
 
 export default combineReducers({
-    productos: productosReducer,
-    alerta: alertaReducer,
+    product: productReducer,
     showHeader:showHeader,
     authReducer:authReducer,
     shippingType:shippingTypeReducer,

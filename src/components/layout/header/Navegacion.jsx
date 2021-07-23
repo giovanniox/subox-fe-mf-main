@@ -10,12 +10,16 @@ const Navegacion = () => {
     const intl = useIntl();
 
     return (
-        <Container>       
-            {items(typeUser, intl).map((value) => (
-                <Link to={value.path.replace(/ /g, "")}>
-                {value.name}
-                 </Link>
-            ))}
+        <Container>
+            {items(typeUser, intl).map((value) => {
+                return (
+                    <Link to={value.path.replace(/ /g, "")}>
+                        {value.name}
+                    </Link>
+                )
+
+            })
+            }
         </Container>
     );
 }

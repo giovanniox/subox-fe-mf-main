@@ -11,22 +11,37 @@ const initialState = {
         {
             title: 'Mi Perfil',
             name: 'perfil',
+            role: [
+                "ROLE_ADMIN","ROLE_USER","ROLE_DELIVERY"
+            ]
         },
         {
-            title: 'Estado de Productos',
+            title: 'Estado de Pedidos',
             name: 'statusProduct',
+            role: [
+                "ROLE_ADMIN","ROLE_USER","ROLE_DELIVERY"
+            ]
         },
         {
             title: 'Administrar Productos',
             name: 'manageProduct',
+            role: [
+                "ROLE_ADMIN","ROLE_DELIVERY"
+            ]
         },
         {
             title: 'Administrar Sucursal',
             name: 'manageBranch',
+            role: [
+                "ROLE_ADMIN"
+            ]
         },
         {
             title: 'Administrador de administradores',
             name: 'manageManagers',
+            role: [
+                "ROLE_ADMIN"
+            ]
         }
 
     ]

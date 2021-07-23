@@ -1,28 +1,32 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components'
 import { useSelector, useDispatch } from 'react-redux'
-import {
-    selectOnOffice, selectDispatch, getRegionAction,
-    clearCity, getCityAction, regionSelectAction,
-    clearCommune, getCommuneAction, citySelectAction,
-    communeSelectAction, getOrderSetAddressAction, saveAddresAction,
-    completeDeptoAction, completeOfficeAction,
-} from '../../../../redux/actions/shippingTypeActions';
-
+import { getOrderSetAddressAction, saveAddresAction,fullAddresForSellAction, completeDeptoAction, completeOfficeAction, newAddressAction, selectBranchAction } from '../../../../redux/actions/shippingTypeActions';
+import Swal from 'sweetalert2';
 import useValidation from '../.../../../../../utils/hooks/useValidation'
 import validateAddress from '../.../../../../../utils/validacion/validateAddress'
+import ButtonsShipping from './ButtonsShipping';
+import SelectAddressContainer from './SelectAddressContainer';
+import { useHistory } from 'react-router-dom';
 const ShippingType = () => {
-
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
+    const history = useHistory()
     const shipping = useSelector(state => state.shippingType)
+    const userState = useSelector(state => state.authReducer.typeUser)
+    const user = useSelector(state => state.authReducer.user)
+    let address = null;
+
+    if (user) {
+        if (user.person !== null) {
+            if (user.person.address) {
+                address = user.person.address
+            }
+        }
+    }
+
 
     const {
         shippingType,
-        region,
-        city,
-        commune,
-        regionSelect,
-        citySelect,
         streetNumber,
         streetName,
         depto,
@@ -31,6 +35,10 @@ const ShippingType = () => {
         saveAddress,
         completeOffice,
         completeDepto,
+        newAddress,
+        branch,
+        communeSelect,
+        traceCommune
     } = shipping
 
     let INIT_STATE = {
@@ -45,223 +53,303 @@ const ShippingType = () => {
 
 
 
-    function handlerShipping() {
-        dispatch(getOrderSetAddressAction(values))
-
-        !shippingType ?
-            console.log("por envio")
-            :
-            console.log("Ir a buscar")
-    }
-
-
-
-    if (region === null) {
-        dispatch(getRegionAction())
-    }
-
-
-
-    const handleChangeTypeShipping = (e) => {
+    const HanderNewAddress = (e) => {
         e.preventDefault()
-        const name = e.target.name
-        if (!shippingType && name === 'btnOffice') {
-            dispatch(selectDispatch())
+        dispatch(newAddressAction(!newAddress))
+    }
+
+    function handlerShipping() {
+
+        if (!shippingType) {
+            if(!address){
+                if (traceCommune === "") {
+                    throwAlertError("Datos incompletos, OBLIGATORIO: nombre de calle, numero de calle, comuna")
+                    return
+                }
+                if (streetNumber === "" || streetName === "") {
+                    throwAlertError("Datos incompletos, OBLIGATORIO: nombre de calle, numero de calle, comuna")
+                    return
+                }
+            }
+            dispatch(fullAddresForSellAction("DIRRECION"))
+            history.push("/Productos")
+        } else {
+            if (branch === "default" || branch === null) {
+                throwAlertError("Debes seleccionar Local")
+                return
+            }
+            dispatch(fullAddresForSellAction("LOCAL"))
+            history.push("/Productos")
+
         }
-        if (shippingType && name === 'btnDispatch') {
-            dispatch(selectOnOffice())
-        }
+
+
     }
 
 
-    const onChangeSelectRegion = (e) => {
+    const throwAlertError = (string) => {
+        Swal.fire({
+            allowOutsideClick: false,
+            title: `Error de validacion`,
+            text: `${string}`,
+            icon: 'error',
+        })
 
-        console.log(regionSelect)
-        if (regionSelect !== e) {
-            dispatch(clearCommune())
-            dispatch(clearCity())
-        }
-        if (e === 'default' || e === 'loading') {
-            dispatch(clearCommune())
-            dispatch(clearCity())
-            return
-        }
-        dispatch(getCityAction(e))
-        dispatch(regionSelectAction(e))
     }
-
-    const onChangeSelectCity = (e) => {
-        console.log(citySelect)
-        if (citySelect !== e) {
-            dispatch(clearCommune())
-        }
-        if (e === 'default' || e === 'loading') {
-            dispatch(clearCommune())
-            return
-        }
-        dispatch(getCommuneAction(e))
-        dispatch(citySelectAction(e))
-    }
-
-    const onChangeSelectCommune = (e) => {
-        dispatch(communeSelectAction(e))
-    }
-
 
     return (
         <div>
-            <ContainerButtons>
-                <ButtonSelection
-                    isOn={!shippingType}
-                    disabled={!shippingType}
-                    onClick={(e) => handleChangeTypeShipping(e)}
-                    name="btnDispatch"
-                >
-                    Delerivy
-                </ButtonSelection>
-                <ButtonSelection
-                    isOn={shippingType}
-                    disabled={shippingType}
-                    onClick={(e) => handleChangeTypeShipping(e)}
-                    name="btnOffice"
-                >
-                    Retiro en local
-                </ButtonSelection>
-            </ContainerButtons>
-            <From autocomplete="off" onSubmit={handleSubmit}>
+            <ButtonsShipping />
 
+
+            <From autocomplete="off" onSubmit={handleSubmit}>
                 {!shippingType ?
                     <Fragment>
-                        <ContainerFrom>
-                            <div>
-                                <InputAddresses
-                                    onChange={(e) => handleChange(e)}
-                                    name="streetName" type="text" value={values.streetName} placeholder="Nombre calle" />
-                                <InputAddresses
-                                    onChange={(e) => handleChange(e)}
-                                    name="streetNumber" type="text" value={values.streetNumber} placeholder="Numero de domicilio" />
-                            </div>
-                            <InputAddresses
-                                onChange={(e) => handleChange(e)}
-                                name="description" type="text" value={values.description} placeholder="Descripcion" />
-                            <div>
+                        {userState !== null ?
+                            address.length !== 0 ?
+                                <>
+                                    <ContainerAddress>
+                                        {
+                                            !newAddress ?
+                                                <Select name="addressUser" id="addressUser">
+                                                    <OptionBlod default value="default">Selecciona domicilio</OptionBlod>
+                                                    {
 
-                                <CheckboxContainer>
-                                    <LabelContainer>
-                                        <input
-                                            onClick={() => dispatch(completeDeptoAction(completeDepto))}
-                                            id="completeDepto" name="completeDepto" type="checkbox" value={completeDepto} /><label htmlFor="completeDepto">Departamento</label>
-                                    </LabelContainer>
+                                                        address.map((address, index) => {
+                                                            return (
+                                                                <option value={`${address.streetName} #${address.streetNumber} ${address.depto ? ", Departamento " + address.depto : null} ${address.office ? ", Oficina " + address.office + ", " : null}`} key={index}>
+                                                                    {address.streetName} #{address.streetNumber} {address.depto ? ", Departamento " + address.depto : null} {address.office ? ", Oficina " + address.office + ", " : null}
+                                                                </option>
+                                                            )
+                                                        })
+                                                    }
+                                                </Select>
+                                                : null
+                                        }
 
-                                    {completeDepto ?
+                                        <ButtonNewAddress onClick={(e) => HanderNewAddress(e)}>{newAddress ? "Mis domicilios" : "Nuevo domicilio"}</ButtonNewAddress>
+                                    </ContainerAddress>
 
-                                        <InputAddresses
-                                            height="66px"
-                                            onChange={(e) => handleChange(e)}
-                                            name="depto" type="text" value={values.depto} placeholder="Numero Departamento" />
-                                        :
-                                        <div></div>
+                                    {newAddress ?
+                                        <>
+                                            <ContainerFrom>
+                                                <div>
+                                                    <InputAddresses
+                                                        onChange={(e) => handleChange(e)}
+                                                        name="streetName" type="text" value={values.streetName} placeholder="Nombre calle" />
+                                                    <InputAddresses
+                                                        onChange={(e) => handleChange(e)}
+                                                        name="streetNumber" type="text" value={values.streetNumber} placeholder="Numero de domicilio" />
+                                                </div>
+                                                <InputAddresses
+                                                    onChange={(e) => handleChange(e)}
+                                                    name="description" type="text" value={values.description} placeholder="Descripcion" />
+                                                <div>
+                                                    <CheckboxContainer>
+                                                        <LabelContainer>
+                                                            <input
+                                                                onClick={() => dispatch(completeDeptoAction(completeDepto))}
+                                                                id="completeDepto" name="completeDepto" type="checkbox" value={completeDepto} /><label htmlFor="completeDepto">Departamento</label>
+                                                        </LabelContainer>
+
+                                                        {completeDepto ?
+
+                                                            <InputAddresses
+                                                                height="66px"
+                                                                onChange={(e) => handleChange(e)}
+                                                                name="depto" type="text" value={values.depto} placeholder="Numero Departamento" />
+                                                            :
+                                                            <div></div>
+                                                        }
+                                                    </CheckboxContainer>
+                                                    <CheckboxContainer>
+                                                        <LabelContainer>
+                                                            <input
+                                                                onClick={() => dispatch(completeOfficeAction(completeOffice))}
+                                                                id="completeOffice" name="completeOffice" type="checkbox" value={completeOffice} /><label htmlFor="completeOffice">Oficina</label>
+                                                        </LabelContainer>
+
+
+                                                        {completeOffice ?
+
+                                                            <InputAddresses
+                                                                onChange={(e) => handleChange(e)}
+                                                                name="office" type="text" value={values.office} placeholder="Numero Oficina" />
+
+
+                                                            :
+                                                            <div></div>
+                                                        }
+                                                    </CheckboxContainer>
+                                                </div>
+                                            </ContainerFrom>
+                                            <SelectAddressContainer />
+
+                                            {userState !== null ?
+                                                userState.filter(rol => rol.name === "ROLE_USER").length === 1 ?
+                                                    <div>
+                                                        <input
+                                                            onClick={() => dispatch(saveAddresAction(saveAddress))}
+                                                            id="saveAddress" name="saveAddress" type="checkbox" value={saveAddress} /><label htmlFor="saveAddress">Guardar dirrecion</label>
+                                                    </div>
+                                                    :
+                                                    null
+                                                : null
+                                            }
+                                        </>
+                                        : null
                                     }
-                                </CheckboxContainer>
-                                <CheckboxContainer>
-                                    <LabelContainer>
-                                        <input
-                                            onClick={() => dispatch(completeOfficeAction(completeOffice))}
-                                            id="completeOffice" name="completeOffice" type="checkbox" value={completeOffice} /><label htmlFor="completeOffice">Oficina</label>
-                                    </LabelContainer>
 
-
-                                    {completeOffice ?
-
+                                </>
+                                :
+                                <>
+                                    <ContainerFrom>
+                                        <div>
+                                            <InputAddresses
+                                                onChange={(e) => handleChange(e)}
+                                                name="streetName" type="text" value={values.streetName} placeholder="Nombre calle" />
+                                            <InputAddresses
+                                                onChange={(e) => handleChange(e)}
+                                                name="streetNumber" type="text" value={values.streetNumber} placeholder="Numero de domicilio" />
+                                        </div>
                                         <InputAddresses
                                             onChange={(e) => handleChange(e)}
-                                            name="office" type="text" value={values.office} placeholder="Numero Oficina" />
+                                            name="description" type="text" value={values.description} placeholder="Descripcion" />
+                                        <div>
+                                            <CheckboxContainer>
+                                                <LabelContainer>
+                                                    <input
+                                                        onClick={() => dispatch(completeDeptoAction(completeDepto))}
+                                                        id="completeDepto" name="completeDepto" type="checkbox" value={completeDepto} /><label htmlFor="completeDepto">Departamento</label>
+                                                </LabelContainer>
+
+                                                {completeDepto ?
+
+                                                    <InputAddresses
+                                                        height="66px"
+                                                        onChange={(e) => handleChange(e)}
+                                                        name="depto" type="text" value={values.depto} placeholder="Numero Departamento" />
+                                                    :
+                                                    <div></div>
+                                                }
+                                            </CheckboxContainer>
+                                            <CheckboxContainer>
+                                                <LabelContainer>
+                                                    <input
+                                                        onClick={() => dispatch(completeOfficeAction(completeOffice))}
+                                                        id="completeOffice" name="completeOffice" type="checkbox" value={completeOffice} /><label htmlFor="completeOffice">Oficina</label>
+                                                </LabelContainer>
 
 
-                                        :
-                                        <div></div>
+                                                {completeOffice ?
+
+                                                    <InputAddresses
+                                                        onChange={(e) => handleChange(e)}
+                                                        name="office" type="text" value={values.office} placeholder="Numero Oficina" />
+
+
+                                                    :
+                                                    <div></div>
+                                                }
+                                            </CheckboxContainer>
+                                        </div>
+                                    </ContainerFrom>
+                                    <SelectAddressContainer />
+
+                                    {userState !== null ?
+                                        userState.filter(rol => rol.name === "ROLE_USER").length === 1 ?
+                                            <div>
+                                                <input
+                                                    onClick={() => dispatch(saveAddresAction(saveAddress))}
+                                                    id="saveAddress" name="saveAddress" type="checkbox" value={saveAddress} /><label htmlFor="saveAddress">Guardar dirrecion</label>
+                                            </div>
+                                            :
+                                            null
+                                        : null
                                     }
-                                </CheckboxContainer>
+                                </>
 
-                            </div>
+                            :
+
+                            <>
+                                <ContainerFrom>
+                                    <div>
+                                        <InputAddresses
+                                            onChange={(e) => handleChange(e)}
+                                            name="streetName" type="text" value={values.streetName} placeholder="Nombre calle" />
+                                        <InputAddresses
+                                            onChange={(e) => handleChange(e)}
+                                            name="streetNumber" type="text" value={values.streetNumber} placeholder="Numero de domicilio" />
+                                    </div>
+                                    <InputAddresses
+                                        onChange={(e) => handleChange(e)}
+                                        name="description" type="text" value={values.description} placeholder="Descripcion" />
+                                    <div>
+                                        <CheckboxContainer>
+                                            <LabelContainer>
+                                                <input
+                                                    onClick={() => dispatch(completeDeptoAction(completeDepto))}
+                                                    id="completeDepto" name="completeDepto" type="checkbox" value={completeDepto} /><label htmlFor="completeDepto">Departamento</label>
+                                            </LabelContainer>
+
+                                            {completeDepto ?
+
+                                                <InputAddresses
+                                                    height="66px"
+                                                    onChange={(e) => handleChange(e)}
+                                                    name="depto" type="text" value={values.depto} placeholder="Numero Departamento" />
+                                                :
+                                                <div></div>
+                                            }
+                                        </CheckboxContainer>
+                                        <CheckboxContainer>
+                                            <LabelContainer>
+                                                <input
+                                                    onClick={() => dispatch(completeOfficeAction(completeOffice))}
+                                                    id="completeOffice" name="completeOffice" type="checkbox" value={completeOffice} /><label htmlFor="completeOffice">Oficina</label>
+                                            </LabelContainer>
 
 
+                                            {completeOffice ?
 
-                           
-                        </ContainerFrom>
+                                                <InputAddresses
+                                                    onChange={(e) => handleChange(e)}
+                                                    name="office" type="text" value={values.office} placeholder="Numero Oficina" />
 
 
+                                                :
+                                                <div></div>
+                                            }
+                                        </CheckboxContainer>
+                                    </div>
+                                </ContainerFrom>
+                                <SelectAddressContainer />
 
-
-
-                        <ContainerSelect>
-                            <Select onChange={(e) => onChangeSelectRegion(e.target.value)} name="region" >
-                                <OptionBlod default value="default">Selecciona Region...</OptionBlod>
-                                {region ?
-                                    region.map((region, index) => {
-                                        return (
-                                            <option value={region.id} key={index}>{region.name} - {region.code}</option>
-                                        )
-                                    })
-                                    :
-                                    <OptionBlod value="loading">Cargando.....</OptionBlod>
+                                {userState !== null ?
+                                    userState.filter(rol => rol.name === "ROLE_USER").length === 1 ?
+                                        <div>
+                                            <input
+                                                onClick={() => dispatch(saveAddresAction(saveAddress))}
+                                                id="saveAddress" name="saveAddress" type="checkbox" value={saveAddress} /><label htmlFor="saveAddress">Guardar dirrecion</label>
+                                        </div>
+                                        :
+                                        null
+                                    : null
                                 }
+                            </>
+                        }
 
-                            </Select>
-                            <Select disabled={city == null} onChange={(e) => onChangeSelectCity(e.target.value)} name="city" >
-                                <OptionBlod default value="default">Selecciona Ciudad...</OptionBlod>
-                                {city ?
-                                    city.map((city, index) => {
-                                        return (
-                                            <option value={city.id} key={index}>{city.name}</option>
-                                        )
-                                    })
-                                    :
-                                    <OptionBlod value="loading">Cargando.....</OptionBlod>
-                                }
-                            </Select>
-
-
-
-                            <Select disabled={commune == null} onChange={(e) => onChangeSelectCommune(e.target.value)} name="communeList" >
-                                <OptionBlod default value="default">Selecciona Comuna...</OptionBlod>
-                                {commune ?
-                                    commune.map((commune, index) => {
-                                        return (
-                                            <option value={commune.id} key={index}>{commune.name}</option>
-                                        )
-                                    })
-                                    :
-                                    <OptionBlod value="loading">Cargando.....</OptionBlod>
-                                }
-                            </Select>
-                        </ContainerSelect>
-
-                        <div>
-                            <input
-                                onClick={() => dispatch(saveAddresAction(saveAddress))}
-                                id="saveAddress" name="saveAddress" type="checkbox" value={saveAddress} /><label htmlFor="saveAddress">Guardar dirrecion</label>
-
-                        </div>
 
                     </Fragment>
                     :
-
-                    <Select name="localShops" id="shops">
-                        <option default value="default">Selecciona la tienda</option>
-                        <option value="volvo">Lo Errazuriz #4358, Cerrillos, Santaigo</option>
-                        <option value="saab">Leiden #1891, Maipu, Santaigo</option>
-                        <option value="opel">Santa tereza #312, Providencia, Santaigo</option>
+                    <Select onChange={(e) => dispatch(selectBranchAction(e.target.value))} name="localShops" id="localShops">
+                        <OptionBlod default selected value={branch ? branch : null}>{branch ? branch : "Selecciona la tienda"}</OptionBlod>
+                        <option value="Lo Errazuriz #4358, Cerrillos, Santaigo">Lo Errazuriz #4358, Cerrillos, Santaigo</option>
+                        <option value="Leiden #1891, Maipu, Santaigo">Leiden #1891, Maipu, Santaigo</option>
+                        <option value="Santa tereza #312, Providencia, Santaigo">Santa tereza #312, Providencia, Santaigo</option>
                     </Select>
-
-
                 }
-
-
-
-                <Pedir type="submit" value="Pedir" />
-
-
+                <Pedir onClick={() => dispatch(getOrderSetAddressAction(values))} type="submit" value="Pedir" />
             </From>
         </div>
     );
@@ -282,9 +370,13 @@ const LabelContainer = styled.div`
     align-items: baseline;
     flex: 1;
 `
-
 const OptionBlod = styled.option`
 font-weight: 700;
+`
+const ContainerAddress = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
 `
 const InputAddresses = styled.input`
     margin: 5px;
@@ -311,10 +403,16 @@ const Select = styled.select`
     padding: 5px;
 `
 
-const ContainerButtons = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+const ButtonNewAddress = styled.div`
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    padding: 7px 20px;
+    color: #b38666;
+    margin: 9px 0px;
+    cursor: pointer;
+    background-color: #feffbf;
+    user-select: none;
+
 `
 
 const ButtonSelection = styled.button`
@@ -338,11 +436,15 @@ const From = styled.form`
 const Pedir = styled.input`
     width: 190px;
     margin: 10px;
+    height: 66px;
     color: white;
     background-color: #f07c79;
     border-radius: 5px;
     border-color: #d5ac88;
     border: 1px solid;
+    font-size: 3rem;
+    text-transform: uppercase;
+    box-shadow: #d0d0d0 2px 3px;
 `
 
 

@@ -6,26 +6,41 @@ const Panel = () => {
 
     const buttons = useSelector(state => state.panelStatus.buttons)
     const dispatch = useDispatch();
-    
+    const userState = useSelector(state => state.authReducer.typeUser)
     const handleOnclick = (e) => {
         e.preventDefault();
         dispatch(setStatusConfiguration(e.target.name))
     }
 
+    const canBeRender = (role) => {
+        let igualdad = false
+        if (userState) {
+            userState.find((rolOfState) => {
+                role.find((rolOfButoon) => {
+                    if (rolOfState.name === rolOfButoon) {
+                        igualdad = true
+                    }
+                })
+            })
+        }
+        return igualdad
+    }
+
     return (
         <PanelContainer>
             {
-                buttons.map(element => {
-                    let { name, title } = element
-                    return (
-                        <ButtonElement name={name} onClick={(e) => { handleOnclick(e) }}>
-                            {title}
-                        </ButtonElement>
-                    )
+                buttons.map((element) => {
+                    let { name, title, role } = element
+                    if (canBeRender(role)) {
+                        return (
+                            <ButtonElement name={name} onClick={(e) => { handleOnclick(e) }}>
+                                {title}
+                            </ButtonElement>
+                        )
+                    }
                 })
             }
         </PanelContainer>
-
     );
 }
 

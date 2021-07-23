@@ -20,7 +20,9 @@ html, body{
 .list-group-item {
   font-size: 1.4rem;
 }
-
+.my-swal {
+  z-index: 10000;
+}
 .navbar .btn {
   flex:1;
 }
