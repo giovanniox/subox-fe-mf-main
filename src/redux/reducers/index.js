@@ -1,16 +1,17 @@
-import { combineReducers } from 'redux';
-import productReducer from './productReducer';
+import { combineReducers } from 'redux'
+import productReducer from './productReducer'
 import showHeader from './showHeaderReducer'
 import authReducer from './authReducer'
 import shippingTypeReducer from './shippingTypeReducer'
 import cartShopReducer from './cartShopReducer'
 import configurationPanelReducer from './configurationPanelReducer'
-
+import funtionalReducer from './funtionalReducer'
 export default combineReducers({
-    product: productReducer,
-    showHeader:showHeader,
-    authReducer:authReducer,
-    shippingType:shippingTypeReducer,
-    cartShop:cartShopReducer,
-    panelStatus:configurationPanelReducer
-});
+  product: productReducer,
+  showHeader: showHeader,
+  authReducer: authReducer,
+  shippingType: shippingTypeReducer,
+  cartShop: cartShopReducer,
+  panelStatus: configurationPanelReducer,
+  funtional: funtionalReducer,
+})

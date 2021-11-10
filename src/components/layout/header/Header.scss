@@ -1,0 +1,21 @@
+$background-color: #fff1cc;
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: $background-color;
+  padding: 0 3%;
+  .__brand {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: fit-content;
+    align-items: center;
+  }
+  .__cart-shop {
+  }
+}

@@ -8,6 +8,7 @@ import validateAddress from '../.../../../../../utils/validacion/validateAddress
 import ButtonsShipping from './ButtonsShipping';
 import SelectAddressContainer from './SelectAddressContainer';
 import { useHistory } from 'react-router-dom';
+
 const ShippingType = () => {
     const dispatch = useDispatch()
     const history = useHistory()
@@ -100,8 +101,6 @@ const ShippingType = () => {
     return (
         <div>
             <ButtonsShipping />
-
-
             <From autocomplete="off" onSubmit={handleSubmit}>
                 {!shippingType ?
                     <Fragment>

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Link, useHistory } from 'react-router-dom'
 import Boton from '../../ui/Boton';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,12 +19,12 @@ const LoginContainer = () => {
     return (
         <LoginContainerButtons >
             {userState ? (
-                <Fragment>
+                <>
                     <p>Hola: {user.userName} </p>
                     <Boton bgColor="true" onClick={() => { dispatch(signOutAction(history)) }}>Cerrar Sesión</Boton>
-                </Fragment>
+                </>
             ) : (
-                <Fragment>
+                <>
                     <Link to="/sign-in">
                         <Boton bgColor="true"
                             onClick={() => dispatch(hideHeaderAction())}
@@ -37,7 +37,7 @@ const LoginContainer = () => {
                             onClick={() => dispatch(hideHeaderAction())}
                         >Crear Cuenta</Boton>
                     </Link>
-                </Fragment>
+                </>
             )}
         </LoginContainerButtons>
     );

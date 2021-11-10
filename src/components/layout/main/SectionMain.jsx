@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import img from '../../../static/img/banner.jpg';
 import ShippingType from './components/ShippingType';
@@ -9,7 +9,7 @@ const SectionMain = () => {
 
 
     return (
-        <Fragment>
+        <>
             <Section>
                 <SubSection>
                     <ShippingType />
@@ -18,7 +18,7 @@ const SectionMain = () => {
             <DiscountSales/>
             <Banner />
  
-        </Fragment>
+        </>
     );
 }
 
