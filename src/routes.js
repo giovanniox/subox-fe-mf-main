@@ -13,13 +13,13 @@ import {
 
 //components
 import Header from './components/layout/header/Header'
-import SignIn from './components/login/SignIn'
-import SignUp from './components/login/SingUp'
-import ValidateEmail from './components/login/ValidateEmail'
+import SignIn from './components/login/SingIn/SignIn'
+import SignUp from './components/login/SingUp/SingUp'
+import ValidateEmail from './components/login/ValidateEmail/ValidateEmail'
 import SectionMain from './components/layout/main/SectionMain'
 import Product from './components/product/Product'
 import Configuration from './components/configuration/configuration'
-import NavSidebar from './components/layout/sidebar/NavSidebar'
+import LostPassword from './components/login/LostPassword/LostPassword'
 function Routes() {
   const location = useLocation()
   const dispatch = useDispatch()
@@ -70,6 +70,7 @@ function Routes() {
           <Route exact path="/validate-email" component={ValidateEmail} />
           <Route exact path="/Productos" component={Product} />
           <Route exact path="/Configuración" component={Configuration} />
+          <Route exact path="/lost-password" component={LostPassword} />
         </Switch>
         {isShowFooter ? <Footer /> : null}
       </Main>

@@ -3,21 +3,27 @@ import { Navigation } from 'react-minimal-side-navigation'
 import { useHistory, useLocation } from 'react-router-dom'
 import Icon from 'awesome-react-icons'
 import React, { useState } from 'react'
-
+import { useDispatch, useSelector } from 'react-redux'
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css'
 import './main.bundle.css'
 import './main.css'
 import LoginContainer from './LoginContainer'
+import { FUNTIONAL_ACTIONS } from './../../../redux/actions/funtinalActions'
 export const NavSidebar = () => {
   const history = useHistory()
   const location = useLocation()
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const isSidebarOpen = useSelector((state) => state.funtional.isShowSidebar)
+  const dispatch = useDispatch()
+
+  const setIsSidebarOpen = () => {
+    dispatch(FUNTIONAL_ACTIONS.handlerSidebarAction(!isSidebarOpen))
+  }
 
   return (
     <>
       {/* Sidebar Overlay */}
       <div
-        onClick={() => setIsSidebarOpen(false)}
+        onClick={() => setIsSidebarOpen()}
         className={`fixed inset-0 z-20 block transition-opacity bg-black opacity-50  ${
           isSidebarOpen ? 'block' : 'hidden'
         }`}
@@ -26,7 +32,7 @@ export const NavSidebar = () => {
       <div>
         <button
           className="btn-menu"
-          onClick={() => setIsSidebarOpen(true)}
+          onClick={() => setIsSidebarOpen()}
           type="button"
         >
           <Icon name="burger" className="w-6 h-6" />
@@ -45,7 +51,6 @@ export const NavSidebar = () => {
           </span>
         </div>
 
-        {/* https://github.com/abhijithvijayan/react-minimal-side-navigation */}
         <Navigation
           activeItemId={location.pathname}
           onSelect={({ itemId }) => {
