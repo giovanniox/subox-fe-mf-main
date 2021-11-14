@@ -27,37 +27,6 @@ function Routes() {
   const isShowHeader = useSelector((state) => state.showHeader.headerIsShow)
   const isShowFooter = useSelector((state) => state.showHeader.footerIsShow)
 
-  useEffect(() => {
-    if (location.pathname === '/Configuración') {
-      if (isShowFooter) {
-        dispatch(hideFooterAction())
-      }
-    } else {
-      if (!isShowFooter) {
-        dispatch(showFooterAction())
-      }
-    }
-
-    if (
-      location.pathname === '/sign-in' ||
-      location.pathname === '/sign-up' ||
-      location.pathname === '/validate-email'
-    ) {
-      if (isShowHeader) {
-        dispatch(hideHeaderAction())
-      }
-      dispatch(hideFooterAction())
-    } else {
-      if (!isShowHeader) {
-        dispatch(showHeaderAction())
-      }
-    }
-  }, [dispatch, isShowFooter, isShowHeader, location.pathname])
-
-  intl
-    .formatMessage({ id: 'app.header.nav.products' })
-    .replace(/ /g, '')
-    .toLowerCase()
   return (
     <>
       <Header />

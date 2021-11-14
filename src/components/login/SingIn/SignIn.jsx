@@ -4,6 +4,8 @@ import useValidation from '../../../utils/hooks/useValidation'
 import validateSignIn from '../../../utils/validacion/validateSignIn'
 import { useDispatch } from 'react-redux'
 
+import './../Login.scss'
+
 const INIT_STATE = {
   username: '',
   password: '',
@@ -23,43 +25,68 @@ const SignIn = () => {
     console.log('SING IN CONSOLE')
   }
   return (
-    <div>
-      <div>
-        <h3>Iniciar Sesion</h3>
-      </div>
+    <div className="login">
+      <div className="login__container">
+        <h3 className="login__title">Iniciar Sesion</h3>
 
-      <form onSubmit={handleSubmit}>
-        <button>inicia con facebook</button>
-        <button>inicia con google</button>
-        <hr />
-        <div>
-          <label htmlFor="username">Ingresa usuario</label>
+        <div className="login__form">
           <input
-            id="username"
-            name="username"
-            type="text"
-            onChange={handleChange}
-            value={values.usuario}
+            className="login__button"
+            type="button"
+            value="inicia con facebook"
           />
-        </div>
-        {error.username ? <div>{error.username}</div> : null}
-        <div>
-          <label htmlFor="password">Contraseña</label>
           <input
-            id="password"
-            name="password"
-            type="password"
-            onChange={handleChange}
-            value={values.password}
+            className="login__button"
+            type="button"
+            value="inicia con google"
           />
+          <hr />
+          <div className="login__campo">
+            <label className="login__label" htmlFor="username">
+              Ingresa usuario
+            </label>
+            <input
+              className="login__input"
+              id="username"
+              name="username"
+              type="text"
+              onChange={handleChange}
+              value={values.usuario}
+            />
+            {error.username ? (
+              <span className="login__error">{error.username}</span>
+            ) : null}
+          </div>
+          <div className="login__campo">
+            <label className="login__label" htmlFor="password">
+              Contraseña
+            </label>
+            <input
+              className="login__input"
+              id="password"
+              name="password"
+              type="password"
+              onChange={handleChange}
+              value={values.password}
+            />
+            {error.password ? (
+              <span className="login__error">{error.password}</span>
+            ) : null}
+          </div>
+          <div className="login_footer-buttons">
+            <input
+              className="login__button"
+              type="submit"
+              value="Ingresar"
+              onClick={handleSubmit}
+            />
+            <div className="login_link">
+              <Link to="/sign-up">¿No tienes cuenta?</Link>
+              <Link to="/lost-password">¿Olvide la contraseña?</Link>
+            </div>
+          </div>
         </div>
-        {error.password ? <div>{error.password}</div> : null}
-        <input type="submit" value="Ingresar" />
-        <div style={{ display: 'grid' }}>
-          <Link to="/sign-up">¿No tienes cuenta?</Link>
-          <Link to="/lost-password">¿Olvide la contraseña?</Link>
-        </div>
-      </form>
+      </div>
     </div>
   )
 }

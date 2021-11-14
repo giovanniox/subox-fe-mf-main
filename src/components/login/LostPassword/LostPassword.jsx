@@ -4,7 +4,8 @@ import useValidation from '../../../utils/hooks/useValidation'
 import validateCodeEmail from '../../../utils/validacion/validateEmail'
 import { useDispatch } from 'react-redux'
 //import { validateCodeEmailAction } from '../../redux/actions/authActions/AuthActions'
-import './LostPassword.css'
+
+import './../Login.scss'
 const LostPassword = () => {
   const history = useHistory()
   const dispatch = useDispatch()
@@ -23,23 +24,35 @@ const LostPassword = () => {
   }
   return (
     <div className="login">
-      <h2 className="login__title">Recupera tu contraseña</h2>
+      <div className="login__container">
+        <h3 className="login__title">Recupera tu contraseña</h3>
 
-      <form className="login__form" onSubmit={handleSubmit}>
-        <div className="login__campo">
-          <label htmlFor="codeValidation">Codigo de validacion</label>
-          <input
-            id="codeValidation"
-            onChange={handleChange}
-            name="codeValidation"
-            value={values.codeValidation}
-            type="text"
-          />
+        <div className="login__form" onSubmit={handleSubmit}>
+          <div className="login__campo">
+            <label className="login__label" htmlFor="codeValidation">
+              Codigo de validacion
+            </label>
+            <input
+              id="codeValidation"
+              className="login__input"
+              onChange={handleChange}
+              name="codeValidation"
+              value={values.codeValidation}
+              type="text"
+            />
+            {error.codeValidation ? (
+              <span className="login__error">{error.codeValidation}</span>
+            ) : null}
+          </div>
+          <div className="login_footer-buttons">
+            <input className="login__button" type="submit" value="Validar" />
+            <div className="login_link">
+              <Link to="/sign-up">¿No tienes cuenta?</Link>
+              <Link to="/lost-password">¿Olvide la contraseña?</Link>
+            </div>
+          </div>
         </div>
-        {error.codeValidation ? <span>{error.codeValidation}</span> : null}
-
-        <input type="submit" value="Validar" />
-      </form>
+      </div>
     </div>
   )
 }
