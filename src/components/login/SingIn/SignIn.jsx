@@ -1,10 +1,9 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import useValidation from '../../../utils/hooks/useValidation'
 import validateSignIn from '../../../utils/validacion/validateSignIn'
-import { useDispatch } from 'react-redux'
-
 import './../Login.scss'
+import { ButtonFacebook, ButtonGoogle } from '../commons/SocialButtons'
 
 const INIT_STATE = {
   username: '',
@@ -12,9 +11,6 @@ const INIT_STATE = {
 }
 
 const SignIn = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
-
   const { values, error, handleSubmit, handleChange } = useValidation(
     INIT_STATE,
     validateSignIn,
@@ -30,17 +26,9 @@ const SignIn = () => {
         <h3 className="login__title">Iniciar Sesion</h3>
 
         <div className="login__form">
-          <input
-            className="login__button"
-            type="button"
-            value="inicia con facebook"
-          />
-          <input
-            className="login__button"
-            type="button"
-            value="inicia con google"
-          />
-          <hr />
+          <ButtonFacebook text="Iniciar Sesion con Facebook" />
+          <ButtonGoogle text="Iniciar Sesion con Google" />
+          <hr className="login__separado" />
           <div className="login__campo">
             <label className="login__label" htmlFor="username">
               Ingresa usuario
@@ -73,6 +61,7 @@ const SignIn = () => {
               <span className="login__error">{error.password}</span>
             ) : null}
           </div>
+
           <div className="login_footer-buttons">
             <input
               className="login__button"

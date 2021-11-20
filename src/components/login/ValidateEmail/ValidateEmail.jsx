@@ -1,15 +1,10 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
-import { Campo, Error, Formulario, InputSubmit } from '../../ui/Formulario'
 import useValidation from '../../../utils/hooks/useValidation'
 import validateCodeEmail from '../../../utils/validacion/validateEmail'
-import { useDispatch } from 'react-redux'
 //import { validateCodeEmailAction } from '../../redux/actions/authActions/AuthActions'
 import './../Login.scss'
 
 const ValidateEmail = () => {
-  const history = useHistory()
-  const dispatch = useDispatch()
   const INIT_STATE = {
     codeValidation: '',
   }

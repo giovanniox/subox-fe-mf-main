@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 import productReducer from './productReducer'
 import showHeader from './showHeaderReducer'
-import authReducer from './authReducer'
 import shippingTypeReducer from './shippingTypeReducer'
 import cartShopReducer from './cartShopReducer'
 import configurationPanelReducer from './configurationPanelReducer'
 import funtionalReducer from './funtionalReducer'
+import authReducer from './authReducer2'
 export default combineReducers({
   product: productReducer,
   showHeader: showHeader,
@@ -14,4 +14,5 @@ export default combineReducers({
   cartShop: cartShopReducer,
   panelStatus: configurationPanelReducer,
   funtional: funtionalReducer,
+  auth: authReducer,
 })

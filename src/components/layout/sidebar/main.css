@@ -16,11 +16,13 @@
 @tailwind utilities;
 /* Stop purging. */
 
-/* Your own custom utilities */
-/* 
-@media (max-width: 1000px) {
-    .btn-menu {
-        display: none;
-        position: relative;
-    }
-} */
+
+.sidebar {
+    padding-top: 15px;
+    overflow: hidden;
+    width: 320px;
+    text-align: center;
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+}

@@ -1,20 +1,17 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import useValidation from '../../../utils/hooks/useValidation'
-import validateSignUp from '../../../utils/validacion/validateSignUp'
-import { useDispatch } from 'react-redux'
-import { signUpAction } from '../../../redux/actions/authActions/AuthActions'
+import validateSignUp, {
+  INIT_STATE,
+} from '../../../utils/validacion/validateSignUp'
+import { useAlert } from 'react-alert'
 
 import './../Login.scss'
+import { ButtonFacebook, ButtonGoogle } from '../commons/SocialButtons'
+import FETCH_API from '../../../utils/ApiUtils'
 const SignUp = () => {
   const history = useHistory()
-  const dispatch = useDispatch()
-  const INIT_STATE = {
-    userName: '',
-    email: '',
-    password: '',
-    rePassword: '',
-  }
+  const alert = useAlert()
 
   const { values, error, handleSubmit, handleChange } = useValidation(
     INIT_STATE,
@@ -23,40 +20,34 @@ const SignUp = () => {
   )
 
   function signUp() {
-    dispatch(signUpAction(values, history))
+    console.log('SingUp with', values)
+    FETCH_API.signUp(values, alert, history)
   }
+
   return (
     <div className="login">
       <div className="login__container ">
         <h3 className="login__title">Crea una cuenta</h3>
 
         <div className="login__form">
-          <input
-            className="login__button login__button--social"
-            type="button"
-            value="inicia con facebook"
-          />
-          <input
-            className="login__button login__button--social"
-            type="button"
-            value="inicia con google"
-          />
+          <ButtonFacebook text="Crea una cuenta con Facebook" />
+          <ButtonGoogle text="Crea una cuenta con Google" />
           <hr />
 
           <div className="login__campo">
-            <label className="login__label" htmlFor="userName">
+            <label className="login__label" htmlFor="name">
               Nombre de usuario
             </label>
             <input
               className="login__input"
-              id="userName"
+              id="name"
               onChange={handleChange}
-              name="userName"
-              value={values.userName}
+              name="name"
+              value={values.name}
               type="text"
             />
-            {error.userName ? (
-              <span className="login__error">{error.userName}</span>
+            {error.name ? (
+              <span className="login__error">{error.name}</span>
             ) : null}
           </div>
           <div className="login__campo">
@@ -108,6 +99,7 @@ const SignUp = () => {
               <span className="login__error">{error.rePassword}</span>
             ) : null}
           </div>
+
           <div className="login_footer-buttons">
             <input
               className="login__button"

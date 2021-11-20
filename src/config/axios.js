@@ -1,18 +1,21 @@
-import axios from 'axios';
+import axios from 'axios'
+import { API_BASE_URL, ACCESS_TOKEN } from '../constants/index'
 
-const clienteAxios = axios.create({
-  baseURL: 'http://localhost:8090'
-});
-
-export const data = (credentials) => {
-  const params = {
-    "grant_type": "password",
-    "username": credentials.username,
-    "password": credentials.password,
-  }
-  return Object.keys(params).map((key) => `${key}=${encodeURIComponent(params[key])}`).join('&');
+export const URLS = {
+  AUTH_SIGN_UP: '/auth/signup',
 }
 
-export const USER_ID_APP = "suboxApp"
-export const PASSWORD_APP = "123123"
-export default clienteAxios;
+const clienteAxios = axios.create({
+  baseURL: API_BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+})
+
+clienteAxios.interceptors.request.use(function (config) {
+  const token = localStorage.getItem(ACCESS_TOKEN)
+  config.headers.Authorization = token ? `Bearer ${token}` : ''
+  return config
+})
+
+export default clienteAxios
