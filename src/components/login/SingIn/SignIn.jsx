@@ -1,16 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import useValidation from '../../../utils/hooks/useValidation'
-import validateSignIn from '../../../utils/validacion/validateSignIn'
+import validateSignIn, {
+  INIT_STATE,
+} from '../../../utils/validacion/validateSignIn'
 import './../Login.scss'
 import { ButtonFacebook, ButtonGoogle } from '../commons/SocialButtons'
-
-const INIT_STATE = {
-  username: '',
-  password: '',
-}
-
+import FETCH_API from '../../../utils/ApiUtils'
+import { useAlert } from 'react-alert'
 const SignIn = () => {
+  const history = useHistory()
+  const alert = useAlert()
+
   const { values, error, handleSubmit, handleChange } = useValidation(
     INIT_STATE,
     validateSignIn,
@@ -18,7 +19,7 @@ const SignIn = () => {
   )
 
   function signIn() {
-    console.log('SING IN CONSOLE')
+    FETCH_API.signIn(values, alert, history)
   }
   return (
     <div className="login">
@@ -30,19 +31,19 @@ const SignIn = () => {
           <ButtonGoogle text="Iniciar Sesion con Google" />
           <hr className="login__separado" />
           <div className="login__campo">
-            <label className="login__label" htmlFor="username">
-              Ingresa usuario
+            <label className="login__label" htmlFor="email">
+              Ingresa email
             </label>
             <input
               className="login__input"
-              id="username"
-              name="username"
+              id="email"
+              name="email"
               type="text"
               onChange={handleChange}
-              value={values.usuario}
+              value={values.email}
             />
-            {error.username ? (
-              <span className="login__error">{error.username}</span>
+            {error.email ? (
+              <span className="login__error">{error.email}</span>
             ) : null}
           </div>
           <div className="login__campo">

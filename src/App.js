@@ -8,6 +8,7 @@ import { IntlProvider } from 'react-intl'
 import { messages as allMessages } from '../src/i18n/messages'
 import { transitions, positions, Provider as AlertProvider } from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
+
 const App = () => {
   const currentLocale = 'es-MX'
   const messages = allMessages[currentLocale]

@@ -1,0 +1,10 @@
+.login {
+  min-width: 320px;
+  width: 600px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  min-height: 600px;
+  background-color: #ceefe4;
+  display: flex
+}
