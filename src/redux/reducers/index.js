@@ -7,7 +7,6 @@ import configurationPanelReducer from './configurationPanelReducer'
 import funtionalReducer from './funtionalReducer'
 import authReducer from './authReducer2'
 export default combineReducers({
-  product: productReducer,
   showHeader: showHeader,
   authReducer: authReducer,
   shippingType: shippingTypeReducer,
@@ -15,4 +14,6 @@ export default combineReducers({
   panelStatus: configurationPanelReducer,
   funtional: funtionalReducer,
   auth: authReducer,
+  product: productReducer,
+
 })

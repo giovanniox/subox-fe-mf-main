@@ -4,11 +4,12 @@ import { useHistory, useLocation } from 'react-router-dom'
 import Icon from 'awesome-react-icons'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import LoginContainer from './LoginContainer'
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css'
 import './main.bundle.css'
 import './main.css'
-import LoginContainer from './LoginContainer'
-import { FUNTIONAL_ACTIONS } from './../../../redux/actions/funtinalActions'
+
+import { FUNTIONAL_ACTIONS } from './../../../../redux/actions/funtinalActions'
 export const NavSidebar = () => {
   const navList = [
     {
@@ -27,6 +28,11 @@ export const NavSidebar = () => {
           itemId: '/order/record',
         },
       ],
+    },
+
+    {
+      title: 'Configuraciones',
+      itemId: '/control',
     },
   ]
 

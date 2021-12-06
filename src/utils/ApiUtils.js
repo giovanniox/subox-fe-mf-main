@@ -6,6 +6,7 @@ const MESSAGES = {
   SIGN_UP_SUCCESS: 'Exito. ¡Por favor inicie sesión para continuar!',
   SIGN_IN_ERROR: '¡UPS! Algo salió mal. ¡Inténtalo de nuevo!',
   SIGN_IN_SUCCESS: '¡Has iniciado sesión correctamente!',
+  FETCH_CATEGORIES_ERROR: 'No fue posible obtener categorias'
 }
 
 const signUp = async (credentials, alert, history) => {
@@ -43,8 +44,20 @@ const signIn = async (credentials, alert, history) => {
     })
 }
 
+
+const fetchCategories = async () => {
+  let categories = null
+  await clienteAxios.get(URLS.FETCH_CATEGORIES).then((res) => {
+    categories =  res.data
+  }).catch(() => {
+    categories =  null
+  });
+  return categories;
+}
+
 const FETCH_API = {
   signUp,
   signIn,
+  fetchCategories,
 }
 export default FETCH_API

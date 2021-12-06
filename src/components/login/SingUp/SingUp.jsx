@@ -20,8 +20,18 @@ const SignUp = () => {
   )
 
   function signUp() {
+    let now = new Date().getTime()
     console.log('SingUp with', values)
-    FETCH_API.signUp(values, alert, history)
+    let body = {
+      userName: values.name,
+      password: values.password,
+      enabled: true,
+      emailValid: true,
+      roles: [1],
+      createAt: now,
+      email: values.email,
+    }
+    FETCH_API.signUp(body, alert, history)
   }
 
   return (

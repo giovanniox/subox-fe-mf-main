@@ -59,7 +59,8 @@ export function saveProductAction(product, history) {
 export function getAllProductAction() {
     return async (dispatch) => {
         try {
-            await clienteAxios.get(`/api/user/product`).then(res => {
+
+            await fetch('http://localhost:7000/category').then(res => {
                 console.log(res)
                 dispatch(getAllProduct(res.data))
             });
@@ -79,6 +80,8 @@ export function getAllCategoryAction() {
     return async (dispatch) => {
         try {
             await clienteAxios.get(`/api/user/category`).then(res => {
+                console.log(res)
+                console.log("RESS")
                 dispatch(getAllCategory(res.data))
             });
         } catch (error) {

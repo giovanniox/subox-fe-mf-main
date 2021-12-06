@@ -1,0 +1,123 @@
+.principal {
+    border: 1px solid #000000;
+    background-color: rgb(243, 158, 158);
+    position: relative;
+
+    display: flex;
+    justify-content: space-evenly;
+
+    .button-panel {
+        border: 1px solid red;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+        height: 100%;
+        .button-panel-img {
+
+            width: 20px;
+            height: 30px;
+        
+        }
+
+        .button-panel-img--left {
+
+        }
+    }
+    .button-panel--left {
+        border: 1px solid rgb(49, 196, 69);
+        transform: rotate(180deg);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 30px;
+        height: 100%;
+        .button-panel-img {}
+
+        .button-panel-img--left {}
+    }
+
+    .box-main {
+        padding: 35px 0px 2px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        margin: 0 30px;
+
+        .panel {
+            width: 100%;
+            position: relative;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: space-evenly;
+
+
+
+            .panel-container {
+                width: 100px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                border-radius: 5px;
+                padding-top: 5px;
+                border: 1px solid #000000;
+                background-color: rgba(70, 250, 241, 0.719);
+                ;
+
+                .panel--title {
+                    text-align: center;
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    font-size: smaller;
+                }
+
+                .panel--button {
+                    border-radius: 4px;
+                    width: 100px;
+                    height: 100px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .button-img {
+                        padding: 15px;
+                    }
+                }
+            }
+        }
+
+        .box-dot {
+           
+            display: flex;
+            padding: 10px 0px 5px 0px;
+
+            .dot {
+                cursor: pointer;
+                opacity: 0.3;
+                width: 8px;
+                height: 8px;
+                border: 1px solid #000;
+                margin: 5px;
+                border-radius: 14px;
+                background-color: #80ccf8;
+            }
+
+            .dot--dark {
+                opacity: 0.8;
+                background-color: #000;
+            }
+        }
+
+
+    }
+
+
+
+
+
+
+
+
+}

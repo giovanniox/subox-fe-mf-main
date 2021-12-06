@@ -2,8 +2,9 @@ import axios from 'axios'
 import { API_BASE_URL, ACCESS_TOKEN } from '../constants/index'
 
 export const URLS = {
-  AUTH_SIGN_UP: '/auth/signup',
+  AUTH_SIGN_UP: '/api/user/createNewUser',
   AUTH_SIGN_IN: '/auth/login',
+  FETCH_CATEGORIES: '/api/user/category'
 }
 
 const clienteAxios = axios.create({

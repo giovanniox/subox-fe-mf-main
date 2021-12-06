@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import Button from '../../ui/Button'
+import Button from '../../../ui/Button'
 import { useDispatch, useSelector } from 'react-redux'
 import { FormattedMessage } from 'react-intl'
 import styled from 'styled-components'
-import { FUNTIONAL_ACTIONS } from './../../../redux/actions/funtinalActions'
+import { FUNTIONAL_ACTIONS } from './../../../../redux/actions/funtinalActions'
 const LoginContainer = () => {
   const dispatch = useDispatch()
 

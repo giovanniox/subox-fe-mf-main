@@ -3,7 +3,7 @@ import React from 'react'
 import Logo from './Logo'
 import Cart from './Cart'
 
-import NavSidebar from '../sidebar/NavSidebar'
+import NavSidebar from '../sidebar/menu/NavSidebar'
 import './Header.scss'
 const Header = () => {
   return (
