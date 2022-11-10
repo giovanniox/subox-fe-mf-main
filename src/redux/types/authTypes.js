@@ -1,5 +1,0 @@
-const AUTH_TYPES = {
-  HANDLER_ERROR: 'AUTH_TYPES/HANDLER_ERROR',
-}
-
-export { AUTH_TYPES }
