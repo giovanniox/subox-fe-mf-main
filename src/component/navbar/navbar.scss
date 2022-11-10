@@ -1,0 +1,149 @@
+$font-stack: Helvetica, sans-serif;
+$one-color: #000000;
+$two-color: #150050;
+$three-color: #3F0071;
+$four-color: #FB2576;
+$five-color: #fff;
+/*
+BLOCKS
+*/
+.navbar {
+  background: $one-color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  position: relative;
+
+  &__logo {
+    flex: 1 1;
+    display: flex;
+    font-size: xx-large;
+    font-family: Helvetica, sans-serif;
+    justify-content: center;
+
+    &__link {
+      text-decoration: none;
+      user-select: none;
+    }
+
+    &__mark {
+      background: $one-color;
+
+      &--primary {
+        color: $five-color;
+      }
+
+      &--secondary {
+        color: $four-color;
+      }
+
+      &--secondary:hover {
+        color: $five-color;
+      }
+    }
+  }
+
+  &__list {
+    flex: 3;
+    display: flex;
+    list-style: none;
+
+    &__item {
+      font-size: large;
+      padding: 15px;
+
+      &__link {
+        text-transform: capitalize;
+        text-decoration: none;
+        color: $five-color;
+        user-select: none;
+      }
+
+      &__link:hover {
+        color: $four-color;
+      }
+    }
+  }
+
+  &__button {
+    &__session {
+      flex: 1;
+      display: flex;
+      list-style: none;
+      user-select: none;
+
+      &__item {
+
+        transition-duration: 0.5ms;
+        background-color: $two-color;
+        border: 0.5px solid $four-color;
+        border-radius: 3px;
+        margin-left: 10px;
+        display: flex;
+
+        &__link {
+          text-transform: capitalize;
+          text-decoration: none;
+          user-select: none;
+          color: $five-color;
+          padding: 0 10px;
+          font-size: small;
+          display: flex;
+          align-items: center;
+          height: 30px;
+        }
+
+        &__link:hover {
+          color: $four-color;
+        }
+      }
+
+      &__item:hover {
+        background-color: $five-color;
+      }
+    }
+
+    &__burger {
+      flex-direction: column;
+      display: flex;
+      align-items: center;
+
+      &__bar {
+        height: 4px;
+        background: $four-color;
+        width: 41px;
+        margin: 3px 10px;
+
+        &--active-top {
+          height: 4px;
+          width: 41px;
+          margin: 0 0;
+          background: rgb(0, 194, 248);
+          animation: spin 4s linear infinite;
+          transform: rotate(25deg);
+          position: relative;
+          top: 10px;
+        }
+
+        &--active-bot {
+          height: 4px;
+          width: 41px;
+          margin: 0 0;
+          background: rgb(0, 194, 248);
+          animation: spin 4s linear infinite;
+          transform: rotate(331deg);
+          position: relative;
+          top: -4px;
+        }
+
+        &--hide {
+          height: 4px;
+          width: 41px;
+          margin: 3px 10px;
+        }
+      }
+    }
+
+  }
+}
