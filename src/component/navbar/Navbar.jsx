@@ -1,8 +1,9 @@
 import {Link} from 'react-router-dom';
 import "./navbar.scss"
+import {useState} from "react";
 
 const Navbar = () => {
-
+    const [burgerButton, toggleBurgerButton] = useState(false)
     const list = [
         {
             id: 0,
@@ -45,18 +46,13 @@ const Navbar = () => {
 
     const toggleNavBar = () => {
         console.log("toggleNavBar")
-
+        toggleBurgerButton(!burgerButton)
     }
 
 
     return (
         <nav className="navbar">
-            <div className="navbar__logo">
-                <Link className="navbar__logo__link" to="/">
-                    <span className="navbar__logo__mark navbar__logo__mark--primary">fashion</span>
-                    <span className="navbar__logo__mark navbar__logo__mark--secondary">city</span>
-                </Link>
-            </div>
+
             <div className="navbar__list">
                 {
                     list.filter(menu => menu.type === KEY_NAVEGATION).map(e => {
@@ -74,7 +70,42 @@ const Navbar = () => {
                     })
                 }
             </div>
-
+            <div className="navbar__logo">
+                <div className="wrapper">
+                    <div className="inner-wrapper">
+                        <div className="landscape"></div>
+                    </div>
+                    <div className="nrw">
+                        <span className="new">
+                          <span className="letter">F</span>
+                          <span className="letter">a</span>
+                          <span className="letter">s</span>
+                           <span className="letter">h</span>
+                          <span className="letter">i</span>
+                          <span className="letter">o</span>                          <span className="letter">o</span>
+                          <span className="letter">n</span>
+                        </span>
+                        <span className="retro">
+                          <span className="letter">C</span>
+                          <span className="letter">i</span>
+                          <span className="letter">t</span>
+                          <span className="letter">y</span>
+                        </span>
+                        <span className="wave">
+                          <span className="letter">t</span>
+                          <span className="letter">e</span>
+                          <span className="letter">n</span>
+                          <span className="letter">d</span>
+                          <span className="letter">e</span>
+                          <span className="letter">c</span>
+                          <span className="letter">i</span>
+                          <span className="letter">a</span>
+                          <span className="letter">s</span>
+                        </span>
+                    </div>
+                    <div className="triangle"></div>
+                </div>
+            </div>
             <div className="navbar__button__session">
                 {
                     list.filter(menu => menu.type === KEY_SESSION).map(e => (
@@ -86,12 +117,17 @@ const Navbar = () => {
                     ))
                 }
             </div>
-            <div className="navbar__button__burger" onClick={toggleNavBar}>
-                <div className="navbar__button__burger__bar--active-top"></div>
-                <div className="navbar__button__burger__bar--hide"></div>
-                <div className="navbar__button__burger__bar--active-bot"></div>
-            </div>
 
+
+            <div className="navbar__button__burger" onClick={toggleNavBar}>
+                <a className={
+                    burgerButton ? "nav-open" : "navbar__button__burger--close"
+                }>
+                    <span className="menu-toggle-bar menu-toggle-bar--top"></span>
+                    <span className="menu-toggle-bar menu-toggle-bar--middle"></span>
+                    <span className="menu-toggle-bar menu-toggle-bar--bottom"></span>
+                </a>
+            </div>
         </nav>
 
 
