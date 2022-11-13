@@ -4,6 +4,8 @@ import {useState} from "react";
 
 const Navbar = () => {
     const [burgerButton, toggleBurgerButton] = useState(false)
+        const [burgerButton2, toggleBurgerButton2] = useState(false)
+
     const list = [
         {
             id: 0,
@@ -45,15 +47,34 @@ const Navbar = () => {
     const KEY_SESSION = "session";
 
     const toggleNavBar = () => {
-        console.log("toggleNavBar")
+        console.log("try toogle")
         toggleBurgerButton(!burgerButton)
     }
 
 
+
     return (
         <nav className="navbar">
+            <div className="navbar__logo">
+                <div className="navbar__logo__landscape">
+                    <div className="navbar__logo__landscape__object"></div>
+                </div>
+                <div className="navbar__logo__wrapper">
+                        <span className="navbar__logo__wrapper__top">
+                            <span className="navbar__logo__wrapper__top__letter">FASHION</span></span>
+                    <span className="navbar__logo__wrapper__mid">
+                            <span className="navbar__logo__wrapper__mid__letter">City</span>
+                        </span>
+                    <span className="navbar__logo__wrapper__bot">
+                            <span className="navbar__logo__wrapper__bot__letter">tendencias</span>
+                        </span>
+                </div>
+                <div className="navbar__logo__triangule">
 
-            <div className="navbar__list">
+                </div>
+            </div>
+
+            <ul className="navbar__list">
                 {
                     list.filter(menu => menu.type === KEY_NAVEGATION).map(e => {
 
@@ -69,65 +90,31 @@ const Navbar = () => {
                         )
                     })
                 }
-            </div>
-            <div className="navbar__logo">
-                <div className="wrapper">
-                    <div className="inner-wrapper">
-                        <div className="landscape"></div>
-                    </div>
-                    <div className="nrw">
-                        <span className="new">
-                          <span className="letter">F</span>
-                          <span className="letter">a</span>
-                          <span className="letter">s</span>
-                           <span className="letter">h</span>
-                          <span className="letter">i</span>
-                          <span className="letter">o</span>                          <span className="letter">o</span>
-                          <span className="letter">n</span>
-                        </span>
-                        <span className="retro">
-                          <span className="letter">C</span>
-                          <span className="letter">i</span>
-                          <span className="letter">t</span>
-                          <span className="letter">y</span>
-                        </span>
-                        <span className="wave">
-                          <span className="letter">t</span>
-                          <span className="letter">e</span>
-                          <span className="letter">n</span>
-                          <span className="letter">d</span>
-                          <span className="letter">e</span>
-                          <span className="letter">c</span>
-                          <span className="letter">i</span>
-                          <span className="letter">a</span>
-                          <span className="letter">s</span>
-                        </span>
-                    </div>
-                    <div className="triangle"></div>
-                </div>
-            </div>
-            <div className="navbar__button__session">
+            </ul>
+
+            <ul className="navbar__session">
                 {
                     list.filter(menu => menu.type === KEY_SESSION).map(e => (
-                        <li key={e.id} className="navbar__button__session__item">
-                            <Link className="navbar__button__session__item__link" to={e.to}>
+                        <li key={e.id} className="navbar__session__item">
+                            <Link className="navbar__session__item__link" to={e.to}>
                                 {e.name}
                             </Link>
                         </li>
                     ))
                 }
-            </div>
-
-
-            <div className="navbar__button__burger" onClick={toggleNavBar}>
-                <a className={
-                    burgerButton ? "nav-open" : "navbar__button__burger--close"
+            </ul>
+            {burgerButton?
+            <div className="navbar__burger" onClick={toggleNavBar}>
+                <div className={
+                    burgerButton ? "navbar__burger navbar__burger--open" : "navbar__burger navbar__burger--close"
                 }>
-                    <span className="menu-toggle-bar menu-toggle-bar--top"></span>
-                    <span className="menu-toggle-bar menu-toggle-bar--middle"></span>
-                    <span className="menu-toggle-bar menu-toggle-bar--bottom"></span>
-                </a>
+                    <span className="navbar__burger__bar navbar__burger__bar--top"></span>
+                    <span className="navbar__burger__bar navbar__burger__bar--mid"></span>
+                    <span className="navbar__burger__bar navbar__burger__bar--bot"></span>
+                </div>
             </div>
+                :undefined
+            }
         </nav>
 
 
