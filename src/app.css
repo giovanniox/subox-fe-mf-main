@@ -13,6 +13,5 @@ body {
     text-align: center;
     font-family: "Open Sans", sans-serif;
     -webkit-font-smoothing: antialiased;
-    background: #111;
-    background: linear-gradient(#0c141f 40%, #cf33d9 41%, #0c141f 60%);
+    background: linear-gradient(#8f299c 20%, #dd5f00c9 50%, #0c141f 95%);
 }
