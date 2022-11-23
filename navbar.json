@@ -1,0 +1,64 @@
+{
+    "navbar": [
+        {
+            "id": 0,
+            "name": "Tienda",
+            "to": "/store",
+            "type": "list",
+            "dropdown": true
+        },
+        {
+            "id": 1,
+            "name": "Eventos",
+            "to": "/#",
+            "type": "list",
+            "dropdown": false
+        },
+        {
+            "id": 2,
+            "name": "Información",
+            "to": "/#",
+            "type": "session",
+            "dropdown": true,
+            "children": [
+                {
+                    "id": 0,
+                    "name": "Sobre Nosotros",
+                    "to": "/about",
+                    "type": "childSession"
+                },
+                {
+                    "id": 1,
+                    "name": "Preguntas Frecuentes",
+                    "to": "/#",
+                    "type": "childSession"
+                },
+                {
+                    "id": 2,
+                    "name": "Sistema de envios",
+                    "to": "/info_envios",
+                    "type": "childSession"
+                },
+                {
+                    "id": 3,
+                    "name": "Empleos",
+                    "to": "/empleos",
+                    "type": "childSession"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Cuenta",
+            "to": "#",
+            "type": "session",
+            "dropdown": true
+        },
+        {
+            "id": 4,
+            "name": "Carrito de compras",
+            "type": "icon",
+            "dropdown": false
+        }
+    ]
+}

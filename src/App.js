@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './component/navbar/Navbar.jsx';
+import Navbar from './component/navbar/Navbar';
 import './app.css';
 import Home from "./pages/Home"
 import Events from "./pages/Events"
@@ -9,11 +9,8 @@ import Store from "./pages/Store";
 
 const App = () => {
     return (
-
-
         <BrowserRouter>
             <Navbar/>
-
             <Routes>
                 <Route index element={<Home/>}/>
                 <Route path="events" element={<Events/>}/>
