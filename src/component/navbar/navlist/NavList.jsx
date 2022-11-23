@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { NAVBAR_ACTIONS } from "../../../app/redux/actions/navbarActions"
 import dropDownIcon from './../resourse/img/dropdown-icon.svg'
 import DropDown from "./../dropdown/Dropdown";
+import "./navlist.scss"
+
 
 const NavList = ({ classType }) => {
     const { items } = useSelector(state => state.navbar)

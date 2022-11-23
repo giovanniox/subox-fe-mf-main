@@ -4,6 +4,7 @@ $two-color: #150050;
 $three-color: #3F0071;
 $four-color: #FB2576;
 $five-color: #fff;
+
 @font-face {
   font-family: OutRun;
   src: url("./../navbar/resourse/font/outrun_future.otf") format("opentype");
@@ -19,7 +20,8 @@ $five-color: #fff;
   align-items: center;
   justify-content: space-around;
   width: 100%;
-  &__container{
+
+  &__container {
     position: relative;
     border: 3px solid #fb2576;
     width: 100%;
@@ -31,131 +33,6 @@ $five-color: #fff;
     padding: 20px;
     height: 86px;
     background: #f2ed3aab;
-    &__list {
-      display: flex;
-      list-style: none;
-
-      &__item {
-        text-decoration: none;
-        padding-left: 10px;
-        display: flex;
-        align-items: center;
-
-        &__link {
-          text-transform: capitalize;
-          text-decoration: none;
-          color: #462dc0;
-          -webkit-user-select: none;
-          user-select: none;
-          font-size: large;
-          font-family: "OutRun";
-          display: flex;
-          &__icon{
-            width: 16px;
-            position: relative;
-            top: 2px;
-            right: 2px;
-          }
-        }
-
-        &__link:hover {
-          color: $four-color;
-        }
-      }
-    }
-
-    &__session {
-      display: flex;
-      list-style: none;
-      z-index: 10;
-
-      &__item {
-        transition-duration: 0.5ms;
-        background-color: #f4f181;
-        border: 1px solid #b1afd4;
-        border-radius: 3px;
-        margin-left: 10px;
-        display: flex;
-        align-items: center;
-
-        &__link {
-          text-transform: capitalize;
-          text-decoration: none;
-          -webkit-user-select: none;
-          user-select: none;
-          color: #462dc0;
-          padding: 0 10px;
-          font-size: small;
-          display: flex;
-          align-items: center;
-          height: 29px;
-          font-family: 'OutRun';
-          &__icon{
-            width: 16px;
-            position: relative;
-            top: 2px;
-            right: 2px;
-          }
-        }
-        &__link:hover {
-          color: $four-color;
-
-        }
-
-
-      }
-
-      &__item:hover {
-        background-color: $five-color;
-      }
-    }
-    &__burger {
-      display: flex;
-      margin: auto;
-      width: 40px;
-      height: 40px;
-      flex-direction: column;
-      justify-content: center;
-
-
-      &__bar {
-        width: 100%;
-        height: 7px;
-        border-radius: 4px;
-        background-color: black;
-        transition: all 0.3s ease;
-        margin: 2px 0px;
-      }
-
-      &--open {
-
-        .navbar__container__burger__bar--top {
-          transform: translate(0, 15px) rotate(45deg);
-        }
-
-        .navbar__container__burger__bar--mid {
-          opacity: 0;
-        }
-
-        .navbar__container__burger__bar--bot {
-          transform: translate(0, -7px) rotate(135deg);
-        }
-      }
-
-      &--close {
-        .navbar__container__burger__bar--top {
-          transform: translate(0, 0px);
-        }
-
-        .navbar__container__burger__bar--mid {
-          opacity: 1;
-        }
-
-        .navbar__container__burger__bar--bottom {
-          transform: translate(0, 8px);
-        }
-      }
-    }
+    z-index: 9;
   }
 }
-

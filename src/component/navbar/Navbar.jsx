@@ -6,6 +6,7 @@ import NavList from "./navlist/NavList"
 
 import { useDispatch, useSelector } from 'react-redux'
 import { NAVBAR_ACTIONS } from './../../app/redux/actions/navbarActions';
+import Burger from "./burger/Burger";
 
 const Navbar = () => {
     const { items } = useSelector(state => state.navbar)
@@ -23,6 +24,7 @@ const Navbar = () => {
                 {<Logo />}
                 {<NavList classType="session" />}
                 {<NavList classType="icon" />}
+                {<Burger/>}
             </div>
             {<Landscape />}
         </div>
