@@ -1,0 +1,91 @@
+$font-stack: Helvetica, sans-serif;
+$one-color: #efdddd;
+$two-color: #150050;
+$three-color: #3F0071;
+$four-color: #FB2576;
+$five-color: #fff;
+
+
+
+.navbar {
+  &__container{
+    &__list {
+      display: flex;
+      list-style: none;
+
+      &__item {
+        text-decoration: none;
+        padding-left: 10px;
+        display: flex;
+        align-items: center;
+
+        &__link {
+          text-transform: capitalize;
+          text-decoration: none;
+          color: #462dc0;
+          -webkit-user-select: none;
+          user-select: none;
+          font-size: large;
+          font-family: "OutRun";
+          display: flex;
+          &__icon{
+            width: 16px;
+            position: relative;
+            top: 2px;
+            right: 2px;
+          }
+        }
+
+        &__link:hover {
+          color: $four-color;
+        }
+      }
+    }
+    &__session {
+      display: flex;
+      list-style: none;
+      z-index: 11;
+
+      &__item {
+        transition-duration: 0.5ms;
+        background-color: #f4f181;
+        border: 1px solid #b1afd4;
+        border-radius: 3px;
+        margin-left: 10px;
+        display: flex;
+        align-items: center;
+
+        &__link {
+          text-transform: capitalize;
+          text-decoration: none;
+          -webkit-user-select: none;
+          user-select: none;
+          color: #462dc0;
+          padding: 0 10px;
+          font-size: small;
+          display: flex;
+          align-items: center;
+          height: 29px;
+          font-family: 'OutRun';
+          &__icon{
+            width: 16px;
+            position: relative;
+            top: 2px;
+            right: 2px;
+          }
+        }
+        &__link:hover {
+          color: $four-color;
+
+        }
+
+
+      }
+
+      &__item:hover {
+        background-color: $five-color;
+      }
+    }
+  }
+}
+
