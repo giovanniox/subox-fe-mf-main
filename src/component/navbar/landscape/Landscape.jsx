@@ -1,8 +1,8 @@
 import "./landscape.scss"
 
 const Landscape = () => {
-    return (<div className="navbar__landscape">
-        <div className="navbar__landscape__object"></div>
+    return (<div className="navBar__landscape">
+        <div className="navBar__landscape__object"></div>
     </div>);
 }
 

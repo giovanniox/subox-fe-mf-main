@@ -1,64 +1,84 @@
 {
-    "navbar": [
+    "navBar": [
         {
             "id": 0,
             "name": "Tienda",
             "to": "/store",
             "type": "list",
-            "dropdown": true
-        },
-        {
-            "id": 1,
-            "name": "Eventos",
-            "to": "/#",
-            "type": "list",
-            "dropdown": false
-        },
-        {
-            "id": 2,
-            "name": "Información",
-            "to": "/#",
-            "type": "session",
-            "dropdown": true,
+            "dropDown": true,
             "children": [
                 {
                     "id": 0,
                     "name": "Sobre Nosotros",
                     "to": "/about",
-                    "type": "childSession"
+                    "type": "session"
                 },
                 {
                     "id": 1,
                     "name": "Preguntas Frecuentes",
-                    "to": "/#",
-                    "type": "childSession"
+                    "to": "/preguntas-frecuentes",
+                    "type": "session"
                 },
                 {
                     "id": 2,
                     "name": "Sistema de envios",
                     "to": "/info_envios",
-                    "type": "childSession"
+                    "type": "session"
                 },
                 {
                     "id": 3,
                     "name": "Empleos",
                     "to": "/empleos",
-                    "type": "childSession"
+                    "type": "session"
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "name": "Eventos",
+            "to": "/eventos",
+            "type": "list",
+            "dropDown": false
+        },
+        {
+            "id": 2,
+            "name": "Información",
+            "to": "/info_envios",
+            "type": "session",
+            "dropDown": true,
+            "children": [
+                {
+                    "id": 0,
+                    "name": "Sobre Nosotros",
+                    "to": "/about",
+                    "type": "session"
+                },
+                {
+                    "id": 1,
+                    "name": "Preguntas Frecuentes",
+                    "to": "/preguntas-frecuentes",
+                    "type": "session"
+                },
+                {
+                    "id": 2,
+                    "name": "Sistema de envios",
+                    "to": "/info_envios",
+                    "type": "session"
+                },
+                {
+                    "id": 3,
+                    "name": "Empleos",
+                    "to": "/empleos",
+                    "type": "session"
                 }
             ]
         },
         {
             "id": 3,
             "name": "Cuenta",
-            "to": "#",
+            "to": "/cuenta",
             "type": "session",
-            "dropdown": true
-        },
-        {
-            "id": 4,
-            "name": "Carrito de compras",
-            "type": "icon",
-            "dropdown": false
+            "dropDown": true
         }
     ]
 }

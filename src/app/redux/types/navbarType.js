@@ -1,7 +1,5 @@
 const NAVBAR_TYPE = {
     GET_ITEMS_NAVBAR:"GET_ITEMS_NAVBAR",                    
-    GET_DROPDOWN_NAVBAR:"GET_DROPDOWN_NAVBAR",              
-    TOGGLE_DROPDOWN_NAVBAR:"TOGGLE_DROPDOWN_NAVBAR",        
 }
 
 export {NAVBAR_TYPE}

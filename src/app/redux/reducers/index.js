@@ -1,8 +1,11 @@
-import {combineReducers} from 'redux'
-import navbarReducer from './navbarReducer'
+import { combineReducers } from 'redux'
+import navBarReducer from './navBarReducer'
+import dropDownReducer from './dropDownReducer'
+
 
 export default combineReducers(
     {
-        navbar: navbarReducer
+        navBar: navBarReducer,
+        dropDown: dropDownReducer,
     }
 )

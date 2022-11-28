@@ -1,22 +1,21 @@
-import { NAVBAR_TYPE } from '../types/navbarType'
+import { NAVBAR_TYPE } from '../types/navBarType'
 
 const initState = {
     items: [],
 }
 
-const navbarReducer = (state = initState, action) => {
+const navBarReducer = (state = initState, action) => {
     let { type, payload } = action
     switch (type) {
         case NAVBAR_TYPE.GET_ITEMS_NAVBAR: {
             return {
                 ...state,
-                items: payload.items,
+                items: payload,
             }
         }
-
         default:
             return state
     }
 }
 
-export default navbarReducer;
+export default navBarReducer;

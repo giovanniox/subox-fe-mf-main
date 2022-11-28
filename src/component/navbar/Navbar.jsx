@@ -1,37 +1,25 @@
-import "./navbar.scss"
-import { useEffect } from "react";
+
 import Landscape from "./landscape/Landscape"
 import Logo from "./logo/Logo"
-import NavList from "./navlist/NavList"
+import NavList from "./navList/NavList"
 
-import { useDispatch, useSelector } from 'react-redux'
-import { NAVBAR_ACTIONS } from './../../app/redux/actions/navbarActions';
 import Burger from "./burger/Burger";
+import "./navBar.scss"
 
-const Navbar = () => {
-    const { items } = useSelector(state => state.navbar)
-
-    const dispatch = useDispatch()
-    useEffect(() => {
-        if (items.length === 0) {
-            dispatch(NAVBAR_ACTIONS.getItemsNavbar())
-        }
-    }, [items.length])
-    return <>
-        <div className='navbar'>
-            <div className='navbar__container'>
+const NavBar = () => {
+  
+    return (
+        <div className='navBar'>
+            <div className='navBar__container'>
                 {<NavList classType="list" />}
                 {<Logo />}
                 {<NavList classType="session" />}
                 {<NavList classType="icon" />}
-                {<Burger/>}
+                {<Burger />}
             </div>
             {<Landscape />}
-        </div>
-    </>
-
-
+        </div>)
 }
 
-export default Navbar;
+export default NavBar;
 

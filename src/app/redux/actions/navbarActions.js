@@ -1,57 +1,26 @@
-import { NAVBAR_TYPE } from '../types/navbarType'
+import { NAVBAR_TYPE } from '../types/navBarType'
 
-const URL_NAVBAR = 'http://localhost:3004/navbar';
-const getItemsNavbar = () => {
+const URL_NAVBAR = 'http://localhost:3004/navBar';
+
+const getItemsNavBar = () => {
     return (dispatch) => {
         return fetch(URL_NAVBAR).then(json => {
-            json.json().then((e) => (dispatch({
-                type: NAVBAR_TYPE.GET_ITEMS_NAVBAR,
-                payload: {
-                    items: e
-                }
-            }))
-            )
-
-        }).catch(() => {
-            return dispatch => dispatch({
-                type: NAVBAR_TYPE.GET_ITEMS_NAVBAR,
-                payload: {
-                    items: [],
-                }
+            json.json().then((items) => {
+                dispatch(GET_ITEMS_NAVBAR(items))
             })
+        }).catch(() => {
+            return dispatch => dispatch(GET_ITEMS_NAVBAR([]))
         });
     };
 }
 
-const getDropDownNavBar = (toggleTo) => {
-    return dispatch => {
-        dispatch({
-            type: NAVBAR_TYPE.GET_DROPDOWN_NAVBAR,
-            payload: {
-                dropDown: {
-                    of: toggleTo,
-                },
-            }
-        })
-    }
-}
-const toggleDropDownNavBar = (isShow) => {
-    return dispatch => {
-        dispatch({
-            type: NAVBAR_TYPE.TOGGLE_DROPDOWN_NAVBAR,
-            payload: {
-                dropDown: {
-                    isShow
-                },
-            }
-        })
-    }
-}
-
 const NAVBAR_ACTIONS = {
-    getItemsNavbar,
-    getDropDownNavBar,
-    toggleDropDownNavBar
+    getItemsNavBar,
 }
 
 export { NAVBAR_ACTIONS }
+
+const GET_ITEMS_NAVBAR = (items) => ({
+    type: NAVBAR_TYPE.GET_ITEMS_NAVBAR,
+    payload: items
+})

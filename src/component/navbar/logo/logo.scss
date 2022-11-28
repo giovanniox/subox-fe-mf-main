@@ -12,7 +12,7 @@
     }
 }
 
-.navbar {
+.navBar {
     &__container {
         position: relative;
         border: 3px solid #fb2576;
@@ -27,6 +27,7 @@
         background: #f2ed3aab;
 
         &__logo {
+            text-decoration: none;
             display: flex;
             position: relative;
             height: 160px;
@@ -35,7 +36,6 @@
             top: -23px;
 
             &__wrapper {
-                z-index: 9;
                 position: relative;
                 display: flex;
                 height: 100%;
@@ -92,7 +92,6 @@
                     position: relative;
                     top: -20px;
                     left: 26px;
-                    z-index: 10;
                     font-family: "OutRun", "Helvetica", sans-serif;
                     font-size: 1.4em;
                     color: #0d2fff;
@@ -109,7 +108,7 @@
             &__triangule {
                 position: absolute;
                 left: -43px;
-                z-index: 0;
+                z-index: -1;
                 top: 40px;
                 border-left: 170px solid transparent;
                 border-right: 147px solid transparent;

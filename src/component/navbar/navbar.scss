@@ -7,11 +7,10 @@ $five-color: #fff;
 
 @font-face {
   font-family: OutRun;
-  src: url("./../navbar/resourse/font/outrun_future.otf") format("opentype");
+  src: url("./../navBar/resourse/font/outrunFuture.otf") format("opentype");
 }
 
-
-.navbar {
+.navBar {
   background: #8f299c;
   display: flex;
   position: relative;
@@ -33,6 +32,6 @@ $five-color: #fff;
     padding: 20px;
     height: 86px;
     background: #f2ed3aab;
-    z-index: 9;
+    z-index: 2;
   }
 }

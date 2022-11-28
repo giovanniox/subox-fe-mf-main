@@ -9,12 +9,12 @@ const Burger = () => {
     }
 
     return (
-        <div className="navbar__container__burger" onClick={toggleNavBar}>
+        <div className="navBar__container__burger" onClick={toggleNavBar}>
             <div
-                className={burgerButton ? "navbar__container__burger navbar__container__burger--open" : "navbar__container__burger navbar__container__burger--close"}>
-                <span className="navbar__container__burger__bar navbar__container__burger__bar--top"></span>
-                <span className="navbar__container__burger__bar navbar__container__burger__bar--mid"></span>
-                <span className="navbar__container__burger__bar navbar__container__burger__bar--bot"></span>
+                className={burgerButton ? "navBar__container__burger navBar__container__burger--open" : "navBar__container__burger navBar__container__burger--close"}>
+                <span className="navBar__container__burger__bar navBar__container__burger__bar--top"></span>
+                <span className="navBar__container__burger__bar navBar__container__burger__bar--mid"></span>
+                <span className="navBar__container__burger__bar navBar__container__burger__bar--bot"></span>
             </div>
         </div>
     );

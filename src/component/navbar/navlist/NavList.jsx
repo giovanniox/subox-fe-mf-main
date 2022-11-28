@@ -1,37 +1,40 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
-
-import { NAVBAR_ACTIONS } from "../../../app/redux/actions/navbarActions"
-import dropDownIcon from './../resourse/img/dropdown-icon.svg'
-import DropDown from "./../dropdown/Dropdown";
-import "./navlist.scss"
-
+import { useEffect } from "react";
+import { NAVBAR_ACTIONS } from "../../../app/redux/actions/navBarActions"
+import dropDownIcon from './../resourse/img/dropDown-icon.svg'
+import DropDown from "../dropDown/DropDown";
+import "./navList.scss"
 
 const NavList = ({ classType }) => {
-    const { items } = useSelector(state => state.navbar)
+    const { items, dropDownIsShow } = useSelector(state => state.navBar)
+
+    const dispatch = useDispatch()
 
     return items.length !== 0 ? (
         <>
             {
                 items.filter(item => item.type === classType).map(e => {
                     return (
-                        <ul key={e.id + classType} className={`navbar__container__${e.type}`}>
-                            <li key={e.id} className={`navbar__container__${e.type}__item`}>
-
+                        <ul key={e.id + classType} className={`navBar__container__${e.type}`}>
+                            <li key={e.id} className={`navBar__container__${e.type}__item`}>
                                 <Link
-                                    className={`navbar__container__${e.type}__item__link`}
+                              
+                                    className={`navBar__container__${e.type}__item__link`}
                                     to={e.to}>
                                     {e.name}
-                                    {e.dropdownIcon ?
+                                    {e.dropDownIcon ?
                                         <img
-                                            className={`navbar__container__${e.type}__item__link__icon`}
+                                            className={`navBar__container__${e.type}__item__link__icon`}
                                             src={dropDownIcon}
                                             alt="icono drop down" />
                                         : undefined}
                                 </Link>
-                                <DropDown />
-
                             </li>
+                            {e?.children ?
+                                <DropDown classType={e.type} children={e?.children} />
+                                : undefined}
+
                         </ul>)
                 })
 
