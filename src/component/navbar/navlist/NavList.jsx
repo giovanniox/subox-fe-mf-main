@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect } from "react";
 import { NAVBAR_ACTIONS } from "../../../app/redux/actions/navBarActions"
 import dropDownIcon from './../resourse/img/dropDown-icon.svg'
-import DropDown from "../dropDown/DropDown";
+import DropDown from "../dropdown/DropDown";
 import "./navList.scss"
 
 const NavList = ({ classType }) => {
