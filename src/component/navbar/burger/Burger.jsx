@@ -1,14 +1,17 @@
 import { useState } from "react";
 import "./burger.scss"
+import { useMediaQuery } from 'react-responsive'
 const Burger = () => {
+
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1024px)' })
+
 
     const [burgerButton, toggleBurgerButton] = useState(false)
     const toggleNavBar = () => {
-        ////console.log("try toogle")
         toggleBurgerButton(!burgerButton)
     }
 
-    return (
+    return isTabletOrMobile && (
         <div className="navBar__container__burger" onClick={toggleNavBar}>
             <div
                 className={burgerButton ? "navBar__container__burger navBar__container__burger--open" : "navBar__container__burger navBar__container__burger--close"}>
