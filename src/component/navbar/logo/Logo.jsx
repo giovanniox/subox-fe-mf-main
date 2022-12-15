@@ -4,7 +4,7 @@ const Logo = () => {
     return (<Link to="/" className="navBar__container__logo">
         <div className="navBar__container__logo__wrapper">
             <span className="navBar__container__logo__wrapper__top">
-                <span className="navBar__container__logo__wrapper__top__letter">Fashion</span></span>
+                <span className="navBar__container__logo__wrapper__top__letter">FASHION</span></span>
             <span className="navBar__container__logo__wrapper__mid">
                 <span className="navBar__container__logo__wrapper__mid__letter">City</span>
             </span>

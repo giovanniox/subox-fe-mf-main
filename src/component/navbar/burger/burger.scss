@@ -1,6 +1,9 @@
 .navBar {
     &__container {
+
         &__burger {
+            position: absolute;
+            right: 3%;
             display: flex;
             margin: auto;
             width: 40px;

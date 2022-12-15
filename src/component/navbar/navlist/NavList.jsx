@@ -3,11 +3,15 @@ import { Link } from 'react-router-dom';
 import { useEffect } from "react";
 import { NAVBAR_ACTIONS } from "../../../app/redux/actions/navBarActions"
 import dropDownIcon from './../resourse/img/dropDown-icon.svg'
-import DropDown from "../dropdown/DropDown";
+import DropDown from "../dropDown/DropDown";
 import "./navList.scss"
+import { useMediaQuery } from 'react-responsive'
 
 const NavList = ({ classType }) => {
-    const { items, dropDownIsShow } = useSelector(state => state.navBar)
+    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1024px)' })
+
+
+    const { items } = useSelector(state => state.navBar)
 
     const dispatch = useDispatch()
 
@@ -15,11 +19,10 @@ const NavList = ({ classType }) => {
         <>
             {
                 items.filter(item => item.type === classType).map(e => {
-                    return (
+                    return !isTabletOrMobile && (
                         <ul key={e.id + classType} className={`navBar__container__${e.type}`}>
                             <li key={e.id} className={`navBar__container__${e.type}__item`}>
                                 <Link
-                              
                                     className={`navBar__container__${e.type}__item__link`}
                                     to={e.to}>
                                     {e.name}
@@ -34,7 +37,6 @@ const NavList = ({ classType }) => {
                             {e?.children ?
                                 <DropDown classType={e.type} children={e?.children} />
                                 : undefined}
-
                         </ul>)
                 })
 
