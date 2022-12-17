@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2022-12-17T23:14:50.561Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" etag="U2OI2sR9BdwGlfPfJIAr" version="20.7.4" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-12-17T23:15:24.332Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36" etag="DAE8zovuiBWlaQjUz-UO" version="20.7.4" type="github" pages="2">
   <diagram id="0HU46KkyjtzvDW4RI8ni" name="diagrama-casos-uso-fct-main-navBar">
     <mxGraphModel dx="916" dy="510" grid="1" gridSize="22" guides="1" tooltips="1" connect="0" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
@@ -12,7 +12,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="jkX31n3UU7EVpoHe0_Bt-3" value="registro en el sistema" style="shape=umlFrame;whiteSpace=wrap;html=1;shadow=0;swimlaneFillColor=none;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=0;fontFamily=Comic Sans MS;width=270;height=20;" vertex="1" parent="1">
+        <mxCell id="jkX31n3UU7EVpoHe0_Bt-3" value="administrador de usuarios" style="shape=umlFrame;whiteSpace=wrap;html=1;shadow=0;swimlaneFillColor=none;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=0;fontFamily=Comic Sans MS;width=270;height=20;" vertex="1" parent="1">
           <mxGeometry x="80" y="30" width="630" height="360" as="geometry" />
         </mxCell>
         <mxCell id="jkX31n3UU7EVpoHe0_Bt-4" value="usuario &lt;br&gt;no authentificado" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;shadow=0;sketch=0;fontFamily=Comic Sans MS;" vertex="1" parent="1">
