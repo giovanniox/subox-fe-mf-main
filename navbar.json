@@ -9,27 +9,15 @@
             "children": [
                 {
                     "id": 0,
-                    "name": "Sobre Nosotros",
-                    "to": "/about",
-                    "type": "session"
+                    "name": "hombre",
+                    "to": "#",
+                    "type": "store"
                 },
                 {
                     "id": 1,
-                    "name": "Preguntas Frecuentes",
-                    "to": "/preguntas-frecuentes",
-                    "type": "session"
-                },
-                {
-                    "id": 2,
-                    "name": "Sistema de envios",
-                    "to": "/info_envios",
-                    "type": "session"
-                },
-                {
-                    "id": 3,
-                    "name": "Empleos",
-                    "to": "/empleos",
-                    "type": "session"
+                    "name": "mujer",
+                    "to": "#",
+                    "type": "store"
                 }
             ]
         },
