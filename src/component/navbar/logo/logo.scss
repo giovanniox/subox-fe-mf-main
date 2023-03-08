@@ -14,18 +14,6 @@
 
 .navBar {
     &__container {
-        position: relative;
-        border: 3px solid #fb2576;
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin: 50px;
-        border-radius: 8px;
-        padding: 20px;
-        height: 86px;
-        background: #f2ed3aab;
-
         &__logo {
             text-decoration: none;
             display: flex;

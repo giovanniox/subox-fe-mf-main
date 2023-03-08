@@ -1,6 +1,6 @@
 import { NAVBAR_TYPE } from '../types/navBarType'
 
-const URL_NAVBAR = 'http://localhost:3004/navBar';
+const URL_NAVBAR = 'http://localhost:7000/static/navbar';
 
 const getItemsNavBar = () => {
     return (dispatch) => {
