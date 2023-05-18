@@ -6,22 +6,20 @@ import { useMediaQuery } from 'react-responsive'
 
 const DropDown = ({ classType, children }) => {
 
-    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1024px)' })
+    const {     dropDown,        dropDownSelected,        dropDownIsShow } = useSelector(state => state.dropDown)
+    console.log(    dropDown,        dropDownSelected,        dropDownIsShow)
+        //[] null false
 
-    const { dropdownIsShow } = useSelector(state => state.navBar)
-
-    return children !== undefined ? (
-        <div className="navBar__dropdown">
+    return dropDown  &&     dropDownSelected &&  dropDownIsShow ? (<div className="navBar__dropdown">
             <ul className='navBar__dropdown__list'>
                 {children.map((e) => {
                     return (
-                        <li className={`navBar__dropdown__list__${classType}`}>
+                        <li key={e.id}  className={`navBar__dropdown__list__${classType}`}>
                             <Link to={e.to}> {e.name}</Link>
                         </li>)
-
                 })}
             </ul>
-        </div >) : undefined;
+        </div >) : undefined
 }
 
 export default DropDown;

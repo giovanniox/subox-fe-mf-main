@@ -66,7 +66,32 @@
             "name": "Cuenta",
             "to": "/cuenta",
             "type": "session",
-            "dropDown": true
+            "dropDown": true,
+            "children": [
+                {
+                    "id": 0,
+                    "name": "Ingresar",
+                    "to": "/login",
+                    "type": "session"
+                },
+                {
+                    "id": 1,
+                    "name": "Preguntas Frecuentes",
+                    "to": "/preguntas-frecuentes",
+                    "type": "session"
+                },
+                {
+                    "id": 2,
+                    "name": "Sistema de envios",
+                    "to": "/info_envios",
+                    "type": "session"
+                },
+                {
+                    "id": 3,
+                    "name": "Empleos",
+                    "to": "/empleos",
+                    "type": "session"
+                }]
         }
     ]
 }

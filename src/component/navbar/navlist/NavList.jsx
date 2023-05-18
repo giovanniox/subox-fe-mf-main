@@ -1,32 +1,35 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
-import { useEffect } from "react";
-import { NAVBAR_ACTIONS } from "../../../app/redux/actions/navBarActions"
 import dropDownIcon from './../resourse/img/dropDown-icon.svg'
 import DropDown from "../dropDown/DropDown";
 import "./navList.scss"
-import { useMediaQuery } from 'react-responsive'
-
+import {DROPDOWN_ACTIONS} from "../../../app/redux/actions/dropDownActions";
 const NavList = ({ classType }) => {
-    const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1024px)' })
-
-
+    const dispatch = useDispatch()
     const { items } = useSelector(state => state.navBar)
 
-    const dispatch = useDispatch()
+    const onMouseOverItemNavBar = (children) => {
+        console.log(children);
 
-    return items.length !== 0 ? (
+        dispatch(DROPDOWN_ACTIONS.dropDownGet(children?.children))
+        dispatch(DROPDOWN_ACTIONS.toogleDropDown(children.name))
+        dispatch(DROPDOWN_ACTIONS.setSelectedDropDown(!children.dropDownIsShow))
+
+    }
+    console.log(items);
+
+    return items.length !== 0  && items.navBar !== undefined ? (
         <>
             {
-                items.filter(item => item.type === classType).map(e => {
-                    return !isTabletOrMobile && (
+                items.navBar.filter(item => item.type === classType).map(e => {
+                    return (
                         <ul key={e.id + classType} className={`navBar__container__${e.type}`}>
-                            <li key={e.id} className={`navBar__container__${e.type}__item`}>
+                            <li key={e.id} className={`navBar__container__${e.type}__item`} name={e.name} onMouseOver={()=>{onMouseOverItemNavBar(e)}}>
                                 <Link
                                     className={`navBar__container__${e.type}__item__link`}
                                     to={e.to}>
                                     {e.name}
-                                    {e.dropDownIcon ?
+                                    {e.dropDown ?
                                         <img
                                             className={`navBar__container__${e.type}__item__link__icon`}
                                             src={dropDownIcon}
@@ -35,7 +38,7 @@ const NavList = ({ classType }) => {
                                 </Link>
                             </li>
                             {e?.children ?
-                                <DropDown classType={e.type} children={e?.children} />
+                                <DropDown  classType={e.type} children={e.children} />
                                 : undefined}
                         </ul>)
                 })

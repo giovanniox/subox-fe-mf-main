@@ -9,22 +9,12 @@ const initState = {
 const dropDownReducer = (state = initState, action) => {
     let { type, payload } = action
     switch (type) {
-        case DROPDOWN_TYPE.DROPDOWN_GET: {
+        case DROPDOWN_TYPE.TOGGLE_DROPDOWN: {
             return {
                 ...state,
-                dropDown: payload,
-            }
-        }
-        case DROPDOWN_TYPE.SET_SELECTED_DROPDOWN: {
-            return {
-                ...state,
-                dropDownSelected: payload,
-            }
-        }
-        case DROPDOWN_TYPE.TOOGLE_DROPDOWN: {
-            return {
-                ...state,
-                dropDownIsShow: !payload,
+                dropDown: payload?.children ,
+                dropDownSelected: payload.name ,
+                dropDownIsShow: !payload.dropDown ,
             }
         }
         default:
