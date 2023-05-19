@@ -14,6 +14,7 @@ const NavBar = () => {
                 {<NavList classType="list" />}
                 {<Logo />}
                 {<NavList classType="session" />}
+
                 {<Burger />}
             </div>
             {<Landscape />}

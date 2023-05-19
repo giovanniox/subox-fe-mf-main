@@ -4,6 +4,7 @@ import dropDownIcon from './../resourse/img/dropDown-icon.svg'
 import DropDown from "../dropDown/DropDown";
 import "./navList.scss"
 import {DROPDOWN_ACTIONS} from "../../../app/redux/actions/dropDownActions";
+import {useRef,} from "react";
 const NavList = ({ classType }) => {
     const dispatch = useDispatch()
     const { items } = useSelector(state => state.navBar)

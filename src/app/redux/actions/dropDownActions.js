@@ -4,8 +4,8 @@ const toogleDropDown = (item) => {
         dispatch(TOOGLE_DROPDOWN(item))
     }
 }
-const TOOGLE_DROPDOWN = ({ item }) => ({
-    type: DROPDOWN_TYPE.TOOGLE_DROPDOWN, 
+const TOOGLE_DROPDOWN = ( item) => ({
+    type: DROPDOWN_TYPE.TOGGLE_DROPDOWN,
     payload:item
 })
 

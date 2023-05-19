@@ -1,9 +1,8 @@
-import { DROPDOWN_TYPE } from '../types/dropDownType'
+import {DROPDOWN_TYPE} from '../types/dropDownType'
 
 const initState = {
-    dropDown: [],
     dropDownSelected: null,
-    dropDownIsShow: false,
+    dropDownIsShow: false
 }
 
 const dropDownReducer = (state = initState, action) => {
@@ -12,9 +11,8 @@ const dropDownReducer = (state = initState, action) => {
         case DROPDOWN_TYPE.TOGGLE_DROPDOWN: {
             return {
                 ...state,
-                dropDown: payload?.children ,
-                dropDownSelected: payload.name ,
-                dropDownIsShow: !payload.dropDown ,
+                dropDownSelected: payload.name ? payload.name : null,
+                dropDownIsShow: !payload.dropDown,
             }
         }
         default:
