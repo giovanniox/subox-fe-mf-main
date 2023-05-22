@@ -1,4 +1,4 @@
-import { NAVBAR_TYPE } from '../types/navBarType'
+import { NAVBAR_TYPE } from '../../types/navBar/navBarType'
 
 const initState = {
     items: [],

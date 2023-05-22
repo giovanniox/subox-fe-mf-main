@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import navBarReducer from './navBarReducer'
-import dropDownReducer from './dropDownReducer'
+import navBarReducer from './navBar/navBarReducer'
+import dropDownReducer from './navBar/dropDownReducer'
 
 
 export default combineReducers(

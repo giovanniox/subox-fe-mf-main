@@ -8,7 +8,10 @@ $five-color: #fff;
 
 
 .navBar {
-  &__container{
+  &__container {
+    &__group {
+      display: flex;
+    }
     &__list {
       display: flex;
       list-style: none;

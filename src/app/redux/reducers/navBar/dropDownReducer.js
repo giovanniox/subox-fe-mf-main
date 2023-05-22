@@ -1,8 +1,9 @@
-import {DROPDOWN_TYPE} from '../types/dropDownType'
+import {DROPDOWN_TYPE} from '../../types/navBar/dropDownType'
 
 const initState = {
     dropDownSelected: null,
-    dropDownIsShow: false
+    dropDownIsShow: false,
+    children:null
 }
 
 const dropDownReducer = (state = initState, action) => {
@@ -13,6 +14,7 @@ const dropDownReducer = (state = initState, action) => {
                 ...state,
                 dropDownSelected: payload.name ? payload.name : null,
                 dropDownIsShow: !payload.dropDown,
+                children: payload?.children
             }
         }
         default:

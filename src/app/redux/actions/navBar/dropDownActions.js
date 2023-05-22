@@ -1,4 +1,4 @@
-import { DROPDOWN_TYPE } from '../types/dropDownType'
+import { DROPDOWN_TYPE } from '../../types/navBar/dropDownType'
 const toogleDropDown = (item) => {
     return dispatch => {
         dispatch(TOOGLE_DROPDOWN(item))

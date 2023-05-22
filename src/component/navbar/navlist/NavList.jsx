@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import dropDownIcon from './../resourse/img/dropDown-icon.svg'
 import DropDown from "../dropDown/DropDown";
 import "./navList.scss"
-import {DROPDOWN_ACTIONS} from "../../../app/redux/actions/dropDownActions";
+import {DROPDOWN_ACTIONS} from "../../../app/redux/actions/navBar/dropDownActions";
 import {useRef,} from "react";
 const NavList = ({ classType }) => {
     const dispatch = useDispatch()
@@ -22,6 +22,7 @@ const NavList = ({ classType }) => {
         const roundedYc = Math.ceil(divRect.bottom);
         const roundedYf = Math.floor(divRect.bottom);
         if (clientY > roundedY || clientY > roundedYc || clientY > roundedYf) {
+            console.log(e)
               dispatch(DROPDOWN_ACTIONS.toogleDropDown(e))
         }else{
             dispatch(DROPDOWN_ACTIONS.toogleDropDown([]))
@@ -29,17 +30,18 @@ const NavList = ({ classType }) => {
     }
 
     return items.length !== 0  && items.navBar !== undefined ? (
-        <>
+        <ul className={`navBar__container__group`}>
             {
                 items.navBar.filter(item => item.type === classType).map(e => {
                     return (
-                        <ul        key={e.id + classType} className={`navBar__container__${e.type}`}>
-                            <li  key={e.id} className={`navBar__container__${e.type}__item`}
-                                name={e.name}
-                                onMouseEnter={(event)=>{handleMouseEnter(event,e)}}
-                               onMouseLeave={(event)=>{handleMouseLeave(event,e)}}
-
-                            >
+                        <li        onMouseEnter={(event)=>{handleMouseEnter(event,e)}}
+                                   onMouseLeave={(event)=>{handleMouseLeave(event,e)}}
+                                   key={e.id + classType}
+                                   className={`navBar__container__${e.type}`}>
+                            <span
+                                  key={e.id}
+                                   className={`navBar__container__${e.type}__item`}
+                                     >
                                 <Link
                                     ref={divRef}
                                     className={`navBar__container__${e.type}__item__link`}
@@ -52,15 +54,14 @@ const NavList = ({ classType }) => {
                                             alt="icono drop down" />
                                         : undefined}
                                 </Link>
-                            </li>
-                            {e?.children ?
-                                <DropDown parrent={e.name}  classType={e.type} children={e.children} />
-                                : undefined}
-                        </ul>)
-                })
+                            </span>
 
+                                <DropDown parrent={e.name}  classType={e.type} />
+
+                        </li>)
+                })
             }
-        </>
+        </ul>
 
     ) : <span>Cargando barra de navegacion...</span>;
 }

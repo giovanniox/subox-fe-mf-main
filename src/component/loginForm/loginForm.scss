@@ -1,0 +1,18 @@
+.form {
+  &__container {
+    onSubmit: handleSubmit;
+    div {
+      &__label {
+        // Estilos para la etiqueta del campo
+      }
+
+      &__input {
+        // Estilos para el campo de entrada
+      }
+    }
+
+    &__button {
+      // Estilos para el botón de envío
+    }
+  }
+}

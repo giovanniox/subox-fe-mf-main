@@ -1,4 +1,4 @@
-import { NAVBAR_TYPE } from '../types/navBarType'
+import { NAVBAR_TYPE } from '../../types/navBar/navBarType'
 
 const URL_NAVBAR = 'http://localhost:7000/api/navbar/navbar';
 
