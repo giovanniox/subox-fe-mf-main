@@ -17,6 +17,7 @@ const NavBar = () => {
                 {<NavList classType="session" />}
                 {<Burger />}
             </div>
+            <Landscape/>
         </div>)
 }
 
