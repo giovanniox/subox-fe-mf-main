@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
-import dropDownIcon from './../resourse/img/dropDown-icon.svg'
-import DropDown from "../dropDown/DropDown";
+import dropDownIcon from './../resourse/img/dropdown-icon.svg'
+import DropDown from "./../dropdown/Dropdown";
 import "./navList.scss"
 import {DROPDOWN_ACTIONS} from "../../../app/redux/actions/navBar/dropDownActions";
 import {useRef,} from "react";

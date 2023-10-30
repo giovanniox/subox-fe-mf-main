@@ -9,7 +9,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Store from "./pages/Store";
 import { useFetching } from './app/hooks/api/useFetching'
 import { NAVBAR_ACTIONS } from './app/redux/actions/navBar/navBarActions';
-import NavBar from "./component/navBar/Navbar";
+import NavBar from './component/navBar/NavBar';
+
 const App = () => {
  
 
