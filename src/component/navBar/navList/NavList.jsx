@@ -9,7 +9,7 @@ const NavList = ({ classType }) => {
     const dispatch = useDispatch()
     const { items } = useSelector(state => state.navBar)
     const divRef = useRef(null);
-
+console.log(items);
 
     const handleMouseEnter =(event, e) => {
         dispatch(DROPDOWN_ACTIONS.toogleDropDown(e))
@@ -29,10 +29,10 @@ const NavList = ({ classType }) => {
         }
     }
 
-    return items.length !== 0  && items.navBar !== undefined ? (
+    return items.length !== 0  ? (
         <ul className={`navBar__container__group`}>
             {
-                items.navBar.filter(item => item.type === classType).map(e => {
+                items.filter(item => item.type === classType).map(e => {
                     return (
                         <li        onMouseEnter={(event)=>{handleMouseEnter(event,e)}}
                                    onMouseLeave={(event)=>{handleMouseLeave(event,e)}}

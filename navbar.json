@@ -1,97 +1,99 @@
 {
-    "navBar": [
-        {
+    "navbar": [
+      {
+        "id": 0,
+        "name": "Tienda",
+        "to": "/store",
+        "type": "list",
+        "dropDown": true,
+        "children": [
+          {
             "id": 0,
-            "name": "Tienda",
-            "to": "/store",
-            "type": "list",
-            "dropDown": true,
-            "children": [
-                {
-                    "id": 0,
-                    "name": "hombre",
-                    "to": "#",
-                    "type": "store"
-                },
-                {
-                    "id": 1,
-                    "name": "mujer",
-                    "to": "#",
-                    "type": "store"
-                }
-            ]
-        },
-        {
+            "name": "Ropa para Hombres",
+            "to": "/ropa-hombres",
+            "type": "store"
+          },
+          {
             "id": 1,
-            "name": "Eventos",
-            "to": "/eventos",
-            "type": "list",
-            "dropDown": false
-        },
-        {
+            "name": "Ropa para Mujeres",
+            "to": "/ropa-mujeres",
+            "type": "store"
+          }
+        ]
+      },
+      {
+        "id": 1,
+        "name": "Eventos",
+        "to": "/eventos",
+        "type": "list",
+        "dropDown": false
+      },
+      {
+        "id": 2,
+        "name": "Información",
+        "to": "/info_envios",
+        "type": "session",
+        "dropDown": true,
+        "children": [
+          {
+            "id": 0,
+            "name": "Sobre Nosotros",
+            "to": "/about",
+            "type": "session"
+          },
+          {
+            "id": 1,
+            "name": "Preguntas Frecuentes",
+            "to": "/preguntas-frecuentes",
+            "type": "session"
+          },
+          {
             "id": 2,
-            "name": "Información",
+            "name": "Sistema de Envíos",
             "to": "/info_envios",
-            "type": "session",
-            "dropDown": true,
-            "children": [
-                {
-                    "id": 0,
-                    "name": "Sobre Nosotros",
-                    "to": "/about",
-                    "type": "session"
-                },
-                {
-                    "id": 1,
-                    "name": "Preguntas Frecuentes",
-                    "to": "/preguntas-frecuentes",
-                    "type": "session"
-                },
-                {
-                    "id": 2,
-                    "name": "Sistema de envios",
-                    "to": "/info_envios",
-                    "type": "session"
-                },
-                {
-                    "id": 3,
-                    "name": "Empleos",
-                    "to": "/empleos",
-                    "type": "session"
-                }
-            ]
-        },
-        {
+            "type": "session"
+          },
+          {
             "id": 3,
-            "name": "Cuenta",
-            "to": "/cuenta",
-            "type": "session",
-            "dropDown": true,
-            "children": [
-                {
-                    "id": 0,
-                    "name": "Ingresar",
-                    "to": "/login",
-                    "type": "session"
-                },
-                {
-                    "id": 1,
-                    "name": "Preguntas Frecuentes",
-                    "to": "/preguntas-frecuentes",
-                    "type": "session"
-                },
-                {
-                    "id": 2,
-                    "name": "Sistema de envios",
-                    "to": "/info_envios",
-                    "type": "session"
-                },
-                {
-                    "id": 3,
-                    "name": "Empleos",
-                    "to": "/empleos",
-                    "type": "session"
-                }]
-        }
+            "name": "Empleos",
+            "to": "/empleos",
+            "type": "session"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Cuenta",
+        "to": "/cuenta",
+        "type": "session",
+        "dropDown": true,
+        "children": [
+          {
+            "id": 0,
+            "name": "Ingresar",
+            "to": "/login",
+            "type": "session"
+          },
+          {
+            "id": 1,
+            "name": "Preguntas Frecuentes",
+            "to": "/preguntas-frecuentes",
+            "type": "session"
+          },
+          {
+            "id": 2,
+            "name": "Sistema de Envíos",
+            "to": "/info_envios",
+            "type": "session"
+          },
+          {
+            "id": 3,
+            "name": "Empleos",
+            "to": "/empleos",
+            "type": "session"
+          }
+        ]
+      }
     ]
-}
+  }
+  
