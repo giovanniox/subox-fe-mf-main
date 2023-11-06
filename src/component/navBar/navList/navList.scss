@@ -11,11 +11,11 @@ $five-color: #fff;
   &__container {
     &__group {
       display: flex;
+
     }
     &__list {
       display: flex;
       list-style: none;
-
       &__item {
         text-decoration: none;
         padding-left: 10px;

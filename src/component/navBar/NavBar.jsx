@@ -11,9 +11,11 @@ const NavBar = () => {
     return (
         <div className='navBar'>
             <div className='navBar__container'>
-                {<Logo />}
+     
                 {<NavList classType="list" />}
-                {<NavList classType="cart" />}
+
+                {<Logo />}
+
                 {<NavList classType="session" />}
                 {<Burger />}
             </div>
