@@ -1,47 +1,64 @@
+$primary-color: rgb(209, 172, 90);
+$secondary-color: rgba(209, 171, 90, 0.242);
+$tertiary-color: rgba(46, 30, 116, 0.337);
+
+
 .home {
     margin-top: -1rem;
     position: relative;
-    &__jumbotrom{
-        width: 100%;
-        &__container{
-            width: 94vw;
-            background-color:rgb(209 172 90);
-            height: 40vh;
-            border-radius: 10px;
-            margin-left: 3vw;
-            margin-top: 1vw;
-            box-sizing: border-box;
-            margin-right: 3vw;
-        }
-    }
-    &__categories{
-        width: 100%;
-        &__container{
-            width: 94vw;
-            background-color:rgba(209, 171, 90, 0.242);
-            border-radius: 10px;
-            margin-left: 3vw;
-            margin-right:3vw;
-            margin-top: 1vw;
-            box-sizing: border-box;
-            display: flex;
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            &__circle{
-                width: 7rem;
-                height: 100px;
-                background-color: rgba(47, 0, 255, 0.337);
-                min-width: 100px;
-                border-radius: 100%;
-                &__img{
-                    width: 100%;
-                    display: block;
-                    border-radius: 100%;
-                }
-            }
-        }
-    }
+  
+  &__categories {
+    width: 100%;
+  }
+  &__categories-circle {
+    width: 7rem;
+    height: 100px;
+    background-color: $tertiary-color;
+    min-width: 100px;
+    border-radius: 100%;
+  }
+  &__categories-circle-img {
+    width: 100%;
+    display: block;
+    border-radius: 100%;
+  }
+  &__categories-container {
+    width: 94vw;
+      background-color: $secondary-color;
+      border-radius: 10px;
+      margin: 1vw 3vw;
+      box-sizing: border-box;
+      display: flex;
+      padding: 1rem 0;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      @media screen and (max-width: 768px) {
+        // Estilos específicos para pantallas con un ancho máximo de 768px
+        flex-direction: column;
+        text-align: center;
+      }
+  }
+  &__categories-container-circle-img {
+  }
+  &__categories-text {
+  }
+  &__categories-title {
+  }
+  &__jumbotrom {
+    width: 100%;
+  }
+  &__jumbotrom-container {
+    width: 94vw;
+    background-color: $primary-color;
+    height: 40vh;
+    border-radius: 10px;
+    margin: 1vw 3vw;
+    box-sizing: border-box;
+    display: flex;
+  }
+  &__jumbotrom-img {
+  }
+  &__jumbotrom-sub {
+  }
 }
