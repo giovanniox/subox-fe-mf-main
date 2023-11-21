@@ -1,17 +1,16 @@
-$font-stack: Helvetica, sans-serif;
-$one-color: #efdddd;
-$two-color: #150050;
-$three-color: #3F0071;
-$four-color: #FB2576;
-$five-color: #fff;
+$font-path: "./../navBar/resourse/font/outrunFuture.otf";
+$primary-color: #8f299c;
+$secondary-color: #fb2576;
+$container-margin: 2rem;
+$container-padding: 20px;
 
 @font-face {
   font-family: OutRun;
-  src: url("./../navBar/resourse/font/outrunFuture.otf") format("opentype");
+  src: url("#{$font-path}") format("opentype");
 }
 
 .navBar {
-  background: #8f299c;
+  background: $primary-color;
   display: flex;
   position: relative;
   -webkit-user-select: none;
@@ -19,18 +18,34 @@ $five-color: #fff;
   align-items: center;
   justify-content: space-around;
   width: 100vw;
+
   &__container {
-    position: relative;
-    border: 3px solid #fb2576;
+     position: relative;
+    border: 0.5px solid #fb2576;
     width: 100vw;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+  
     border-radius: 8px;
     margin: 2rem;
     padding: 20px;
-    height: 86px;
-    background: #f2ed3aab;
+    height: 60px;
+    background: rgb(216 192 212 / 79%);
     z-index: 2;
+    justify-content: space-between;
+    @media screen and (max-width: 768px) {
+      margin-left: 0rem;
+      margin-right: 0rem;
+      margin-top: 0rem;
+      border-radius: 0;
+      border: 0;
+      justify-content: space-between;
+      
+
+    }
+    @media screen and (max-width: 425px) {
+      justify-content: space-between;
+      padding: 1rem;
+    }
   }
 }

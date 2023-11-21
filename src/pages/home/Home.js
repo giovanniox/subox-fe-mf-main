@@ -18,13 +18,11 @@ const Home = () => {
             <button>Unirme Al Club</button>
           </div>
           <div className="home__jumbotrom-img">
-            <div>
               <img
                 src={iconOfer}
                 className="home__categories-container-circle-img"
                 alt="Zapato Azul"
               />
-            </div>
           </div>
         </div>
       </div>

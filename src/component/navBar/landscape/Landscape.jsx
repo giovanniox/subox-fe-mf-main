@@ -1,9 +1,11 @@
 import "./landscape.scss"
 
 const Landscape = () => {
-    return (<div className="navBar__landscape">
+    return (
+    <div className="navBar__landscape">
         <div className="navBar__landscape__object"></div>
-    </div>);
+    </div>
+    );
 }
 
 export default Landscape;

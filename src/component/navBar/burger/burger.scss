@@ -1,6 +1,10 @@
 .navBar {
     &__container {
         &__burger {
+
+            @media screen and (min-width: 768px) {
+                display: none;
+              }
             position: absolute;
             right: 3%;
             display: flex;

@@ -1,5 +1,6 @@
 import RegisterForm from "../component/registerForm/registerForm";
 import {Link} from "react-router-dom";
+import { ROUTES } from './../routes'; 
 
 const Register = () => {
     return (
@@ -8,7 +9,7 @@ const Register = () => {
             <RegisterForm/>
                 <p>
                     Ya tienes cuenta
-                    <Link to={"/login"} >
+                    <Link to={ROUTES.LOGIN} >
                         login
                     </Link>
 

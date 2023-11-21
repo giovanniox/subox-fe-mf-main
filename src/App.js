@@ -10,7 +10,7 @@ import Store from "./pages/Store";
 import { useFetching } from './app/hooks/api/useFetching'
 import { NAVBAR_ACTIONS } from './app/redux/actions/navBar/navBarActions';
 import NavBar from './component/navBar/NavBar';
-
+import { ROUTES } from './routes'; 
 const App = () => {
  
 
@@ -23,11 +23,11 @@ const App = () => {
             <NavBar />
 
             <Routes>
-                <Route index element={<Home />} />
-                <Route path="events" element={<Events />} />
-                <Route path="login" element={<Login />} />
-                <Route path="register" element={<Register />} />
-                <Route path="store" element={<Store />} />
+                <Route path={ROUTES.HOME} index element={<Home />} />
+                <Route path={ROUTES.EVENTS} element={<Events />} />
+                <Route path={ROUTES.LOGIN} element={<Login />} />
+                <Route path={ROUTES.SIGNIN} element={<Register />} />
+                <Route path={ROUTES.STORE} element={<Store />} />
             </Routes>
         </BrowserRouter>
     );

@@ -3,20 +3,20 @@
       {
         "id": 0,
         "name": "Tienda",
-        "to": "/store",
+        "to": "/",
         "type": "list",
         "dropDown": true,
         "children": [
           {
             "id": 0,
             "name": "Ropa para Hombres",
-            "to": "/ropa-hombres",
+            "to": "/store/ropa-hombres",
             "type": "store"
           },
           {
             "id": 1,
             "name": "Ropa para Mujeres",
-            "to": "/ropa-mujeres",
+            "to": "/store/ropa-mujeres",
             "type": "store"
           }
         ]
@@ -24,14 +24,14 @@
       {
         "id": 1,
         "name": "Eventos",
-        "to": "/eventos",
+        "to": "/events",
         "type": "list",
         "dropDown": false
       },
       {
         "id": 2,
         "name": "Información",
-        "to": "/info_envios",
+        "to": "#",
         "type": "session",
         "dropDown": true,
         "children": [
@@ -64,7 +64,7 @@
       {
         "id": 3,
         "name": "Cuenta",
-        "to": "/cuenta",
+        "to": "#",
         "type": "session",
         "dropDown": true,
         "children": [
@@ -76,19 +76,13 @@
           },
           {
             "id": 1,
-            "name": "Preguntas Frecuentes",
-            "to": "/preguntas-frecuentes",
+            "name": "Registrarse",
+            "to": "/sign-in",
             "type": "session"
           },
           {
             "id": 2,
-            "name": "Sistema de Envíos",
-            "to": "/info_envios",
-            "type": "session"
-          },
-          {
-            "id": 3,
-            "name": "Empleos",
+            "name": "Ayuda",
             "to": "/empleos",
             "type": "session"
           }
