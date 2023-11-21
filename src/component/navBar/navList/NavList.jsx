@@ -7,6 +7,7 @@ import {DROPDOWN_ACTIONS} from "../../../app/redux/actions/navBar/dropDownAction
 import {useRef,} from "react";
 import { FaRegUser } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { IoMdArrowDropdown } from "react-icons/io";
 
 const NavList = ({ classType }) => {
     const dispatch = useDispatch()
@@ -65,11 +66,7 @@ const uniqueTypes = [...new Set(items.map(item => item.type))];
                     >
                       {e.name}
                       {e.dropDown ? (
-                        <img
-                          className={`navBar__container__${e.type}__item__link__icon`}
-                          src={dropDownIcon}
-                          alt="icono drop down"
-                        />
+                            <IoMdArrowDropdown   className={`navBar__container__${e.type}__item__link__icon`}/>
                       ) : undefined}
                     </Link>
                   </div>

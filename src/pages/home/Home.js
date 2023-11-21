@@ -19,7 +19,7 @@ const Home = () => {
           </div>
           <div className="home__jumbotrom-img">
               <img
-                src={iconOfer}
+                // src={iconOfer}
                 className="home__categories-container-circle-img"
                 alt="Zapato Azul"
               />

@@ -33,11 +33,14 @@ $five-color: #fff;
         &__link {
           text-transform: capitalize;
           text-decoration: none;
-          color: #462dc0;
+          color: #f3f3f3;
+          -webkit-text-stroke-color: #000000;
+
           -webkit-user-select: none;
           user-select: none;
           font-size: large;
           font-family: "OutRun";
+          align-items: center;
           display: flex;
           &__icon{
             width: 16px;
@@ -59,8 +62,8 @@ $five-color: #fff;
 
       &__item {
         transition-duration: 0.5ms;
-        background-color: #f4f181;
-        border: 1px solid #b1afd4;
+        background-color: #7c1f88;
+        border: 1px solid #000000;
         border-radius: 3px;
         margin-left: 10px;
         display: flex;
@@ -71,7 +74,7 @@ $five-color: #fff;
           text-decoration: none;
           -webkit-user-select: none;
           user-select: none;
-          color: #462dc0;
+          color: #f3f3f3;
           padding: 0 10px;
           font-size: small;
           display: flex;
