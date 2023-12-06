@@ -51,17 +51,14 @@ const NavList = ({ classType }) => {
     console.log(`Mostrar ${type}es:`, itemsOfType);
   };
 
-  const [isNavOpenR, setNavOpenR] = useState(false);
-  const [isNavOpenL, setNavOpenL] = useState(false);
+  const [isNavOpen, setNavOpen] = useState(false);
 
   const openNav = () => {
-    console.log(isNavOpenR);
-    setNavOpenR(!isNavOpenR);
+    setNavOpen(!isNavOpen);
   };
 
   const closeNav = () => {
-    console.log(isNavOpenR);
-    setNavOpenR(!isNavOpenR);
+    setNavOpen(false);
   };
 
   return items.length !== 0 ? (
@@ -106,6 +103,12 @@ const NavList = ({ classType }) => {
       </ul>
       <div className={`navBar__container__group--responsiveButtons`}>
         {uniqueTypes.map(
+          (type) =>{
+          
+          }
+        )}
+      
+        {uniqueTypes.map(
           (type) =>
             classType === type && (
               <div
@@ -113,16 +116,24 @@ const NavList = ({ classType }) => {
                 type={type}
                 onClick={() => handleButtonClick(type)}
               >
-                
-                {isNavOpenR ?  <ImCross /> : classType === "session"  &&    <FaRegUser />    }
-                {isNavOpenL ?  <ImCross /> : classType === "list"  &&    <GiHamburgerMenu />    }
+               
+               {classType === "session"&& isNavOpen? <ImCross/> :<GiHamburgerMenu /> }
+               {classType === "list"   && isNavOpen? <ImCross/>:<FaRegUser />       }
 
-                <div className={`sidenav sidenav__${isNavOpenR ? "r": isNavOpenL ? "l":null} ${isNavOpenR ? "open" : "close"}`}>
-                  <button
-                    className="closebtn"
-                    onClick={closeNav}>
+                <div
+                  className={`sidenav ${
+                    isNavOpen ? "open" : "close"
+                  } sidenav${
+                    classType === "session" && isNavOpen
+                      ? "__r"
+                      : classType === "list" && isNavOpen
+                      ? "__l"
+                      : "__r"
+                  }`}
+                >
+                  <div className="closebtn" onClick={closeNav}>
                     &times;
-                  </button>
+                  </div>
                 </div>
               </div>
             )

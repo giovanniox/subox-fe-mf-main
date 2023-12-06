@@ -111,16 +111,26 @@ $five-color: #fff;
   top: 0;
   background-color: #111111fa;
   overflow-x: auto;
-  transition: 0.5s;  
+  transition: 0.5s;
 
-  &__r{
+  &__r {
     right: 0;
+    left: auto;
   }
-  &__left{
+
+  &__l {
     left: 0;
+    right: auto;
   }
 }
 
+.open {
+  width: 85%; 
+}
+
+.close {
+  width: 0;
+}
 
 .sidenav .closebtn {
   position: absolute;
@@ -132,9 +142,3 @@ $five-color: #fff;
   justify-content: flex-end;
 }
 
-.open {
-  height: 100vh;
-}
-.close{
-  width: 0;
-}
