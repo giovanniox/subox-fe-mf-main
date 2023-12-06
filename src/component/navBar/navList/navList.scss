@@ -103,3 +103,38 @@ $five-color: #fff;
   }
 }
 
+.sidenav {
+  width: 85%;
+  height: 100vh;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  background-color: #111111fa;
+  overflow-x: auto;
+  transition: 0.5s;  
+
+  &__r{
+    right: 0;
+  }
+  &__left{
+    left: 0;
+  }
+}
+
+
+.sidenav .closebtn {
+  position: absolute;
+  border: 1px solid #b92828;
+  width: 100%;
+  height: auto;
+  display: flex;
+  top: 0px;
+  justify-content: flex-end;
+}
+
+.open {
+  height: 100vh;
+}
+.close{
+  width: 0;
+}
