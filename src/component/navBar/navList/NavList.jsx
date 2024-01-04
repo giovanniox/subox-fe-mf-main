@@ -34,7 +34,7 @@ const NavList = ({ classType }) => {
     }
   }
   const handleButtonClick = (type) => {
-    // Lógica para mostrar o realizar acciones según el tipo
+        // Lógica para mostrar o realizar acciones según el tipo
     const itemsOfType = items.filter((item) => item.type === type);
     switch (type) {
       case "list":
@@ -116,20 +116,16 @@ const NavList = ({ classType }) => {
                 type={type}
                 onClick={() => handleButtonClick(type)}
               >
-               
-               {classType === "session"&& isNavOpen? <ImCross/> :<GiHamburgerMenu /> }
-               {classType === "list"   && isNavOpen? <ImCross/>:<FaRegUser />       }
+            { classType === "list" &&   <GiHamburgerMenu />}
+            {classType === "session" && <FaRegUser /> }
 
-                <div
+                <div 
                   className={`sidenav ${
                     isNavOpen ? "open" : "close"
                   } sidenav${
-                    classType === "session" && isNavOpen
-                      ? "__r"
-                      : classType === "list" && isNavOpen
-                      ? "__l"
-                      : "__r"
-                  }`}
+                    classType === "session" ? "__r" : classType === "list" ? "__l" : "__r"
+                  }`
+                }
                 >
                   <div className="closebtn" onClick={closeNav}>
                     &times;
