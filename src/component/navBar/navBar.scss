@@ -1,12 +1,76 @@
 $font-path: "./../navBar/resourse/font/outrunFuture.otf";
 $primary-color: #8f299c;
 $secondary-color: #fb2576;
+$terceary-color: rgb(216 192 212 / 79%);
+
 $container-margin: 2rem;
 $container-padding: 20px;
 
 @font-face {
   font-family: OutRun;
   src: url("#{$font-path}") format("opentype");
+}
+
+
+.sidenavBurger{
+  .open {
+    width: 91%; /* Ancho final del div al abrirse */
+  }
+  position: absolute;
+  top: 0;
+  width: 91%;
+  height: 100vh;
+  background-color: black;
+  z-index: 2;
+  transition: width 3s ease;
+  overflow: hidden; 
+
+  &__container{
+    .closebtn{
+      position: absolute;
+      left: 1rem;
+      width: 30px;
+      height: 30px;
+      font-size: x-large;
+      background-color: white;
+    }
+    display: flex;
+    align-items: center;
+    background-color: blueviolet;
+    justify-content: center;
+    height: 60px;
+  }
+}
+
+.sidenavUser{
+  .open {
+    width: 91%; /* Ancho final del div al abrirse */
+  }
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 91%;
+  height: 100vh;
+  background-color: black;
+  z-index: 2;
+  transition: width 3s ease;
+  overflow: hidden; 
+
+  &__container{
+    .closebtn{
+      position: absolute;
+      right: 1rem;
+      width: 30px;
+      height: 30px;
+      font-size: x-large;
+      background-color: white;
+    }
+    display: flex;
+    align-items: center;
+    background-color: blueviolet;
+    justify-content: center;
+    height: 60px;
+  }
 }
 
 .navBar {
@@ -18,30 +82,42 @@ $container-padding: 20px;
   align-items: center;
   justify-content: space-around;
   width: 100vw;
-
+  box-sizing: border-box;
   &__container {
      position: relative;
-    border: 0.5px solid #fb2576;
+    border: 0.5px solid $secondary-color;
     width: 100vw;
     display: flex;
     align-items: center;
-  
     border-radius: 8px;
     margin: 2rem;
     padding: 20px;
     height: 60px;
-    background: rgb(216 192 212 / 79%);
+    background: $terceary-color;
     z-index: 2;
-    justify-content: space-between;
+
+
+    .hamburgerMenu {
+      display: none;
+    }
+    .userIcon {
+      display: none;
+    }
+
+
     @media screen and (max-width: 768px) {
+      .hamburgerMenu {
+        display: flex;
+      }
+      .userIcon {
+        display: flex;
+      }
       margin-left: 0rem;
       margin-right: 0rem;
       margin-top: 0rem;
       border-radius: 0;
       border: 0;
       justify-content: space-between;
-      
-
     }
     @media screen and (max-width: 425px) {
       justify-content: space-between;

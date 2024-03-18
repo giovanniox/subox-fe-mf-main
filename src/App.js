@@ -22,13 +22,13 @@ const App = () => {
         <BrowserRouter>
             <NavBar />
 
-            <Routes>
-                <Route path={ROUTES.HOME} index element={<Home />} />
-                <Route path={ROUTES.EVENTS} element={<Events />} />
-                <Route path={ROUTES.LOGIN} element={<Login />} />
-                <Route path={ROUTES.SIGNIN} element={<Register />} />
-                <Route path={ROUTES.STORE} element={<Store />} />
-            </Routes>
+            {/* <Routes> */}
+                {/* <Route path={ROUTES.HOME} index element={<Home />} /> */}
+                {/* <Route path={ROUTES.EVENTS} element={<Events />} /> */}
+                {/* <Route path={ROUTES.LOGIN} element={<Login />} /> */}
+                {/* <Route path={ROUTES.SIGNIN} element={<Register />} /> */}
+                {/* <Route path={ROUTES.STORE} element={<Store />} /> */}
+            {/* </Routes> */}
         </BrowserRouter>
     );
 }
