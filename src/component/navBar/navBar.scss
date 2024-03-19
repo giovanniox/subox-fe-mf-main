@@ -6,71 +6,98 @@ $terceary-color: rgb(216 192 212 / 79%);
 $container-margin: 2rem;
 $container-padding: 20px;
 
+$main-side-bar:#f2f2f2;
+
 @font-face {
   font-family: OutRun;
   src: url("#{$font-path}") format("opentype");
 }
 
-
-.sidenavBurger{
-  .open {
-    width: 91%; /* Ancho final del div al abrirse */
-  }
+.sidenavBurger.open {
+  width: 91%;
+  opacity: 2;
+  /* Ancho final del div al abrirse */
+}
+.sidenavBurger {
+  min-width: 180px;
+  opacity: 0;
   position: absolute;
   top: 0;
-  width: 91%;
+  width: 0%;
   height: 100vh;
-  background-color: black;
+  background-color: $main-side-bar;
   z-index: 2;
-  transition: width 3s ease;
-  overflow: hidden; 
+  transition: width 0.5s ease,opacity 0.8s ease;
+  overflow: hidden;
 
-  &__container{
-    .closebtn{
+  &__container__uno {
+    .closebtn {
       position: absolute;
       left: 1rem;
       width: 30px;
       height: 30px;
       font-size: x-large;
       background-color: white;
+      z-index: 4;
     }
+    margin-bottom: 1rem;
     display: flex;
     align-items: center;
-    background-color: blueviolet;
+    background-color: #00b8ff;
     justify-content: center;
     height: 60px;
-  }
-}
+    z-index: 1;
+    position: relative;
 
-.sidenavUser{
-  .open {
-    width: 91%; /* Ancho final del div al abrirse */
   }
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 91%;
-  height: 100vh;
-  background-color: black;
-  z-index: 2;
-  transition: width 3s ease;
-  overflow: hidden; 
 
-  &__container{
-    .closebtn{
-      position: absolute;
-      right: 1rem;
-      width: 30px;
-      height: 30px;
-      font-size: x-large;
-      background-color: white;
-    }
+
+
+  &__container__dos {
     display: flex;
-    align-items: center;
-    background-color: blueviolet;
-    justify-content: center;
-    height: 60px;
+    flex-direction: column;
+    background-color: $main-side-bar;
+    height: calc(100% - 60px);
+    position: relative;
+    top: 0;
+    overflow: auto;
+
+    &__menu {
+      width: calc(100% - 0rem);
+ 
+
+      &__uno {
+        background-color:  $main-side-bar;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        &__link {
+          width: calc(100% - 2rem - 1px);
+          height: 3rem;
+          border: 1px solid #000000;
+          margin: 6px 1rem 6px 1rem;
+          list-style: none;
+        }
+      }
+
+      &__dos {
+        background-color: #c4def3;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        &__link {
+          width: calc(100% - 2rem - 1px);
+          height: 3rem;
+          border: 1px solid #000000;
+          margin: 6px 1rem 6px 1rem;
+          list-style: none;
+        }
+      }
+    }
   }
+
+
 }
 
 .navBar {
@@ -83,8 +110,9 @@ $container-padding: 20px;
   justify-content: space-around;
   width: 100vw;
   box-sizing: border-box;
+
   &__container {
-     position: relative;
+    position: relative;
     border: 0.5px solid $secondary-color;
     width: 100vw;
     display: flex;
@@ -96,22 +124,23 @@ $container-padding: 20px;
     background: $terceary-color;
     z-index: 2;
 
-
     .hamburgerMenu {
       display: none;
     }
+
     .userIcon {
       display: none;
     }
-
 
     @media screen and (max-width: 768px) {
       .hamburgerMenu {
         display: flex;
       }
+
       .userIcon {
         display: flex;
       }
+
       margin-left: 0rem;
       margin-right: 0rem;
       margin-top: 0rem;
@@ -119,6 +148,7 @@ $container-padding: 20px;
       border: 0;
       justify-content: space-between;
     }
+
     @media screen and (max-width: 425px) {
       justify-content: space-between;
       padding: 1rem;

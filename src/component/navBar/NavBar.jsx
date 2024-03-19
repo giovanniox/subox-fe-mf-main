@@ -4,6 +4,7 @@ import { FaRegUser } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import "./navBar.scss"
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
 
@@ -31,30 +32,43 @@ const NavBar = () => {
                 <Landscape />
             </div>
 
-            {
-                showSidebarBurger ?
-                    <div className={`sidenavBurger ${showSidebarBurger ? 'open' : ''}`}>
-                        <div className="sidenavBurger__container">
-                        <button className="closebtn" onClick={toggleSidebarBurger}>
-                            &times;
-                        </button>
-                         <Logo className="logo" />
-                        
-                        </div>   
-                    </div> : null
-            }
-              {
-                showSideUser ?
-                    <div className={`sidenavUser ${showSideUser ? 'open' : ''}`}>
-                        <div className="sidenavUser__container">
-                        <button className="closebtn" onClick={toggleSidebarUser}>
-                            &times;
-                        </button>
-                         <Logo className="logo" />
-                        
-                        </div>   
-                    </div> : null
-            }
+
+            <div className={`sidenavBurger ${showSidebarBurger ? 'open' : ''}`}>
+                <div className="sidenavBurger__container__uno">
+                    <button className="closebtn" onClick={toggleSidebarBurger}>
+                        &times;
+                    </button>
+                    <Logo className="logo" />
+                </div>
+                <div className="sidenavBurger__container__dos">
+                    <div className="sidenavBurger__container__dos__menu">
+                        <ul className="sidenavBurger__container__dos__menu__uno">
+                            <li className="sidenavBurger__container__dos__menu__uno__link">
+                                <Link to="#">Menu Numero uno</Link>
+                            </li>
+                            <li className="sidenavBurger__container__dos__menu__uno__link">
+                                <Link to="#">Menu Numero dos</Link>
+                            </li>
+                            <li className="sidenavBurger__container__dos__menu__uno__link">
+                                <Link to="#">Menu Numero tres</Link>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="sidenavBurger__container__dos__menu">
+                        <ul className="sidenavBurger__container__dos__menu__dos">
+                            <li className="sidenavBurger__container__dos__menu__dos__link">
+                                <Link to="#">Menu Numero uno</Link>
+                            </li>
+                            <li className="sidenavBurger__container__dos__menu__dos__link">
+                                <Link to="#">Menu Numero dos</Link>
+                            </li>
+                            <li className="sidenavBurger__container__dos__menu__dos__link">
+                                <Link to="#">Menu Numero tres</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </>
 
     )
