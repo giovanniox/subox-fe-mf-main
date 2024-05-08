@@ -90,7 +90,7 @@ const NavBar = () => {
                     <div className="menu">
                         <div className="menu__container">
                             <div className="menu__container">
-                                <div className="menu__container__nosotros" onMouseEnter={handleMouseEnterNosotros} onMouseLeave={handleMouseLeaveNosotros}>
+                                {/* <div className="menu__container__nosotros" onMouseEnter={handleMouseEnterNosotros} onMouseLeave={handleMouseLeaveNosotros}>
                                     <span className="menu__container__nosotros__button">
                                         <CiUser className="menu__container__nosotros__button__iconUser" />
                                         Nosotros
@@ -109,14 +109,14 @@ const NavBar = () => {
                                             </li>
                                         </ul>
                                     )}
-                                </div>
-                                <div className="menu__container__tienda" onMouseEnter={handleMouseEnterTienda} onMouseLeave={handleMouseLeaveTienda}>
+                                </div> */}
+                                <Link to="/store" className="menu__container__tienda" onMouseEnter={handleMouseEnterTienda} onMouseLeave={handleMouseLeaveTienda}>
                                     <span className="menu__container__tienda__button">
                                         <CiUser className="menu__container__tienda__button__iconUser" />
                                         Tienda
                                     </span>
 
-                                </div>
+                                </Link>
                             </div>
                       
                         </div>
@@ -169,13 +169,13 @@ const NavBar = () => {
                                 {isOpenLogin && (
                                     <ul className="menu__container__login__list">
                                         <li className="menu__container__login__list__link">
-                                            <Link to="#">Iniciar sesion</Link>
+                                            <Link to="/login">Iniciar sesion</Link>
                                         </li>
                                         <li className="menu__container__login__list__link">
-                                            <Link to="#">Ajustes de cuenta</Link>
+                                            <Link to="/">Ajustes de cuenta</Link>
                                         </li>
                                         <li className="menu__container__login__list__link">
-                                            <Link to="#">Registrarse</Link>
+                                            <Link to="/sign-in">Registrarse</Link>
                                         </li>
                                     </ul>
                                 )}
@@ -208,7 +208,7 @@ const NavBar = () => {
                                 <Link to="#">Productos</Link>
                             </li>
                             <li className="sidenavBurger__container__dos__menu__uno__link">
-                                <Link to="#">Tienda</Link>
+                                <Link to="/store">Tienda</Link>
                             </li>
                             <li className="sidenavBurger__container__dos__menu__uno__link">
                                 <Link to="#">Categorias</Link>
