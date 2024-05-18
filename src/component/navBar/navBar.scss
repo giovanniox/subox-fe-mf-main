@@ -229,6 +229,24 @@ $main-side-bar:#f2f2f2;
 }
 
 .navBar {
+  &__landscape {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    perspective: 215px;
+    perspective-origin: 50% 0%;
+    overflow: hidden;
+
+    &__object {
+      background-image: -webkit-linear-gradient(top, rgba(106, 120, 223, 0.308) 1px, transparent 1px), -webkit-linear-gradient(left, rgba(6, 161, 239, 0.26) 1px, transparent 2px);
+      background-size: 1px 25px, 22px 1px;
+      transform: rotateX(80deg);
+      animation: moveUp 1s infinite linear;
+      width: 100%;
+      height: 100%;
+
+    }
+  }
   background: $primary-color;
   display: flex;
   position: relative;
@@ -290,15 +308,6 @@ $main-side-bar:#f2f2f2;
       .userIcon {
         display: flex;
       }
-
-      .logo {
-        margin: auto;
-        position: relative;
-        bottom: 80px;
-        margin-top: 1rem;
-
-      }
-
       margin-left: 0rem;
       margin-right: 0rem;
       margin-top: 0rem;
@@ -307,14 +316,7 @@ $main-side-bar:#f2f2f2;
       justify-content: space-between;
     }
 
-    @media screen and (max-width: 425px) {
-      .logo {
-        margin: auto;
-        position: relative;
-        bottom: 80px;
 
-      }
-    }
   }
 }
 
@@ -579,71 +581,6 @@ $main-side-bar:#f2f2f2;
         }
       }
     }
-    &__login {
-      position: relative;
-      display: flex;
-
-      &__button:hover {
-        border: 1px solid #ffffff;
-        background-color: #8f299c;
-        color: #d4dbeb;
-      }
-
-      &__button {
-
-
-        &__iconUser {
-          width: 23px;
-          height: 27px;
-          position: relative;
-          top: 5px;
-        }
-
-        &__iconDown {
-          font-size: medium;
-          width: 14px;
-          height: 13px;
-          margin-left: 2px;
-          margin-top: 12px;
-
-        }
-
-        font-size: medium;
-        border-radius: 0.5em;
-        width: 7em;
-        text-transform: capitalize;
-        font-weight: 600;
-        font-family: system-ui;
-        letter-spacing: 1px;
-        line-height: 3.5rem;
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-        transition: 0.5s;
-        margin: 0rem;
-        padding: 0 0px;
-        text-align: center;
-
-      }
-
-      &__list {
-        position: absolute;
-        top: 100%;
-        right: 0px;
-        width: 30vw;
-        background-color: $main-side-bar;
-        display: flex;
-        flex-direction: column;
-
-        &__link {
-
-          width: calc(100% - 2rem - 1px);
-          height: 3rem;
-          border: 1px solid #000000;
-          margin: 6px 1rem 6px 1rem;
-          list-style: none;
-        }
-      }
-    }
+    
   }
 }

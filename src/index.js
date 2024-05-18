@@ -8,16 +8,15 @@ const container = document.getElementById('root');
 const root = createRoot(container);
 
 root.render(
-    <>
+    <> 
+    <Provider store={store}>
         <GoogleOAuthProvider
             clientId="916830881278-fv5evrd2t14lm6pqrf2h9anm34ucr0v4.apps.googleusercontent.com">
             <React.StrictMode>
-                <Provider store={store}>
                     <App />
-                </Provider>
             </React.StrictMode>
         </GoogleOAuthProvider>
-
+        </Provider>
     </>
 
 );
