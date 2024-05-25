@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CiUser } from 'react-icons/ci'; 
 import { FaAngleDown } from 'react-icons/fa';
-import './AccountMenu.scss';
+import './accountMenu.scss';
 import {PATH} from "../../../router/routes"
 import {useAuth} from "../../../provider/AuthProvider"
 import { useNavigate } from "react-router-dom";
@@ -27,31 +27,31 @@ const AccountMenu = () => {
       };
     
     return (
-        <div className="login" 
+        <div className="accountMenu" 
              onMouseEnter={handleMouseEnterLogin}
              onMouseLeave={handleMouseLeaveLogin}>
-            <span className="login__button">
-                <CiUser className="login__button__iconUser" />
+            <span className="accountMenu__button">
+                <CiUser className="accountMenu__button__iconUser" />
                 Cuenta
-                <FaAngleDown className="login__button__iconDown" />
+                <FaAngleDown className="accountMenu__button__iconDown" />
             </span>
             {isOpenLogin && (
-                <ul className="login__list">
+                <ul className="accountMenu__list">
                     {token ? (
                         <>
-                            <li className="login__list__link">
+                            <li className="accountMenu__list__link">
                                 <Link to={PATH.PROFILE}>Ajustes de cuenta</Link>
                             </li>
-                            <li className="login__list__link" onClick={handleLogout}>
+                            <li className="accountMenu__list__link" onClick={handleLogout}>
                                 <span>Salir</span>
                             </li>
                         </>
                     ) : (
                         <>
-                            <li className="login__list__link">
+                            <li className="accountMenu__list__link">
                                 <Link to={PATH.LOGIN}>Iniciar sesion</Link>
                             </li>
-                            <li className="login__list__link">
+                            <li className="accountMenu__list__link">
                                 <Link to={PATH.SIGNIN}>Registrarse</Link>
                             </li>
                         </>

@@ -8,11 +8,11 @@ import Events from "./../pages/Events"
 import Register from "./../pages/auth/register/Register"
 import Login from "./../pages/auth/login/Login"
 import Logout from "./../pages/auth/logout/Logout"
-
+import NavBarWrapper from "./NavBarWrapper";
 import Store from "./../pages/Store";
 import Profile from "./../pages/Profile";
 
-import {PATH} from "./routes"
+import { PATH } from "./routes"
 
 const Routes = () => {
   const { token } = useAuth();
@@ -21,11 +21,11 @@ const Routes = () => {
   const routesForPublic = [
     {
       path: PATH.STORE,
-      element: <Store/>,
+      element: <Store />,
     },
     {
       path: PATH.EVENTS,
-      element: <Events/>,
+      element: <Events />,
     }
   ];
 
@@ -37,15 +37,15 @@ const Routes = () => {
       children: [
         {
           path: PATH.HOME_PRIVATE,
-          element: <HomePrivate/>,
+          element: <HomePrivate />,
         },
         {
           path: PATH.PROFILE,
-          element: <Profile/>,
+          element: <Profile />,
         },
         {
           path: PATH.LOGOUT,
-          element: <Logout/>,
+          element: <Logout />,
         },
       ],
     },
@@ -55,25 +55,30 @@ const Routes = () => {
   const routesForNotAuthenticatedOnly = [
     {
       path: PATH.HOME_PUBLIC,
-      element: <HomePublic/>,
+      element: <HomePublic />,
     },
     {
       path: PATH.LOGIN,
-      element:  <Login />,
+      element: <Login />,
     },
     {
       path: PATH.SIGNIN,
-      element:  <Register />
+      element: <Register />
     }
   ];
 
-  // Combine and conditionally include routes based on authentication status
-  const router = createBrowserRouter([
-    ...routesForPublic,
-    ...(!token ? routesForNotAuthenticatedOnly : []),
-    ...routesForAuthenticatedOnly,
-  ]);
 
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <NavBarWrapper />,
+      children: [
+        ...routesForPublic,
+        ...(!token ? routesForNotAuthenticatedOnly : []),
+        ...routesForAuthenticatedOnly,
+      ],
+    },
+  ]);
   // Provide the router configuration using RouterProvider
   return <RouterProvider router={router} />;
 };

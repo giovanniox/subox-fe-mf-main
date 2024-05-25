@@ -22,12 +22,12 @@
   scale: 66%;
   text-decoration: none;
   display: flex;
-  height: 160px;
   transform: rotate(10deg);
-  bottom: 0px;
-  position: absolute;
   z-index: 3;
   border-radius: 100%;
+  top: -3rem;
+  position: absolute;
+  flex: 2;
 
   &__wrapper {
     position: relative;

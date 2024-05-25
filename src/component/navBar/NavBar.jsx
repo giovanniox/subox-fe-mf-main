@@ -5,9 +5,10 @@ import "./navBar.scss"
 import "./logo.scss"
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import {PATH} from "../../router/routes"
+import Logo from "./Logo"
 
 import AccountMenu from "./accountMenu/AccountMenu";
+import CartMenu from "./cartMenu/CartMenu";
 
 
 const NavBar = () => {
@@ -42,11 +43,10 @@ const NavBar = () => {
 
     return (
         <>
-          
 
             <div className='navBar'>
-                 <Logo />
-                <div className='navBar__container'>
+                  <Logo />  
+                <div className='navBar__container'>  
                     <div>
                         <GiHamburgerMenu className="hamburgerMenu" onClick={toggleSidebarBurger} />
                         <div className="menu">
@@ -73,26 +73,12 @@ const NavBar = () => {
                                 )}
                             </div>*/}
                                 {/*
-                            <div className="menu__container__carrito" onMouseEnter={handleMouseEnterCarrito}
-                                onMouseLeave={handleMouseLeaveCarrito} >
-                                <span className="menu__container__carrito__counter">1</span>
-                                <span className="menu__container__carrito__button"
-
-                                >
-                                    <CiShoppingCart className="menu__container__carrito__button__IconCarrito" />
-                                    <FaAngleDown className="menu__container__carrito__button__iconDown" />
-                                </span>
-                                {isOpenCarrito && (
-                                    <div className="menu__container__carrito__container">
-                                        <div>Aun no hay productos</div>
-                                    </div>
-                                )}
-                            </div>*/}
+                         */}
+                                <CartMenu />
                                 <AccountMenu />
 
                             </div>
                         </div>
-
                         <FaRegUser className="userIcon" onClick={toggleSidebarUser} />
                     </div>
                   
@@ -188,25 +174,6 @@ const NavBar = () => {
         </>
 
     )
-}
-const Logo = () => {
-    return (
-        <Link to={PATH.HOME_PUBLIC} className="logo">
-            <div className="logo__wrapper">
-                <span className="logo__wrapper__top">
-                    <span className="logo__wrapper__top__letter">FASHION</span></span>
-                <span className="logo__wrapper__mid">
-                    <span className="logo__wrapper__mid__letter">City</span>
-                </span>
-                <span className="logo__wrapper__bot">
-                    <span className="logo__wrapper__bot__letter">Tendencias</span>
-                </span>
-            </div>
-            <span className="logo__triangule">
-
-            </span>
-        </Link>
-    );
 }
 
 

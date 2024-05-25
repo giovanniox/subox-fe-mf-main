@@ -1,7 +1,6 @@
 import React from "react";
 import "./home.scss"
 
-import NavBar from '../../component/navBar/NavBar';
 
 import iconNiños from "./niños.png";
 import iconWoman from "./woman.png";
@@ -10,8 +9,7 @@ import iconTemp from "./temp.png";
 import iconOfer from "./ofer.png";
 const Home = () => {
   return (
-    <>
-      <NavBar />
+ 
       <div className="home">
         <div className="home__jumbotrom">
           <div className="home__jumbotrom-container">
@@ -90,7 +88,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 

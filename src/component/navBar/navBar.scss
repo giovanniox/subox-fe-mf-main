@@ -6,7 +6,7 @@ $terceary-color: #f5f5f5;
 $container-margin: 2rem;
 $container-padding: 20px;
 
-$main-side-bar:#f2f2f2;
+$main-side-bar: #f2f2f2;
 
 @font-face {
   font-family: OutRun;
@@ -228,47 +228,25 @@ $main-side-bar:#f2f2f2;
 
 }
 
-.navBar {
-  &__landscape {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    perspective: 215px;
-    perspective-origin: 50% 0%;
-    overflow: hidden;
-
-    &__object {
-      background-image: -webkit-linear-gradient(top, rgba(106, 120, 223, 0.308) 1px, transparent 1px), -webkit-linear-gradient(left, rgba(6, 161, 239, 0.26) 1px, transparent 2px);
-      background-size: 1px 25px, 22px 1px;
-      transform: rotateX(80deg);
-      animation: moveUp 1s infinite linear;
-      width: 100%;
-      height: 100%;
-
-    }
-  }
+.navBar {  
   background: $primary-color;
   display: flex;
-  position: relative;
   -webkit-user-select: none;
   user-select: none;
-  align-items: center;
-  justify-content: space-around;
-  width: 100vw;
+  width: 100%;
   box-sizing: border-box;
-
+  position: relative;
+  
   &__container {
-    position: relative;
-    width: 100vw;
+    width: calc(100%);
+    margin: 1rem 1rem 1rem 1rem;
     display: flex;
-    align-items: center;
     border-radius: 8px;
-    margin: 2rem;
-    height: 60px;
-    background: $terceary-color;
+    background: #f2f2f2;
     z-index: 2;
-
-
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
 
     .hamburgerMenu {
       display: none;
@@ -308,6 +286,7 @@ $main-side-bar:#f2f2f2;
       .userIcon {
         display: flex;
       }
+
       margin-left: 0rem;
       margin-right: 0rem;
       margin-top: 0rem;
@@ -315,9 +294,30 @@ $main-side-bar:#f2f2f2;
       border: 0;
       justify-content: space-between;
     }
-
-
   }
+  
+  
+  &__landscape {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    perspective: 215px;
+    perspective-origin: 50% 0%;
+    overflow: hidden;
+
+    &__object {
+      background-image: -webkit-linear-gradient(top, rgba(106, 120, 223, 0.308) 1px, transparent 1px), -webkit-linear-gradient(left, rgba(6, 161, 239, 0.26) 1px, transparent 2px);
+      background-size: 1px 25px, 22px 1px;
+      transform: rotateX(80deg);
+      animation: moveUp 1s infinite linear;
+      width: 100%;
+      height: 100%;
+
+    }
+  }
+
+
+
 }
 
 
@@ -331,6 +331,7 @@ $main-side-bar:#f2f2f2;
 
   width: 100%;
   height: 60px;
+
   &__container {
     display: flex;
     justify-content: flex-end;
@@ -361,83 +362,13 @@ $main-side-bar:#f2f2f2;
         justify-content: center;
 
         &__iconBusqueda {
-          width: 1rem; 
+          width: 1rem;
           color: #211e20cc;
           font-size: medium;
           margin-bottom: 7px;
           margin-left: 5px;
         }
       }
-      &__container {
-        position: absolute;
-        top: 100%;
-        right: 0px;
-        width: 30vw;
-        background-color: $main-side-bar;
-        display: flex;
-        flex-direction: column;
-      }
-    }
-
-    &__carrito:hover {
-      border: 1px solid white;
-      background-color: #8f299c;
-      border-radius: 3px;
-      .menu__container__carrito__counter{
-      background-color: #8f299c;
-        
-      }
-    }
-
-    &__carrito {
-      transition: 0.5s;
-
-      position: relative;
-      display: flex;
-      align-items: center;
-      width: 4em;
-      justify-content: center;
-
-      &__counter {
-        color: white;
-        position: absolute;
-        left: 2rem;
-        background-color: #c8a0c8;
-        border: 1px solid;
-        border-radius: 100px;
-        z-index: 2;
-        width: 1.3rem;
-        top: 0.1rem;
-      }
-
-
-
-      &__button {
-        width: 100px;
-        position: relative;
-        height: 100%;
-        text-align: center;
-        display: flex;
-        padding-bottom: 1rem;
-        align-items: center;
-        justify-content: center;
-
-
-        &__IconCarrito {
-          width: 23px;
-          height: 27px;
-          position: relative;
-          top: 5px;
-        }
-
-        &__iconDown {
-          font-size: medium;
-          width: 14px;
-          height: 13px;
-          margin-left: 2px;
-          margin-top: 12px;
-        }
-      }
 
       &__container {
         position: absolute;
@@ -449,35 +380,38 @@ $main-side-bar:#f2f2f2;
         flex-direction: column;
       }
     }
+
+  
+
     &__tienda {
       position: relative;
       display: flex;
-    
+
       &__button:hover {
         border: 1px solid #ffffff;
         background-color: #8f299c;
         color: #d4dbeb;
       }
-    
+
       &__button {
-    
-    
+
+
         &__iconUser {
           width: 23px;
           height: 27px;
           position: relative;
           top: 5px;
         }
-    
+
         &__iconDown {
           font-size: medium;
           width: 14px;
           height: 13px;
           margin-left: 2px;
           margin-top: 12px;
-    
+
         }
-    
+
         font-size: medium;
         border-radius: 0.5em;
         width: 7em;
@@ -493,9 +427,9 @@ $main-side-bar:#f2f2f2;
         margin: 0rem;
         padding: 0 0px;
         text-align: center;
-    
+
       }
-    
+
       &__list {
         position: absolute;
         top: 100%;
@@ -504,9 +438,9 @@ $main-side-bar:#f2f2f2;
         background-color: $main-side-bar;
         display: flex;
         flex-direction: column;
-    
+
         &__link {
-    
+
           width: calc(100% - 2rem - 1px);
           height: 3rem;
           border: 1px solid #000000;
@@ -515,35 +449,36 @@ $main-side-bar:#f2f2f2;
         }
       }
     }
+
     &__nosotros {
       position: relative;
       display: flex;
-    
+
       &__button:hover {
         border: 1px solid #ffffff;
         background-color: #8f299c;
         color: #d4dbeb;
       }
-    
+
       &__button {
-    
-    
+
+
         &__iconUser {
           width: 23px;
           height: 27px;
           position: relative;
           top: 5px;
         }
-    
+
         &__iconDown {
           font-size: medium;
           width: 14px;
           height: 13px;
           margin-left: 2px;
           margin-top: 12px;
-    
+
         }
-    
+
         font-size: medium;
         border-radius: 0.5em;
         width: 7em;
@@ -559,9 +494,9 @@ $main-side-bar:#f2f2f2;
         margin: 0rem;
         padding: 0 0px;
         text-align: center;
-    
+
       }
-    
+
       &__list {
         position: absolute;
         top: 100%;
@@ -570,9 +505,9 @@ $main-side-bar:#f2f2f2;
         background-color: $main-side-bar;
         display: flex;
         flex-direction: column;
-    
+
         &__link {
-    
+
           width: calc(100% - 2rem - 1px);
           height: 3rem;
           border: 1px solid #000000;
@@ -581,6 +516,6 @@ $main-side-bar:#f2f2f2;
         }
       }
     }
-    
+
   }
 }

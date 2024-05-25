@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import "./registerForm.scss"
 import { TbEyeClosed } from "react-icons/tb";
 import { ImEye } from "react-icons/im";
+import Input from '../../../../component/common/input/Input';
+import SubmitButton from '../../../../component/common/button/SubmitButton';
 
 
 const RegisterForm = () => {
@@ -133,33 +135,49 @@ const RegisterForm = () => {
     };
     return (
         <form noValidate className='wrapper-input' onSubmit={handleSubmit}>
-            <div className="input-container">
-                <input className="input-container-input" type="text" required id="username" name="username" value={formData.username} onChange={handleChange} />
-                <label htmlFor="username" className="input-container-label">Ingresar usuario</label>
-                {formErrors.username && <div id="error-username" className="error-message">{formErrors.username}</div>}
-            </div>
-            <div className="input-container">
-                <input type="text" required value={formData.email} id="email" name="email" className="input-container-input" onChange={handleChange} />
-                <label htmlFor="email" className="input-container-label">Ingresar email</label>
-                {formErrors.email && <div id="error-email" className="error-message">{formErrors.email}</div>}
-            </div>
-            <div className="input-container">
-                <input type={passwordVisible ? 'text' : 'password'} required value={formData.password} id="password" name="password" className="input-container-input" onChange={handleChange} />
-                <label htmlFor="password" className="input-container-label">Ingresar contraseña</label>
-                {formErrors.password && <div id="password-error" className="error-message">{formErrors.password}</div>}
-                <span onClick={togglePasswordVisibility} className='icon-eye'>
-                    {passwordVisible ? <ImEye /> : <TbEyeClosed />}
-                </span>
-            </div>
-            <div className="input-container">
-                <input type={confirmPasswordVisible ? 'text' : 'password'} required value={formData.confirmPassword} id="confirmPassword" name="confirmPassword" className="input-container-input" onChange={handleChange} />
-                <label htmlFor="confirmPassword" className="input-container-label">Confirmar contraseña</label>
-                {formErrors.confirmPassword && <div id="confirmPassword-error" className="error-message">{formErrors.confirmPassword}</div>}
-                <span onClick={toggleConfirmPasswordVisibility} className='icon-eye'>
-                    {confirmPasswordVisible ? <ImEye /> : <TbEyeClosed />}
-                </span>
-            </div>
-            <button type="submit" className="btnRegister">Registrar</button>
+
+            <Input
+                id="username"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                label="Ingresar usuario"
+                error={formErrors.username}
+            />
+
+            <Input
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                label="Ingresar email"
+                error={formErrors.email}
+            />
+            <Input
+                id="password"
+                name="password"
+                type={passwordVisible ? 'text' : 'password'}
+                value={formData.password}
+                onChange={handleChange}
+                label="Ingresar contraseña"
+                error={formErrors.password}
+                icon={passwordVisible ? <ImEye /> : <TbEyeClosed />}
+                onIconClick={togglePasswordVisibility}
+            />
+            <Input
+                id="confirmPassword"
+                name="confirmPassword"
+                type={confirmPasswordVisible ? 'text' : 'password'}
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                label="Ingresar contraseña"
+                error={formErrors.confirmPassword}
+                icon={confirmPasswordVisible ? <ImEye /> : <TbEyeClosed />}
+                onIconClick={toggleConfirmPasswordVisibility}
+            />
+
+
+            <SubmitButton text={"Registrar"} />
         </form>
     );
 };

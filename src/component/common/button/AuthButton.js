@@ -4,7 +4,7 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import { CiFacebook } from "react-icons/ci";
 import "./authButton.scss"
 
-const AuthButton = () => {
+const AuthButton = ({text}) => {
 
     const responseGoogle = useGoogleLogin({
         onSuccess: (response) => {
@@ -21,7 +21,7 @@ const AuthButton = () => {
         <div className="auth-button">
             <button onClick={() => responseGoogle()} className="auth-button-google">
                 <FcGoogle className="auth-button-google-icon" />
-                Registrarse con Google.
+                {text} con Google.
             </button>
 
 
@@ -35,7 +35,7 @@ const AuthButton = () => {
                 render={renderProps => (
                     <button className="auth-button-facebook" onClick={renderProps.onClick}>
                         <CiFacebook className="auth-button-facebook-icon" />
-                        <span>Registrarse con Facebook.</span>
+                        <span>{text} con Facebook.</span>
                     </button>
                 )}
             />

@@ -1,13 +1,7 @@
 $main-side-bar: #f2f2f2;
 
-.login {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 60px;
+.accountMenu {
   position: relative;
-  display: flex;
-
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -55,12 +49,9 @@ $main-side-bar: #f2f2f2;
 
   &__list {
     position: absolute;
-    top: 100%;
-    right: 0px;
-    width: 30vw;
-    background-color: $main-side-bar;
-    display: flex;
-    flex-direction: column;
+    width: 20vw;
+    background-color: #ffffff;
+    right: 0;
 
     &__link {
 

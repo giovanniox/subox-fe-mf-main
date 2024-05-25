@@ -1,6 +1,5 @@
 import React from "react";
 import "./home.scss"
-import NavBar from '../../component/navBar/NavBar';
 
 import iconNiños from "./niños.png";
 
@@ -10,8 +9,7 @@ import iconTemp from "./temp.png";
 import iconOfer from "./ofer.png";
 const HomePrivate = () => {
   return (
-    <>
-    <NavBar />
+
     <div className="home">
       <div className="home__jumbotrom">
         <div className="home__jumbotrom-container">
@@ -23,7 +21,7 @@ const HomePrivate = () => {
           </div>
           <div className="home__jumbotrom-img">
             <img
-              // src={iconOfer}
+              src={iconOfer}
               className="home__categories-container-circle-img"
               alt="Zapato Azul" />
           </div>
@@ -90,7 +88,6 @@ const HomePrivate = () => {
         </div>
       </div>
     </div>
-  </>
 );
 };
 

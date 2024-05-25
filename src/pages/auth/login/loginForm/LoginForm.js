@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { AUTH_ACTIONS } from "../../../../app/redux/actions/authActions"
 import { useDispatch, useSelector } from "react-redux";
 import { useAuth } from '../../../../provider/AuthProvider';
-
-
+import Input from '../../../../component/common/input/Input';
+import SubmitButton from '../../../../component/common/button/SubmitButton';
 const RegisterForm = () => {
 
     const dispatch = useDispatch();
@@ -80,11 +80,11 @@ const RegisterForm = () => {
         e.preventDefault();
 
         if (validateForm()) {
-           dispatch(AUTH_ACTIONS.login(formData, setToken, navigate));
+            dispatch(AUTH_ACTIONS.login(formData, setToken, navigate));
         }
     };
 
-  
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -105,23 +105,28 @@ const RegisterForm = () => {
         });
     };
     return (
-        <form noValidate className='wrapper-input' onSubmit={handleSubmit}>
-            <div className="input-container">
-                <input className="input-container-input" type="text" required id="username" name="username" value={formData.username} onChange={handleChange} />
-                <label htmlFor="username" className="input-container-label">Ingresar usuario</label>
-                {formErrors.username && <div id="error-username" className="error-message">{formErrors.username}</div>}
-            </div>
+        <form noValidate className='loginForm' onSubmit={handleSubmit}>
+            <Input
+                id="username"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                label="Ingresar usuariosss"
+                error={formErrors.username}
+            />
+              <Input
+                id="password"
+                name="password"
+                type={passwordVisible ? 'text' : 'password'}
+                value={formData.password}
+                onChange={handleChange}
+                label="Ingresar contraseña"
+                error={formErrors.password}
+                icon={passwordVisible ? <ImEye /> : <TbEyeClosed />}
+                onIconClick={togglePasswordVisibility}
+            />
 
-            <div className="input-container">
-                <input type={passwordVisible ? 'text' : 'password'} required value={formData.password} id="password" name="password" className="input-container-input" onChange={handleChange} />
-                <label htmlFor="password" className="input-container-label">Ingresar contraseña</label>
-                {formErrors.password && <div id="password-error" className="error-message">{formErrors.password}</div>}
-                <span onClick={togglePasswordVisibility} className='icon-eye'>
-                    {passwordVisible ? <ImEye /> : <TbEyeClosed />}
-                </span>
-            </div>
-
-            <button type="submit" className="btnRegister">Registrar</button>
+            <SubmitButton text={"Entrar"}/>
         </form>
     );
 };
