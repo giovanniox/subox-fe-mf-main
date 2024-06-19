@@ -2,18 +2,26 @@ import { FaRegUser } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose } from "react-icons/md";
 import "./navBar.scss"
-import "./logo.scss"
+import "./logo/logo.scss"
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import Logo from "./Logo"
+import Logo from "./logo/Logo"
 
 import AccountMenu from "./accountMenu/AccountMenu";
 import CartMenu from "./cartMenu/CartMenu";
+import SearchMenu from "./searchMenu/SearchMenu";
+import { PATH } from "../../router/routes";
+import { useAuth } from "../../provider/AuthProvider"
+import { useNavigate } from "react-router-dom";
 
 
 const NavBar = () => {
+
     const [showSidebarL, setShowSidebarL] = useState(false);
     const [showSidebarR, setShowSidebarR] = useState(false);
+
+    const navigate = useNavigate();
+    const { token, setToken } = useAuth();
 
     // este useEffect sirve para calcular el width del sitio para cerrar el menu Sidebar
     useEffect(() => {
@@ -39,58 +47,36 @@ const NavBar = () => {
         setShowSidebarL(false);
     };
 
+    const handleLogout = () => {
+        setToken();
+        navigate("/", { replace: true });
+    };
 
 
     return (
         <>
 
             <div className='navBar'>
-                  <Logo />  
-                <div className='navBar__container'>  
-                    <div>
-                        <GiHamburgerMenu className="hamburgerMenu" onClick={toggleSidebarBurger} />
-                        <div className="menu">
-                            <div className="menu__container">
-                                {/* <div className="menu__container__busqueda" onMouseEnter={handleMouseEnterBusqueda}
-                                onMouseLeave={handleMouseLeaveBusqueda}>
-
-                                <input
-                                    type="text"
-                                    placeholder="Buscar"
-                                    className="menu__container__busqueda__input"
-                                />
-
-                                <span className="menu__container__busqueda__button"
-
-                                >
-                                    <FaSearch className="menu__container__busqueda__button__iconBusqueda" />
-                                </span>
-
-                                {isOpenBusqueda && (
-                                    <div className="menu__container__busqueda__container">
-                                        lista de productos encontrados
-                                    </div>
-                                )}
-                            </div>*/}
-                                {/*
-                         */}
-                                <CartMenu />
-                                <AccountMenu />
-
-                            </div>
+                <Logo />
+                <div className='navBar__container'>
+                    <GiHamburgerMenu className="hamburgerMenu" onClick={toggleSidebarBurger} />
+                    <div className="menu">
+                        <div className="menu__container">
+                            <SearchMenu />
+                            <CartMenu />
+                            <AccountMenu />
                         </div>
-                        <FaRegUser className="userIcon" onClick={toggleSidebarUser} />
                     </div>
-                  
-
+                    <FaRegUser className="userIcon" onClick={toggleSidebarUser} />
                 </div>
                 <div className="navBar__landscape">
                     <div className="navBar__landscape__object"></div>
                 </div>
-            </div>
 
 
-            {(showSidebarR || showSidebarL) &&
+
+
+                {(showSidebarR || showSidebarL) &&
                 <div className="closeWrapper" onClick={() => {
                     setShowSidebarL(false);
                     setShowSidebarR(false);
@@ -101,7 +87,6 @@ const NavBar = () => {
             <div className={`sidenavBurger ${showSidebarL ? 'open' : ''}`}>
                 <div className="sidenavBurger__container__uno">
                     <MdClose className="closebtn" onClick={toggleSidebarBurger} />
-                    <Logo  />
                 </div>
                 <div className="sidenavBurger__container__dos">
                     <div className="sidenavBurger__container__dos__menu">
@@ -140,20 +125,40 @@ const NavBar = () => {
             <div className={`sidenavUser ${showSidebarR ? 'open' : ''}`}>
                 <div className="sidenavUser__container__uno">
                     <MdClose className="closebtn" onClick={toggleSidebarUser} />
-                    <Logo />
                 </div>
                 <div className="sidenavUser__container__dos">
                     <div className="sidenavUser__container__dos__menu">
                         <ul className="sidenavUser__container__dos__menu__uno">
-                            <li className="sidenavBurger__container__dos__menu__dos__link">
-                                <Link to="#">Iniciar sesion</Link>
-                            </li>
-                            <li className="sidenavBurger__container__dos__menu__dos__link">
-                                <Link to="#">Ajustes de cuenta</Link>
-                            </li>
-                            <li className="sidenavBurger__container__dos__menu__dos__link">
-                                <Link to="#">Registrarse</Link>
-                            </li>
+                            {token ? (
+                                <>
+                                    <li className="sidenavBurger__container__dos__menu__dos__link">
+                                        <Link to={PATH.PROFILE} onClick={() => {
+                                            setShowSidebarR(false);
+                                            setShowSidebarL(false);
+                                        }}>Perfil
+                                        </Link>
+                                    </li>
+                                    <li className="sidenavBurger__container__dos__menu__dos__link" onClick={handleLogout}>
+                                        <span>Salir</span>
+                                    </li>
+                                </>
+
+                            ) : (
+
+                                <>
+                                    <li className="sidenavBurger__container__dos__menu__dos__link">
+                                        <Link to={PATH.LOGIN} onClick={() => {
+                                            setShowSidebarR(false);
+                                            setShowSidebarL(false);
+                                        }}>Iniciar sesion</Link>
+                                    </li><li className="sidenavBurger__container__dos__menu__dos__link">
+                                        <Link to={PATH.SIGNIN} onClick={() => {
+                                            setShowSidebarR(false);
+                                            setShowSidebarL(false);
+                                        }}>Registrarse</Link>
+                                    </li>
+                                </>
+                            )}
                         </ul>
                     </div>
                     <div className="sidenavUser__container__dos__menu">
@@ -171,6 +176,10 @@ const NavBar = () => {
                     </div>
                 </div>
             </div>
+            </div>
+
+
+           
         </>
 
     )

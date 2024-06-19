@@ -2,6 +2,10 @@ $main-side-bar: #f2f2f2;
 
 .accountMenu {
   position: relative;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  flex-direction: column;
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -13,45 +17,31 @@ $main-side-bar: #f2f2f2;
   }
 
   &__button {
-    &__iconUser {
-      width: 23px;
-      height: 27px;
-      position: relative;
-      top: 5px;
-    }
-
-    &__iconDown {
-      font-size: medium;
-      width: 14px;
-      height: 13px;
-      margin-left: 2px;
-      margin-top: 12px;
-
-    }
-
-    font-size: medium;
-    border-radius: 0.5em;
-    width: 7em;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0px 0.5rem;
+    border-radius: 3px;
+    font-size: larger;
     text-transform: capitalize;
-    font-weight: 600;
-    font-family: system-ui;
-    letter-spacing: 1px;
-    line-height: 3.5rem;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    transition: 0.5s;
-    margin: 0rem;
-    padding: 0 0px;
-    text-align: center;
+    font-family: monospace;
+    font-weight: 400;
+    &__iconUser {
+      font-size: 1.2rem;
+      position: relative;
+      bottom: 2px;
+    }
+    //&__iconDown {
+    //}
 
   }
 
   &__list {
-    position: absolute;
     width: 20vw;
     background-color: #ffffff;
     right: 0;
+    position: absolute;
+    top: 100%;
 
     &__link {
 

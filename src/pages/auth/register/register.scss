@@ -1,12 +1,15 @@
 .register {
-    width: 80vw;
+    @media screen and (max-width: 768px) {
+        width: 90vw;
+      }
+    width: 70vw;
     text-align: center;
     padding: 1rem 1rem;
     border: 1.2px solid white;
     border-radius: 0.5rem;
     background-color: #ffffff;
     font-size: medium;
-    margin: auto;
+    margin: 0rem auto;
     position: relative;
     display: flex;
     flex-direction: column;

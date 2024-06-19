@@ -1,5 +1,8 @@
 .login {
-    width: 60vw;
+    @media screen and (max-width: 768px) {
+        width: 90vw;
+      }
+    width: 70vw;
     text-align: center;
     padding: 1rem 1rem;
     border: 1.2px solid white;

@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CiShoppingCart } from 'react-icons/ci';
 import { FaAngleDown } from 'react-icons/fa';
-import './CartMenu.scss';
+import './cartMenu.scss';
 import { PATH } from "../../../router/routes"
 import { useAuth } from "../../../provider/AuthProvider"
-import { useNavigate } from "react-router-dom";
 
 const CartMenu = () => {
 
-    const navigate = useNavigate();
-    const { token, setToken } = useAuth();
+    const { token } = useAuth();
 
     const [isOpenCart, setIsOpenCart] = useState(false);
 
@@ -32,9 +30,9 @@ const CartMenu = () => {
             </span>
             {isOpenCart && (
                 <ul className="cart__list">
-                    {token ?  (
+                    {token ? (
                         <>
-                         
+
                             <li className="cart__list__link">
                                 <Link to={PATH.PROFILE}>Historial de compras</Link>
                             </li>
@@ -42,13 +40,13 @@ const CartMenu = () => {
                                 <div>Aun no hay productos</div>
                             </div>
                         </>
-                    ):(
+                    ) : (
                         <>
                             <div className="cart__container">
                                 <div>Aun no hay productos</div>
                             </div>
                         </>
-                    ) }
+                    )}
                 </ul>
             )}
         </div>

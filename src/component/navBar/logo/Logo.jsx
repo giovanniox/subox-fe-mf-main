@@ -1,5 +1,5 @@
 import "./logo.scss"
-import {PATH} from "../../router/routes"
+import {PATH} from "../../../router/routes"
 import { Link } from "react-router-dom";
 
 
@@ -17,8 +17,8 @@ const Logo = () => {
                     <span className="logo__wrapper__bot__letter">Tendencias </span>
                 </span>
             </div>
-            <span className="logo__triangule">
-            </span>
+          <span className="logo__triangule">
+            </span> 
         </Link>
     );
 }

@@ -1,11 +1,19 @@
 import { Outlet } from "react-router-dom";
 import NavBar from "../component/navBar/NavBar";
-const NavBarWrapper = ({chilldrens}) => {
+const NavBarWrapper = ({ chilldrens }) => {
 
-  return < >
-    <NavBar />
-    <Outlet />
-  </ >;
+  return (
+    <>
+      <div className="container">
+        <NavBar />
+        <div className="outlet">
+          <Outlet />
+        </div>
+
+      </div>
+    </>
+  )
+
 };
 
 export default NavBarWrapper;

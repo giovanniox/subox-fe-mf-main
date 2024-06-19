@@ -16,37 +16,28 @@
 
   @media screen and (max-width: 768px) {
     scale: 54%;
-    margin-top: 2.5rem;
   }
 
-  scale: 66%;
   text-decoration: none;
   display: flex;
-  transform: rotate(10deg);
   z-index: 3;
-  border-radius: 100%;
-  top: -3rem;
-  position: absolute;
-  flex: 2;
+  top: 1rem;
+  right: 3rem;
+  position: relative;
 
   &__wrapper {
-    position: relative;
+    position: absolute;
     display: flex;
-    height: 100%;
     flex-direction: column;
-    align-items: baseline;
 
     &__top {
-      font-size: 5.2em;
+      font-size: 2.2em;
       text-transform: uppercase;
-      font-family: "Open Sans";
       color: transparent;
       position: relative;
       display: block;
-      letter-spacing: -15px;
-      transform: rotate(-10deg) skew(-20deg);
-      margin-left: -100px;
-      margin-bottom: -36px;
+      letter-spacing: 12px;
+      transform: rotate(0deg) skew(0deg);
 
       &__letter {
         -webkit-text-stroke: 2px #f4c6f4;
@@ -58,13 +49,15 @@
     }
 
     &__mid {
-      font-size: 5.5em;
-      font-weight: 800;
-      display: block;
+      font-size: 1.5em;
+      font-weight: 900;
+      display: flex;
       text-transform: uppercase;
-      letter-spacing: -12px;
-      transform: rotate(-10deg) skew(-15deg);
-      margin-bottom: -20px;
+      letter-spacing: 0px;
+      transform: rotate(0deg) skew(-15deg);
+      position: absolute;
+      top: -1rem;
+      right: 0;
 
       &__letter {
         display: inline-block;
@@ -111,7 +104,6 @@
     &__bot {
       position: relative;
       top: -20px;
-      left: 26px;
       font-family: "OutRun", "Helvetica", sans-serif;
       font-size: 1.4em;
       color: #f4f4f4;
@@ -119,20 +111,20 @@
       letter-spacing: 5px;
       -webkit-text-stroke-width: 1px;
       -webkit-text-stroke-color: #e603ff;
-      transform: rotate(347deg);
-
+      transform: rotate(0deg);
       &__letter {}
     }
   }
 
   &__triangule {
     position: absolute;
-    left: -43px;
+    left: 5rem;
+    scale: 4.8;
     z-index: -1;
-    top: 40px;
-    border-left: 170px solid transparent;
-    border-right: 147px solid transparent;
-    border-bottom: 146px solid rgb(0 0 0 / 59%);
-    transform: rotate(169deg);
+    top: 2rem;
+    border-left: 2rem solid transparent;
+    border-right: 1rem solid transparent;
+    border-bottom: 1rem solid rgba(36, 83, 203, 0.59);
+    transform: rotate(176deg);
   }
 }
