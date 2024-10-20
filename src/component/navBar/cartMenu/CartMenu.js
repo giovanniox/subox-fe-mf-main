@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CiShoppingCart } from 'react-icons/ci';
 import { FaAngleDown } from 'react-icons/fa';
-import './cartMenu.scss';
+import './CartMenu.scss';
 import { PATH } from "../../../router/routes"
 import { useAuth } from "../../../provider/AuthProvider"
 

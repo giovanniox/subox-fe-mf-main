@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CiUser } from 'react-icons/ci'; 
 import { FaAngleDown } from 'react-icons/fa';
-import './accountMenu.scss';
+import './AccountMenu.scss';
 import {PATH} from "../../../router/routes"
 import {useAuth} from "../../../provider/AuthProvider"
 import { useNavigate } from "react-router-dom";
