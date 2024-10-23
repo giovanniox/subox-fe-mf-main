@@ -21,7 +21,7 @@ const login = (loginData, setToken, navigate) => {
           });
 
           if (response.status === 200) {
-              alert('Registro exitoso');
+              alert('Registro exitoso ');
               console.log(response.data.token);
               setToken(response.data.token);
               dispatch(LOGIN(response.data.token));
