@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/subox-fe-mf-main/static/css/main.d39ea8fa.css",
+    "main.js": "/subox-fe-mf-main/static/js/main.3645418f.js",
+    "static/media/ofer.png": "/subox-fe-mf-main/static/media/ofer.dbe683e5b6400a8ee85d.png",
+    "static/media/niños.png": "/subox-fe-mf-main/static/media/niños.e3fafeb742950b586834.png",
+    "static/media/temp.png": "/subox-fe-mf-main/static/media/temp.ed1f3370665be2d4f128.png",
+    "static/media/woman.png": "/subox-fe-mf-main/static/media/woman.d316ecfe189a5bd5decc.png",
+    "static/media/men.png": "/subox-fe-mf-main/static/media/men.c2a659cb65391de4274f.png",
+    "static/media/outrunFuture.otf": "/subox-fe-mf-main/static/media/outrunFuture.fb555d4ee3de8868db90.otf",
+    "index.html": "/subox-fe-mf-main/index.html",
+    "main.d39ea8fa.css.map": "/subox-fe-mf-main/static/css/main.d39ea8fa.css.map",
+    "main.3645418f.js.map": "/subox-fe-mf-main/static/js/main.3645418f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d39ea8fa.css",
+    "static/js/main.3645418f.js"
+  ]
+}
