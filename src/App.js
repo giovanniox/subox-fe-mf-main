@@ -16,7 +16,6 @@ const App = () => {
             <AuthProvider>
                 <GoogleOAuthProvider clientId={googleKey}>
                     <Routes />
-                    <p>test</p>
                 </GoogleOAuthProvider>
             </AuthProvider>
         </Provider>
