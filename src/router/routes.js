@@ -1,10 +1,11 @@
+const BASE_URL = "/subox-fe-mf-main"
 export const PATH = {
-  HOME_PRIVATE: '/',
-  HOME_PUBLIC: '/',
-  PROFILE: '/profile',
-  LOGIN: '/login',
-  SIGNIN: '/sign-in',
-  STORE: '/store',
-  EVENTS: '/events',
-  LOGOUT: '/logout'
+  HOME_PRIVATE: BASE_URL + '/',
+  HOME_PUBLIC: BASE_URL + '/',
+  PROFILE: BASE_URL + '/profile',
+  LOGIN: BASE_URL + '/login',
+  SIGNIN: BASE_URL + '/sign-in',
+  STORE: BASE_URL + '/store',
+  EVENTS: BASE_URL + '/events',
+  LOGOUT: BASE_URL + '/logout'
 };
