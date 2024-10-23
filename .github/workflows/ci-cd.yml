@@ -4,10 +4,10 @@ name: CI/CD Pipeline
 on:
   push:
     branches:
-      - main  # Se ejecuta en cada push al branch main
+      - master  # Se ejecuta en cada push al branch main
   pull_request:
     branches:
-      - main  # También se ejecuta en cada pull request
+      - master  # También se ejecuta en cada pull request
 
 # Definir los jobs (tareas) del pipeline
 jobs:
