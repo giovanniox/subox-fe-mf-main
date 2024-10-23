@@ -1,5 +1,4 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { createHashRouter } from "react-router-dom";
 import { useAuth } from "../provider/AuthProvider";
 import { ProtectedRoute } from "./ProtectedRoute";
 import HomePublic from "./../pages/home/Home"
@@ -69,7 +68,7 @@ const Routes = () => {
   ];
 
 
-  const router = createHashRouter([
+  const router = createBrowserRouter([
     {
       path: '/',
       element: <NavBarWrapper />,
